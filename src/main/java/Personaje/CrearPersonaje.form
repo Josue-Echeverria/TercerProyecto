@@ -47,11 +47,9 @@
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="pnl_Personaje4" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="pnl_Personaje3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="pnl_Personaje2" alignment="0" max="32767" attributes="0"/>
-                      <Component id="pnl_Personaje1" alignment="0" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="pnl_Personaje3" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pnl_Personaje2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pnl_Personaje1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="btn_Empezar" max="32767" attributes="0"/>
@@ -362,6 +360,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver estadisticas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_Armas">
           <Properties>
@@ -668,6 +669,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver estadisticas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_Armas1">
           <Properties>
@@ -1022,6 +1026,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver estadisticas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje3ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane11">
           <AuxValues>
@@ -1489,6 +1496,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver estadisticas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_DireccionApariencia4">
           <Properties>

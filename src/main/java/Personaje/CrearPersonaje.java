@@ -172,6 +172,11 @@ public class CrearPersonaje extends javax.swing.JFrame {
         jScrollPane5.setViewportView(lst_StatsArma5Personaje1);
 
         btn_VerEstadisticasPersonaje1.setText("Ver estadisticas");
+        btn_VerEstadisticasPersonaje1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_VerEstadisticasPersonaje1ActionPerformed(evt);
+            }
+        });
 
         lbl_Armas.setText("Armas:");
 
@@ -324,6 +329,11 @@ public class CrearPersonaje extends javax.swing.JFrame {
             jScrollPane8.setViewportView(lst_StatsArma3Personaje2);
 
             btn_VerEstadisticasPersonaje2.setText("Ver estadisticas");
+            btn_VerEstadisticasPersonaje2.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btn_VerEstadisticasPersonaje2ActionPerformed(evt);
+                }
+            });
 
             lbl_Armas1.setText("Armas:");
 
@@ -484,6 +494,11 @@ public class CrearPersonaje extends javax.swing.JFrame {
                 jScrollPane15.setViewportView(lst_StatsArma5Personaje3);
 
                 btn_VerEstadisticasPersonaje3.setText("Ver estadisticas");
+                btn_VerEstadisticasPersonaje3.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        btn_VerEstadisticasPersonaje3ActionPerformed(evt);
+                    }
+                });
 
                 lst_StatsArma1Personaje3.setModel(new javax.swing.AbstractListModel<String>() {
                     String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
@@ -676,6 +691,11 @@ public class CrearPersonaje extends javax.swing.JFrame {
                     lbl_Armas3.setText("Armas:");
 
                     btn_VerEstadisticasPersonaje4.setText("Ver estadisticas");
+                    btn_VerEstadisticasPersonaje4.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                            btn_VerEstadisticasPersonaje4ActionPerformed(evt);
+                        }
+                    });
 
                     txf_DireccionApariencia4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
                     txf_DireccionApariencia4.setText("C:\\Users\\jecheverria\\Apariencias\\");
@@ -833,10 +853,9 @@ public class CrearPersonaje extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(pnl_Personaje4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(pnl_Personaje3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pnl_Personaje2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pnl_Personaje1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(pnl_Personaje3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pnl_Personaje2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(pnl_Personaje1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_Empezar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
@@ -888,6 +907,22 @@ public class CrearPersonaje extends javax.swing.JFrame {
     private void cmb_TipoPersonaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_TipoPersonaje4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_TipoPersonaje4ActionPerformed
+
+    private void btn_VerEstadisticasPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerEstadisticasPersonaje1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_VerEstadisticasPersonaje1ActionPerformed
+
+    private void btn_VerEstadisticasPersonaje2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerEstadisticasPersonaje2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_VerEstadisticasPersonaje2ActionPerformed
+
+    private void btn_VerEstadisticasPersonaje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerEstadisticasPersonaje3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_VerEstadisticasPersonaje3ActionPerformed
+
+    private void btn_VerEstadisticasPersonaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerEstadisticasPersonaje4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_VerEstadisticasPersonaje4ActionPerformed
 
     /**
      * @param args the command line arguments
