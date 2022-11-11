@@ -12,5 +12,24 @@ import java.util.ArrayList;
  */
 public class Arma {
    private String Nombre;
-   private ArrayList<Tipo> DañoContraTipo;
+   private Tipo[] Daño;
+
+    public Arma(String Nombre) {
+        this.Nombre = Nombre;
+        Tipo[] Tipos = Tipo.values();
+        for (Tipo tipo : Tipos){
+            tipo.generar_daño();
+        }
+        this.Daño = Tipos;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+
 }

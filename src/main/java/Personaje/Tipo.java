@@ -19,4 +19,14 @@ public enum Tipo {
     ACIDO,
     ESPIRITUAL,
     HIERRO;
+    
+    public int Daño;
+
+    public void setDaño(int Daño) {
+        this.Daño = Daño;
+    }
+    public void generar_daño(){
+        setDaño(20 + (int)(Math.random() * ((100 - 20) + 1)));
+        
+    }
 }
