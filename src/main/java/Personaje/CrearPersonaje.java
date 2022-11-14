@@ -15,22 +15,23 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author jecheverria
  */
 public class CrearPersonaje extends javax.swing.JFrame {
     Arma[][] Armas;
-    Pantalla Pantalla;
+    Cliente cliente;
     Personaje[] Personajes;
     boolean[] ArmasPersonaje;
     /**
      * Creates new form CrearPersonaje
      * 
      */
-    public CrearPersonaje(Pantalla pantalla, Personaje[] personajes) {
+    public CrearPersonaje(Cliente client, Personaje[] personajes) {
         this.Armas =new Arma[4][5];
-        this.Pantalla = pantalla;
+        this.cliente = client;
         this.ArmasPersonaje = new boolean[4] ;
         for (boolean ArmaCreada : ArmasPersonaje){
             ArmaCreada = false;
@@ -163,11 +164,16 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         pnl_Personaje1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 51)));
 
+        txf_Arma2Personaje1.setText("Espada del Olimpo");
         txf_Arma2Personaje1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_Arma2Personaje1ActionPerformed(evt);
             }
         });
+
+        txf_Arma3Personaje1.setText("Scout Rifle");
+
+        txf_Arma4Personaje1.setText("Espadas del caos");
 
         lst_StatsArma1Personaje1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
@@ -175,6 +181,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(lst_StatsArma1Personaje1);
+
+        txf_Arma5Personaje1.setText("Cangreburgers");
 
         lst_StatsArma2Personaje1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
@@ -213,6 +221,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         lbl_Armas.setText("Armas:");
 
+        txf_Arma1Personaje1.setText("Espatula");
         txf_Arma1Personaje1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_Arma1Personaje1ActionPerformed(evt);
@@ -239,6 +248,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
 
         lbl_nombre1.setText("Nombre de personaje:");
+
+        txf_Nombre1.setText("Bob Esponja");
 
         cmb_TipoPersonaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuego", "Aire", "Agua", "Magia Blanca", "Magia Negra", "Electricidad", "Hielo", "Acido ", "Espiritual ", "Hierro" }));
         cmb_TipoPersonaje1.setSelectedIndex(-1);
@@ -365,6 +376,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(lst_StatsArma1Personaje2);
 
+        txf_Arma5Personaje2.setText("Revolver");
+
         lst_StatsArma2Personaje2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
             public int getSize() { return strings.length; }
@@ -387,6 +400,14 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
 
         lbl_Armas1.setText("Armas:");
+
+        txf_Arma1Personaje2.setText("Mente");
+
+        txf_Arma2Personaje2.setText("Dedos");
+
+        txf_Arma3Personaje2.setText("Piedras");
+
+        txf_Arma4Personaje2.setText("Pistola de portales");
 
         lst_StatsArma4Personaje2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
@@ -422,6 +443,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
 
         lbl_nombre2.setText("Nombre de personaje:");
+
+        txf_Nombre2.setText("Patricio");
 
         cmb_TipoPersonaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuego", "Aire", "Agua", "Magia Blanca", "Magia Negra", "Electricidad", "Hielo", "Acido ", "Espiritual ", "Hierro" }));
         cmb_TipoPersonaje2.setSelectedIndex(-1);
@@ -538,6 +561,14 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         lbl_Armas2.setText("Armas:");
 
+        txf_Arma1Personaje3.setText("Tentaculos");
+
+        txf_Arma2Personaje3.setText("Clarinete");
+
+        txf_Arma3Personaje3.setText("Nariz");
+
+        txf_Arma4Personaje3.setText("MP5");
+
         lst_StatsArma4Personaje3.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
             public int getSize() { return strings.length; }
@@ -565,6 +596,13 @@ public class CrearPersonaje extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane11.setViewportView(lst_StatsArma1Personaje3);
+
+        txf_Arma5Personaje3.setText("Mjolnir");
+        txf_Arma5Personaje3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txf_Arma5Personaje3ActionPerformed(evt);
+            }
+        });
 
         lst_StatsArma2Personaje3.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
@@ -600,6 +638,13 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
 
         lbl_nombre3.setText("Nombre de personaje:");
+
+        txf_Nombre3.setText("Calamardo");
+        txf_Nombre3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txf_Nombre3ActionPerformed(evt);
+            }
+        });
 
         cmb_TipoPersonaje3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuego", "Aire", "Agua", "Magia Blanca", "Magia Negra", "Electricidad", "Hielo", "Acido ", "Espiritual ", "Hierro" }));
         cmb_TipoPersonaje3.setSelectedIndex(-1);
@@ -726,11 +771,16 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         pnl_Personaje4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 153)));
 
+        txf_Arma2Personaje4.setText("Monedas");
         txf_Arma2Personaje4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_Arma2Personaje4ActionPerformed(evt);
             }
         });
+
+        txf_Arma3Personaje4.setText("Lanza Cohetes");
+
+        txf_Arma4Personaje4.setText("Pinzas");
 
         lst_StatsArma4Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
@@ -753,6 +803,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
         jScrollPane18.setViewportView(lst_StatsArma1Personaje4);
 
+        txf_Arma5Personaje4.setText("Ak-47");
+
         lst_StatsArma2Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
             public int getSize() { return strings.length; }
@@ -768,6 +820,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
         jScrollPane20.setViewportView(lst_StatsArma3Personaje4);
 
         lbl_Armas3.setText("Armas:");
+
+        txf_Arma1Personaje4.setText("Impuestos");
 
         btn_VerEstadisticasPersonaje4.setText("Generar Armas");
         btn_VerEstadisticasPersonaje4.addActionListener(new java.awt.event.ActionListener() {
@@ -796,6 +850,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
 
         lbl_nombre4.setText("Nombre de personaje:");
+
+        txf_Nombre4.setText("Don Cangrejo");
 
         cmb_TipoPersonaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuego", "Aire", "Agua", "Magia Blanca", "Magia Negra", "Electricidad", "Hielo", "Acido ", "Espiritual ", "Hierro" }));
         cmb_TipoPersonaje4.setSelectedIndex(-1);
@@ -979,13 +1035,17 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
     private void btn_EmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpezarActionPerformed
         boolean errores = false;
+        String errors = "";
         if (txf_Nombre1.getText().length()!=0 & txf_Nombre2.getText().length()!=0 & txf_Nombre3.getText().length()!=0 & txf_Nombre4.getText().length()!=0){
             Personajes[0].setNombre(txf_Nombre1.getText());
             Personajes[1].setNombre(txf_Nombre2.getText());
             Personajes[2].setNombre(txf_Nombre3.getText());
             Personajes[3].setNombre(txf_Nombre4.getText());
         }
-        else{errores = true;}
+        else{
+            errores = true;
+            errors += "Falta nombre de los personajes\n";
+        }
         if (cmb_TipoPersonaje1.getSelectedIndex() != -1 & cmb_TipoPersonaje2.getSelectedIndex() != -1 & cmb_TipoPersonaje3.getSelectedIndex() != -1 & cmb_TipoPersonaje4.getSelectedIndex() != -1){
             
             Personajes[0].setTipo(ConfirmaTipo(cmb_TipoPersonaje1.getSelectedIndex()));
@@ -993,7 +1053,10 @@ public class CrearPersonaje extends javax.swing.JFrame {
             Personajes[2].setTipo(ConfirmaTipo(cmb_TipoPersonaje3.getSelectedIndex()));
             Personajes[3].setTipo(ConfirmaTipo(cmb_TipoPersonaje4.getSelectedIndex()));
         }
-        else{errores = true;}
+        else{
+            errores = true;
+            errors += "Falta especificacion de tipos de personaje\n";
+        }
         if (txf_DireccionApariencia1.getText().length() != 0 & txf_DireccionApariencia2.getText().length() != 0 & txf_DireccionApariencia3.getText().length() != 0 & txf_DireccionApariencia4.getText().length() != 0){
             try {
                 BufferedImage bufferedImage= ImageIO.read(new File(txf_DireccionApariencia1.getText()));     
@@ -1012,16 +1075,26 @@ public class CrearPersonaje extends javax.swing.JFrame {
                 Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        else{errores = true;}
+        else{
+            errores = true;
+            errors += "Falta apariencia de personajes\n";
+        }
         if (ArmasPersonaje[0] & ArmasPersonaje[1] & ArmasPersonaje[2] & ArmasPersonaje[3]){
             Personajes[0].setArmas(Armas[0]);
             Personajes[1].setArmas(Armas[1]);
             Personajes[2].setArmas(Armas[2]);
             Personajes[3].setArmas(Armas[3]);
         }
-        else{errores = true;}
+        else{
+            errores = true;
+            errors += "Falta generar armas\n";
+        }
+        
         if(!errores){
-            this.Pantalla.setVisible(true);
+            new Pantalla(cliente).setVisible(true);}
+        else{
+            JOptionPane.showMessageDialog(this, errors,
+               "Errores", JOptionPane.ERROR_MESSAGE);
         }
         
             // TODO add your handling code here:
@@ -1360,6 +1433,14 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_txf_Arma1Personaje1ActionPerformed
+
+    private void txf_Nombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Nombre3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txf_Nombre3ActionPerformed
+
+    private void txf_Arma5Personaje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Arma5Personaje3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txf_Arma5Personaje3ActionPerformed
     public Tipo ConfirmaTipo(int posicion){
         return switch (posicion) {
             case 0 -> Tipo.FUEGO;
@@ -1405,6 +1486,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Cliente client = new Cliente();
             }
         });
     }

@@ -204,13 +204,22 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txf_Arma2Personaje1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Espada del Olimpo"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Arma2Personaje1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma3Personaje1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Scout Rifle"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma4Personaje1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Espadas del caos"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -243,6 +252,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txf_Arma5Personaje1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Cangreburgers"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
           <AuxValues>
@@ -378,6 +390,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma1Personaje1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Espatula"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Arma1Personaje1ActionPerformed"/>
           </Events>
@@ -417,6 +432,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Nombre1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bob Esponja"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje1">
           <Properties>
@@ -625,6 +643,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txf_Arma5Personaje2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Revolver"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane7">
           <AuxValues>
@@ -700,12 +721,24 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma1Personaje2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mente"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma2Personaje2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Dedos"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma3Personaje2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Piedras"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma4Personaje2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pistola de portales"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane9">
           <AuxValues>
@@ -802,6 +835,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Nombre2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Patricio"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje2">
           <Properties>
@@ -1000,12 +1036,24 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma1Personaje3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Tentaculos"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma2Personaje3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Clarinete"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma3Personaje3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nariz"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma4Personaje3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="MP5"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane14">
           <AuxValues>
@@ -1106,6 +1154,12 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txf_Arma5Personaje3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Mjolnir"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Arma5Personaje3ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane12">
           <AuxValues>
@@ -1202,6 +1256,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Nombre3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Calamardo"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Nombre3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje3">
           <Properties>
@@ -1391,13 +1451,22 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txf_Arma2Personaje4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Monedas"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Arma2Personaje4ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma3Personaje4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Lanza Cohetes"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma4Personaje4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Pinzas"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane16">
           <AuxValues>
@@ -1490,6 +1559,9 @@
           </SubComponents>
         </Container>
         <Component class="javax.swing.JTextField" name="txf_Arma5Personaje4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ak-47"/>
+          </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane19">
           <AuxValues>
@@ -1557,6 +1629,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Arma1Personaje4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Impuestos"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn_VerEstadisticasPersonaje4">
           <Properties>
@@ -1601,6 +1676,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txf_Nombre4">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Don Cangrejo"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje4">
           <Properties>
