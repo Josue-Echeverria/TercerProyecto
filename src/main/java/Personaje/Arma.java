@@ -13,8 +13,9 @@ import java.util.ArrayList;
 public class Arma {
    private String Nombre;
    private Tipo[] Daño;
-
+   public boolean Disponible;
     public Arma(String Nombre) {
+        this.Disponible = true;
         this.Nombre = Nombre;
         Tipo[] Tipos = Tipo.values();
         for (Tipo tipo : Tipos){
@@ -30,6 +31,12 @@ public class Arma {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
+
+    public Tipo[] getDaño() {
+        return Daño;
+    }
+    
+    
 
 
 }

@@ -23,16 +23,20 @@ public class Cliente {
     private final String IP = "localhost";
     private final int PORT = 8084;
     private Socket socket;
-     ObjectOutputStream salida;
+    ObjectOutputStream salida;
     private DataOutputStream salidaDatos;
     Pantalla pantalla;
-     String nombre ;
-    ArrayList<Personaje> Personajes;
+    String nombre ;
+    Personaje[] Personajes;
      
      ThreadCliente threadCliente;
 
     public Cliente(Pantalla pantalla) {
-    
+        this.Personajes = new Personaje[4];
+        Personajes[0] = new Personaje();
+        Personajes[1] = new Personaje();
+        Personajes[2] = new Personaje();
+        Personajes[3] = new Personaje();
         this.pantalla = pantalla;
         conectar();
     }
@@ -48,7 +52,7 @@ public class Cliente {
             threadCliente.start();
             // al conectarse, envía el nombre
             this.nombre = JOptionPane.showInputDialog("Nombre: ");
-            new CrearPersonaje().setVisible(true);
+            new CrearPersonaje(pantalla,this.Personajes).setVisible(true);
             
             salidaDatos.writeUTF(nombre);
         } catch (IOException ex) {

@@ -173,7 +173,7 @@ public class Pantalla extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pantalla().setVisible(true);
+                new Pantalla();//.setVisible(true);
             }
         });
     }

@@ -19,7 +19,6 @@ public enum Tipo {
     ACIDO,
     ESPIRITUAL,
     HIERRO;
-    
     public int Daño;
 
     public void setDaño(int Daño) {
@@ -28,5 +27,9 @@ public enum Tipo {
     public void generar_daño(){
         setDaño(20 + (int)(Math.random() * ((100 - 20) + 1)));
         
+    }
+
+    public int getDaño() {
+        return Daño;
     }
 }
