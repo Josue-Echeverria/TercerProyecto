@@ -22,11 +22,7 @@ public class Pantalla extends javax.swing.JFrame {
     public Pantalla( Cliente cliente) {
         this.cliente = cliente;
     initComponents();    
-        lbl_NombrePersonaje1.setText(cliente.Personajes[0].getNombre());
-        lbl_NombrePersonaje2.setText(cliente.Personajes[1].getNombre());
-        lbl_NombrePersonaje3.setText(cliente.Personajes[2].getNombre());
-        lbl_NombrePersonaje4.setText(cliente.Personajes[3].getNombre());
-    
+
     }
 
     public void setCliente(Cliente cliente) {

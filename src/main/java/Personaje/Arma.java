@@ -12,9 +12,10 @@ import java.util.ArrayList;
  */
 public class Arma {
    private String Nombre;
+   
    private Tipo[] Daño;
    public boolean Disponible;
-    public Arma(String Nombre) {
+   public Arma(String Nombre) {
         this.Disponible = true;
         this.Nombre = Nombre;
         Tipo[] Tipos = Tipo.values();

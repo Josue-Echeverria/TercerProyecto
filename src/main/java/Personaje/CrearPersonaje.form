@@ -23,37 +23,63 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_agregar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="jScrollPane6" pref="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cmb_NombresPersonajes" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btn_Empezar" alignment="1" pref="125" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <Component id="pnl_Personaje1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnl_Personaje2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnl_Personaje3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="pnl_Personaje4" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btn_Empezar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="505" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pnl_Personaje4" max="32767" attributes="0"/>
-                  <Component id="pnl_Personaje3" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pnl_Personaje2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pnl_Personaje1" alignment="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="btn_Empezar" pref="29" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmb_NombresPersonajes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane6" min="-2" pref="76" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_agregar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="btn_eliminar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btn_Empezar" min="-2" pref="78" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="pnl_Personaje1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -131,9 +157,9 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btn_VerPersonaje1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txf_DireccionApariencia1" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
+                              <Component id="txf_Apariencia1" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="35" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -164,9 +190,9 @@
                       <Component id="btn_VerPersonaje1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_DireccionApariencia1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txf_Apariencia1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lbl_Apariencia1" max="32767" attributes="0"/>
+                  <Component id="lbl_Apariencia1" pref="151" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="lbl_Armas" min="-2" max="-2" attributes="0"/>
@@ -402,7 +428,7 @@
             <Property name="text" type="java.lang.String" value="&lt;Imagen apariencia&gt;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txf_DireccionApariencia1">
+        <Component class="javax.swing.JTextField" name="txf_Apariencia1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="11" style="0"/>
@@ -410,7 +436,7 @@
             <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cjecheverria\u005cApariencias\u005cBobEsponja.png" containsInvalidXMLChars="true"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_DireccionApariencia1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Apariencia1ActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_DireccionApariencia1">
@@ -475,1256 +501,75 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnl_Personaje2">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="0" green="ff" red="ff" type="rgb"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txf_Nombre2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbl_nombre2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmb_TipoPersonaje2" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbl_TipoPersonaje2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jScrollPane8" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txf_Arma3Personaje2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane6" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane7" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                  <Component id="txf_Arma4Personaje2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane9" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                  <Component id="txf_Arma2Personaje2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane10" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                  <Component id="txf_Arma5Personaje2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_DireccionApariencia2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_VerPersonaje2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="txf_DireccionApariencia2" min="-2" pref="239" max="-2" attributes="0"/>
-                      <Component id="txf_Arma1Personaje2" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_Armas1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btn_VerEstadisticasPersonaje2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lbl_ErrorArma2" min="-2" pref="74" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="lbl_Apariencia2" min="-2" pref="150" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_nombre2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_TipoPersonaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Nombre2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmb_TipoPersonaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_DireccionApariencia2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_VerPersonaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_DireccionApariencia2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lbl_Apariencia2" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lbl_ErrorArma2" max="32767" attributes="0"/>
-                      <Component id="lbl_Armas1" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_VerEstadisticasPersonaje2" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Arma1Personaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txf_Arma2Personaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane6" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane7" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Arma4Personaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txf_Arma3Personaje2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane8" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane9" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_Arma5Personaje2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane10" min="-2" pref="52" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane6">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma1Personaje2">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JTextField" name="txf_Arma5Personaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Revolver"/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane7">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma2Personaje2">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane8">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma3Personaje2">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JButton" name="btn_VerEstadisticasPersonaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Generar Armas"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_Armas1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Armas:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma1Personaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mente"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma2Personaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Dedos"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma3Personaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Piedras"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma4Personaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pistola de portales"/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane9">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma4Personaje2">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane10">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma5Personaje2">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JTextField" name="txf_DireccionApariencia2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cjecheverria\u005cApariencias\u005cCalamardo.png" containsInvalidXMLChars="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_DireccionApariencia2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_Apariencia2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;Imagen apariencia&gt;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_DireccionApariencia2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Direccion de apariencia"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_VerPersonaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ver"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerPersonaje2ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_nombre2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre de personaje:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Nombre2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Patricio"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje2">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="10">
-                <StringItem index="0" value="Fuego"/>
-                <StringItem index="1" value="Aire"/>
-                <StringItem index="2" value="Agua"/>
-                <StringItem index="3" value="Magia Blanca"/>
-                <StringItem index="4" value="Magia Negra"/>
-                <StringItem index="5" value="Electricidad"/>
-                <StringItem index="6" value="Hielo"/>
-                <StringItem index="7" value="Acido "/>
-                <StringItem index="8" value="Espiritual "/>
-                <StringItem index="9" value="Hierro"/>
-              </StringArray>
-            </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_TipoPersonaje2ActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_TipoPersonaje2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_ErrorArma2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="10" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pnl_Personaje3">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-            <MatteColorBorder>
-              <Color PropertyName="color" blue="cc" green="0" red="0" type="rgb"/>
-            </MatteColorBorder>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txf_Nombre3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbl_nombre3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmb_TipoPersonaje3" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbl_TipoPersonaje3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane15" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="txf_Arma5Personaje3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jScrollPane13" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txf_Arma3Personaje3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane11" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="txf_Arma1Personaje3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane12" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="txf_Arma4Personaje3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="jScrollPane14" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="txf_Arma2Personaje3" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_DireccionApariencia3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btn_VerPersonaje3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="txf_DireccionApariencia3" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="lbl_Armas2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lbl_Apariencia3" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="btn_VerEstadisticasPersonaje3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lbl_ErrorArma3" min="-2" pref="74" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="7" max="32767" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="181" max="32767" attributes="0"/>
-                      <Component id="lbl_ErrorArma6" min="-2" pref="73" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lbl_nombre3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbl_TipoPersonaje3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txf_Nombre3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="cmb_TipoPersonaje3" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_VerPersonaje3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_DireccionApariencia3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_DireccionApariencia3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lbl_Apariencia3" min="-2" pref="159" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lbl_Armas2" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_VerEstadisticasPersonaje3" alignment="1" max="32767" attributes="0"/>
-                      <Component id="lbl_ErrorArma3" alignment="1" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Arma2Personaje3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txf_Arma1Personaje3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane11" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane12" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Arma4Personaje3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txf_Arma3Personaje3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane13" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane14" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_Arma5Personaje3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane15" min="-2" pref="52" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
-                      <Component id="lbl_ErrorArma6" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lbl_Armas2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Armas:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma1Personaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tentaculos"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma2Personaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Clarinete"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma3Personaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nariz"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma4Personaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="MP5"/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane14">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma4Personaje3">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane15">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma5Personaje3">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JButton" name="btn_VerEstadisticasPersonaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Generar Armas"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane11">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma1Personaje3">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JTextField" name="txf_Arma5Personaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Mjolnir"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Arma5Personaje3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane12">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma2Personaje3">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane13">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma3Personaje3">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JTextField" name="txf_DireccionApariencia3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cjecheverria\u005cApariencias\u005cpatricio.png" containsInvalidXMLChars="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_DireccionApariencia3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_Apariencia3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;Imagen apariencia&gt;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_DireccionApariencia3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Direccion de apariencia"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_VerPersonaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ver"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerPersonaje3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_nombre3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre de personaje:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Nombre3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Calamardo"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Nombre3ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje3">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="10">
-                <StringItem index="0" value="Fuego"/>
-                <StringItem index="1" value="Aire"/>
-                <StringItem index="2" value="Agua"/>
-                <StringItem index="3" value="Magia Blanca"/>
-                <StringItem index="4" value="Magia Negra"/>
-                <StringItem index="5" value="Electricidad"/>
-                <StringItem index="6" value="Hielo"/>
-                <StringItem index="7" value="Acido "/>
-                <StringItem index="8" value="Espiritual "/>
-                <StringItem index="9" value="Hierro"/>
-              </StringArray>
-            </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_TipoPersonaje3ActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_TipoPersonaje3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_ErrorArma6">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="8" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_ErrorArma3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="10" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="pnl_Personaje4">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder>
-              <Color PropertyName="color" blue="99" green="0" red="99" type="rgb"/>
-            </LineBorder>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txf_Nombre4" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lbl_nombre4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmb_TipoPersonaje4" max="32767" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="lbl_TipoPersonaje4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane17" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <Component id="txf_Arma5Personaje4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jScrollPane20" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txf_Arma3Personaje4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane18" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="txf_Arma1Personaje4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jScrollPane19" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <Component id="txf_Arma4Personaje4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane16" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
-                                      <Component id="txf_Arma2Personaje4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbl_DireccionApariencia4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_VerPersonaje4" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="txf_DireccionApariencia4" min="-2" pref="239" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lbl_Armas3" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lbl_Apariencia4" min="-2" pref="153" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btn_VerEstadisticasPersonaje4" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lbl_ErrorArma4" min="-2" pref="74" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_nombre4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_TipoPersonaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Nombre4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cmb_TipoPersonaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lbl_DireccionApariencia4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_VerPersonaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_DireccionApariencia4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lbl_Apariencia4" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="lbl_ErrorArma4" max="32767" attributes="0"/>
-                      <Component id="lbl_Armas3" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btn_VerEstadisticasPersonaje4" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Arma2Personaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txf_Arma1Personaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane18" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane19" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txf_Arma4Personaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txf_Arma3Personaje4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane20" alignment="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane16" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txf_Arma5Personaje4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane17" min="-2" pref="52" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JTextField" name="txf_Arma2Personaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Monedas"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_Arma2Personaje4ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma3Personaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Lanza Cohetes"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma4Personaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pinzas"/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane16">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma4Personaje4">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane17">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma5Personaje4">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane18">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma1Personaje4">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JTextField" name="txf_Arma5Personaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ak-47"/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane19">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma2Personaje4">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane20">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JList" name="lst_StatsArma3Personaje4">
-              <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="10">
-                    <StringItem index="0" value="Fuego -"/>
-                    <StringItem index="1" value="Aire -"/>
-                    <StringItem index="2" value="Agua -"/>
-                    <StringItem index="3" value="Magia Blanca - "/>
-                    <StringItem index="4" value="Magia Negra - "/>
-                    <StringItem index="5" value="Electricidad -"/>
-                    <StringItem index="6" value="Hielo - "/>
-                    <StringItem index="7" value="Acido - "/>
-                    <StringItem index="8" value="Espiritual - "/>
-                    <StringItem index="9" value="Hierro - "/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JLabel" name="lbl_Armas3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Armas:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Arma1Personaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Impuestos"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_VerEstadisticasPersonaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Generar Armas"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerEstadisticasPersonaje4ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_DireccionApariencia4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="11" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="C:\u005cUsers\u005cjecheverria\u005cApariencias\u005cDonCangrejo.png" containsInvalidXMLChars="true"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txf_DireccionApariencia4ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_Apariencia4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;Imagen apariencia&gt;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_DireccionApariencia4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Direccion de apariencia"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_VerPersonaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ver"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_VerPersonaje4ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_nombre4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre de personaje:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txf_Nombre4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Don Cangrejo"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="cmb_TipoPersonaje4">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="10">
-                <StringItem index="0" value="Fuego"/>
-                <StringItem index="1" value="Aire"/>
-                <StringItem index="2" value="Agua"/>
-                <StringItem index="3" value="Magia Blanca"/>
-                <StringItem index="4" value="Magia Negra"/>
-                <StringItem index="5" value="Electricidad"/>
-                <StringItem index="6" value="Hielo"/>
-                <StringItem index="7" value="Acido "/>
-                <StringItem index="8" value="Espiritual "/>
-                <StringItem index="9" value="Hierro"/>
-              </StringArray>
-            </Property>
-            <Property name="selectedIndex" type="int" value="-1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_TipoPersonaje4ActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_TipoPersonaje4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tipo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lbl_ErrorArma4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="10" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JButton" name="btn_Empezar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Empezar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EmpezarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Personajes Disponibles:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmb_NombresPersonajes">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_NombresPersonajesActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_agregar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_agregarActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="lst_personajes">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Escuadron:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_eliminar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Eliminar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_eliminarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

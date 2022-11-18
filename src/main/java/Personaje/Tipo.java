@@ -32,4 +32,5 @@ public enum Tipo {
     public int getDaño() {
         return Daño;
     }
+    
 }
