@@ -5,11 +5,16 @@
 package Personaje;
 
 import Cliente.Cliente;
+import java.util.Arrays; 
 import Cliente.Pantalla;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -21,23 +26,29 @@ import javax.swing.JOptionPane;
  * @author jecheverria
  */
 public class CrearPersonaje extends javax.swing.JFrame {
-    Arma[][] Armas;
+    Arma[] Armas;
     Cliente cliente;
     Personaje[] Personajes;
+    Personaje[] PersonajesArchivo;
+    Funciones f = new Funciones();
+    int Contador = 0;
     boolean[] ArmasPersonaje;
     /**
      * Creates new form CrearPersonaje
      * 
      */
     public CrearPersonaje(Cliente client, Personaje[] personajes) {
-        this.Armas =new Arma[4][5];
+        this.Armas =new Arma[5];
         this.cliente = client;
+        read_personajes();
         this.ArmasPersonaje = new boolean[4] ;
         for (boolean ArmaCreada : ArmasPersonaje){
             ArmaCreada = false;
         }
         this.Personajes = personajes;
         initComponents();
+        cmb_NombresPersonajes.setModel(new javax.swing.DefaultComboBoxModel<>(f.PersonajeArraytoStringArray(PersonajesArchivo)));
+//        cmb_NombresPersonajes.setSelectedIndex(-1);
     }
 
     /**
@@ -68,7 +79,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         lbl_Armas = new javax.swing.JLabel();
         txf_Arma1Personaje1 = new javax.swing.JTextField();
         lbl_Apariencia1 = new javax.swing.JLabel();
-        txf_DireccionApariencia1 = new javax.swing.JTextField();
+        txf_Apariencia1 = new javax.swing.JTextField();
         lbl_DireccionApariencia1 = new javax.swing.JLabel();
         btn_VerPersonaje1 = new javax.swing.JButton();
         lbl_nombre1 = new javax.swing.JLabel();
@@ -76,89 +87,14 @@ public class CrearPersonaje extends javax.swing.JFrame {
         cmb_TipoPersonaje1 = new javax.swing.JComboBox<>();
         lbl_TipoPersonaje1 = new javax.swing.JLabel();
         lbl_ErrorArma1 = new javax.swing.JLabel();
-        pnl_Personaje2 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        lst_StatsArma1Personaje2 = new javax.swing.JList<>();
-        txf_Arma5Personaje2 = new javax.swing.JTextField();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        lst_StatsArma2Personaje2 = new javax.swing.JList<>();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        lst_StatsArma3Personaje2 = new javax.swing.JList<>();
-        btn_VerEstadisticasPersonaje2 = new javax.swing.JButton();
-        lbl_Armas1 = new javax.swing.JLabel();
-        txf_Arma1Personaje2 = new javax.swing.JTextField();
-        txf_Arma2Personaje2 = new javax.swing.JTextField();
-        txf_Arma3Personaje2 = new javax.swing.JTextField();
-        txf_Arma4Personaje2 = new javax.swing.JTextField();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        lst_StatsArma4Personaje2 = new javax.swing.JList<>();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        lst_StatsArma5Personaje2 = new javax.swing.JList<>();
-        txf_DireccionApariencia2 = new javax.swing.JTextField();
-        lbl_Apariencia2 = new javax.swing.JLabel();
-        lbl_DireccionApariencia2 = new javax.swing.JLabel();
-        btn_VerPersonaje2 = new javax.swing.JButton();
-        lbl_nombre2 = new javax.swing.JLabel();
-        txf_Nombre2 = new javax.swing.JTextField();
-        cmb_TipoPersonaje2 = new javax.swing.JComboBox<>();
-        lbl_TipoPersonaje2 = new javax.swing.JLabel();
-        lbl_ErrorArma2 = new javax.swing.JLabel();
-        pnl_Personaje3 = new javax.swing.JPanel();
-        lbl_Armas2 = new javax.swing.JLabel();
-        txf_Arma1Personaje3 = new javax.swing.JTextField();
-        txf_Arma2Personaje3 = new javax.swing.JTextField();
-        txf_Arma3Personaje3 = new javax.swing.JTextField();
-        txf_Arma4Personaje3 = new javax.swing.JTextField();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        lst_StatsArma4Personaje3 = new javax.swing.JList<>();
-        jScrollPane15 = new javax.swing.JScrollPane();
-        lst_StatsArma5Personaje3 = new javax.swing.JList<>();
-        btn_VerEstadisticasPersonaje3 = new javax.swing.JButton();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        lst_StatsArma1Personaje3 = new javax.swing.JList<>();
-        txf_Arma5Personaje3 = new javax.swing.JTextField();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        lst_StatsArma2Personaje3 = new javax.swing.JList<>();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        lst_StatsArma3Personaje3 = new javax.swing.JList<>();
-        txf_DireccionApariencia3 = new javax.swing.JTextField();
-        lbl_Apariencia3 = new javax.swing.JLabel();
-        lbl_DireccionApariencia3 = new javax.swing.JLabel();
-        btn_VerPersonaje3 = new javax.swing.JButton();
-        lbl_nombre3 = new javax.swing.JLabel();
-        txf_Nombre3 = new javax.swing.JTextField();
-        cmb_TipoPersonaje3 = new javax.swing.JComboBox<>();
-        lbl_TipoPersonaje3 = new javax.swing.JLabel();
-        lbl_ErrorArma6 = new javax.swing.JLabel();
-        lbl_ErrorArma3 = new javax.swing.JLabel();
-        pnl_Personaje4 = new javax.swing.JPanel();
-        txf_Arma2Personaje4 = new javax.swing.JTextField();
-        txf_Arma3Personaje4 = new javax.swing.JTextField();
-        txf_Arma4Personaje4 = new javax.swing.JTextField();
-        jScrollPane16 = new javax.swing.JScrollPane();
-        lst_StatsArma4Personaje4 = new javax.swing.JList<>();
-        jScrollPane17 = new javax.swing.JScrollPane();
-        lst_StatsArma5Personaje4 = new javax.swing.JList<>();
-        jScrollPane18 = new javax.swing.JScrollPane();
-        lst_StatsArma1Personaje4 = new javax.swing.JList<>();
-        txf_Arma5Personaje4 = new javax.swing.JTextField();
-        jScrollPane19 = new javax.swing.JScrollPane();
-        lst_StatsArma2Personaje4 = new javax.swing.JList<>();
-        jScrollPane20 = new javax.swing.JScrollPane();
-        lst_StatsArma3Personaje4 = new javax.swing.JList<>();
-        lbl_Armas3 = new javax.swing.JLabel();
-        txf_Arma1Personaje4 = new javax.swing.JTextField();
-        btn_VerEstadisticasPersonaje4 = new javax.swing.JButton();
-        txf_DireccionApariencia4 = new javax.swing.JTextField();
-        lbl_Apariencia4 = new javax.swing.JLabel();
-        lbl_DireccionApariencia4 = new javax.swing.JLabel();
-        btn_VerPersonaje4 = new javax.swing.JButton();
-        lbl_nombre4 = new javax.swing.JLabel();
-        txf_Nombre4 = new javax.swing.JTextField();
-        cmb_TipoPersonaje4 = new javax.swing.JComboBox<>();
-        lbl_TipoPersonaje4 = new javax.swing.JLabel();
-        lbl_ErrorArma4 = new javax.swing.JLabel();
         btn_Empezar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        cmb_NombresPersonajes = new javax.swing.JComboBox<>();
+        btn_agregar = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        lst_personajes = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        btn_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -230,11 +166,17 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         lbl_Apariencia1.setText("<Imagen apariencia>");
 
+<<<<<<< HEAD
         txf_DireccionApariencia1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         txf_DireccionApariencia1.setText("C:\\Users\\PC\\Pictures\\Apariencias\\Bob Esponja.png");
         txf_DireccionApariencia1.addActionListener(new java.awt.event.ActionListener() {
+=======
+        txf_Apariencia1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
+        txf_Apariencia1.setText("C:\\Users\\jecheverria\\Apariencias\\BobEsponja.png");
+        txf_Apariencia1.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> master
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txf_DireccionApariencia1ActionPerformed(evt);
+                txf_Apariencia1ActionPerformed(evt);
             }
         });
 
@@ -312,8 +254,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
                                 .addComponent(lbl_DireccionApariencia1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn_VerPersonaje1))
-                            .addComponent(txf_DireccionApariencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(txf_Apariencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 35, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_Personaje1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(lbl_Apariencia1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,9 +278,9 @@ public class CrearPersonaje extends javax.swing.JFrame {
                     .addComponent(lbl_DireccionApariencia1)
                     .addComponent(btn_VerPersonaje1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txf_DireccionApariencia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txf_Apariencia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_Apariencia1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_Apariencia1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_Personaje1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(lbl_Armas)
@@ -367,6 +309,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+<<<<<<< HEAD
         pnl_Personaje2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
 
         lst_StatsArma1Personaje2.setModel(new javax.swing.AbstractListModel<String>() {
@@ -773,203 +716,45 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         txf_Arma2Personaje4.setText("Monedas");
         txf_Arma2Personaje4.addActionListener(new java.awt.event.ActionListener() {
+=======
+        btn_Empezar.setText("Empezar");
+        btn_Empezar.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> master
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txf_Arma2Personaje4ActionPerformed(evt);
+                btn_EmpezarActionPerformed(evt);
             }
         });
 
-        txf_Arma3Personaje4.setText("Lanza Cohetes");
+        jLabel1.setText("Personajes Disponibles:");
 
-        txf_Arma4Personaje4.setText("Pinzas");
-
-        lst_StatsArma4Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane16.setViewportView(lst_StatsArma4Personaje4);
-
-        lst_StatsArma5Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane17.setViewportView(lst_StatsArma5Personaje4);
-
-        lst_StatsArma1Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane18.setViewportView(lst_StatsArma1Personaje4);
-
-        txf_Arma5Personaje4.setText("Ak-47");
-
-        lst_StatsArma2Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane19.setViewportView(lst_StatsArma2Personaje4);
-
-        lst_StatsArma3Personaje4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Fuego -", "Aire -", "Agua -", "Magia Blanca - ", "Magia Negra - ", "Electricidad -", "Hielo - ", "Acido - ", "Espiritual - ", "Hierro - " };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane20.setViewportView(lst_StatsArma3Personaje4);
-
-        lbl_Armas3.setText("Armas:");
-
-        txf_Arma1Personaje4.setText("Impuestos");
-
-        btn_VerEstadisticasPersonaje4.setText("Generar Armas");
-        btn_VerEstadisticasPersonaje4.addActionListener(new java.awt.event.ActionListener() {
+        cmb_NombresPersonajes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_NombresPersonajes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_VerEstadisticasPersonaje4ActionPerformed(evt);
+                cmb_NombresPersonajesActionPerformed(evt);
             }
         });
 
+<<<<<<< HEAD
         txf_DireccionApariencia4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         txf_DireccionApariencia4.setText("C:\\Users\\PC\\Pictures\\Apariencias\\Don Cangrejo.png");
         txf_DireccionApariencia4.addActionListener(new java.awt.event.ActionListener() {
+=======
+        btn_agregar.setText("Agregar");
+        btn_agregar.addActionListener(new java.awt.event.ActionListener() {
+>>>>>>> master
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txf_DireccionApariencia4ActionPerformed(evt);
+                btn_agregarActionPerformed(evt);
             }
         });
 
-        lbl_Apariencia4.setText("<Imagen apariencia>");
+        jScrollPane6.setViewportView(lst_personajes);
 
-        lbl_DireccionApariencia4.setText("Direccion de apariencia");
+        jLabel2.setText("Escuadron:");
 
-        btn_VerPersonaje4.setText("Ver");
-        btn_VerPersonaje4.addActionListener(new java.awt.event.ActionListener() {
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_VerPersonaje4ActionPerformed(evt);
-            }
-        });
-
-        lbl_nombre4.setText("Nombre de personaje:");
-
-        txf_Nombre4.setText("Don Cangrejo");
-
-        cmb_TipoPersonaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuego", "Aire", "Agua", "Magia Blanca", "Magia Negra", "Electricidad", "Hielo", "Acido ", "Espiritual ", "Hierro" }));
-        cmb_TipoPersonaje4.setSelectedIndex(-1);
-        cmb_TipoPersonaje4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_TipoPersonaje4ActionPerformed(evt);
-            }
-        });
-
-        lbl_TipoPersonaje4.setText("Tipo:");
-
-        lbl_ErrorArma4.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-
-        javax.swing.GroupLayout pnl_Personaje4Layout = new javax.swing.GroupLayout(pnl_Personaje4);
-        pnl_Personaje4.setLayout(pnl_Personaje4Layout);
-        pnl_Personaje4Layout.setHorizontalGroup(
-            pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                        .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txf_Nombre4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_nombre4, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmb_TipoPersonaje4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                                .addComponent(lbl_TipoPersonaje4)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                        .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txf_Arma5Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane20)
-                                        .addComponent(txf_Arma3Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txf_Arma1Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txf_Arma4Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txf_Arma2Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                                .addComponent(lbl_DireccionApariencia4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_VerPersonaje4))
-                            .addComponent(txf_DireccionApariencia4, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                                .addComponent(lbl_Armas3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_Apariencia4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnl_Personaje4Layout.createSequentialGroup()
-                                        .addComponent(btn_VerEstadisticasPersonaje4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbl_ErrorArma4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        pnl_Personaje4Layout.setVerticalGroup(
-            pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_Personaje4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombre4)
-                    .addComponent(lbl_TipoPersonaje4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txf_Nombre4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_TipoPersonaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_DireccionApariencia4)
-                    .addComponent(btn_VerPersonaje4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txf_DireccionApariencia4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lbl_Apariencia4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbl_ErrorArma4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lbl_Armas3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_VerEstadisticasPersonaje4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txf_Arma2Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txf_Arma1Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane18, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txf_Arma4Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txf_Arma3Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_Personaje4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane20, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane16, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txf_Arma5Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        btn_Empezar.setText("Empezar");
-        btn_Empezar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_EmpezarActionPerformed(evt);
+                btn_eliminarActionPerformed(evt);
             }
         });
 
@@ -978,62 +763,65 @@ public class CrearPersonaje extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btn_eliminar)
+                                    .addComponent(btn_agregar)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cmb_NombresPersonajes, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_Empezar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(38, 38, 38)))
                 .addComponent(pnl_Personaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_Personaje2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_Personaje3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnl_Personaje4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Empezar)
-                .addGap(505, 505, 505))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnl_Personaje4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_Personaje3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_Personaje2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnl_Personaje1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_Empezar, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmb_NombresPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_agregar)
+                        .addGap(14, 14, 14)
+                        .addComponent(btn_eliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Empezar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pnl_Personaje1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txf_DireccionApariencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_DireccionApariencia1ActionPerformed
+    private void txf_Apariencia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Apariencia1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txf_DireccionApariencia1ActionPerformed
-
-    private void txf_DireccionApariencia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_DireccionApariencia2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_DireccionApariencia2ActionPerformed
-
-    private void txf_DireccionApariencia3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_DireccionApariencia3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_DireccionApariencia3ActionPerformed
-
-    private void txf_DireccionApariencia4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_DireccionApariencia4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_DireccionApariencia4ActionPerformed
+    }//GEN-LAST:event_txf_Apariencia1ActionPerformed
 
     private void txf_Arma1Personaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Arma1Personaje4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txf_Arma1Personaje4ActionPerformed
 
-    private void txf_Arma2Personaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Arma2Personaje4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_Arma2Personaje4ActionPerformed
-
     private void btn_EmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpezarActionPerformed
+<<<<<<< HEAD
         boolean errores = false;
         String errors = "";
         if (txf_Nombre1.getText().length()!=0 & txf_Nombre2.getText().length()!=0 & txf_Nombre3.getText().length()!=0 & txf_Nombre4.getText().length()!=0){
@@ -1102,29 +890,21 @@ public class CrearPersonaje extends javax.swing.JFrame {
                 Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
             }
 }
+=======
+        if(Contador == 4){
+            new Pantalla(cliente).setVisible(true);}
+>>>>>>> master
         else{
-            JOptionPane.showMessageDialog(this, errors,
+            JOptionPane.showMessageDialog(this, "Solo se permiten 4 personajes",
                "Errores", JOptionPane.ERROR_MESSAGE);
         }
         
             // TODO add your handling code here:
     }//GEN-LAST:event_btn_EmpezarActionPerformed
 
-    private void cmb_TipoPersonaje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_TipoPersonaje3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_TipoPersonaje3ActionPerformed
-
     private void cmb_TipoPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_TipoPersonaje1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_TipoPersonaje1ActionPerformed
-
-    private void cmb_TipoPersonaje2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_TipoPersonaje2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_TipoPersonaje2ActionPerformed
-
-    private void cmb_TipoPersonaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_TipoPersonaje4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_TipoPersonaje4ActionPerformed
 
     private void btn_VerEstadisticasPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerEstadisticasPersonaje1ActionPerformed
         Arma[] armas = new Arma[5];
@@ -1180,7 +960,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
             armas[4] = arma5;
         }else{errores = true;}
         if (!errores){
-            this.Armas[0] = armas;
+            this.Armas = armas;
             lbl_ErrorArma1.setText("");
             ArmasPersonaje[0] =  true;
         }
@@ -1191,6 +971,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_btn_VerEstadisticasPersonaje1ActionPerformed
 
+<<<<<<< HEAD
     private void btn_VerEstadisticasPersonaje2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerEstadisticasPersonaje2ActionPerformed
         Arma[] armas = new Arma[5];
         boolean errores = false;
@@ -1390,9 +1171,11 @@ public class CrearPersonaje extends javax.swing.JFrame {
               
     }//GEN-LAST:event_btn_VerEstadisticasPersonaje4ActionPerformed
 
+=======
+>>>>>>> master
     private void btn_VerPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerPersonaje1ActionPerformed
         try{
-            String direccion = txf_DireccionApariencia1.getText();
+            String direccion = txf_Apariencia1.getText();
             BufferedImage bufferedImage= ImageIO.read(new File(direccion));
             Image image = bufferedImage.getScaledInstance(140, 150, Image.SCALE_DEFAULT);
             ImageIcon icon = new ImageIcon(image);
@@ -1400,39 +1183,6 @@ public class CrearPersonaje extends javax.swing.JFrame {
             lbl_Apariencia1.setIcon (icon);
         }catch(Exception e){}
     }//GEN-LAST:event_btn_VerPersonaje1ActionPerformed
-
-    private void btn_VerPersonaje2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerPersonaje2ActionPerformed
-        try{
-            String direccion = txf_DireccionApariencia2.getText();
-            BufferedImage bufferedImage= ImageIO.read(new File(direccion));
-            Image image = bufferedImage.getScaledInstance(140, 150, Image.SCALE_DEFAULT);
-            ImageIcon icon = new ImageIcon(image);
-            lbl_Apariencia2.setText("");
-            lbl_Apariencia2.setIcon (icon);
-        }catch(Exception e){}        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_VerPersonaje2ActionPerformed
-
-    private void btn_VerPersonaje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerPersonaje3ActionPerformed
-        try{
-            String direccion = txf_DireccionApariencia3.getText();
-            BufferedImage bufferedImage= ImageIO.read(new File(direccion));
-            Image image = bufferedImage.getScaledInstance(140, 150, Image.SCALE_DEFAULT);
-            ImageIcon icon = new ImageIcon(image);
-            lbl_Apariencia3.setText("");
-            lbl_Apariencia3.setIcon (icon);
-        }catch(Exception e){}        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_VerPersonaje3ActionPerformed
-
-    private void btn_VerPersonaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerPersonaje4ActionPerformed
-        try{
-            String direccion = txf_DireccionApariencia4.getText();
-            BufferedImage bufferedImage= ImageIO.read(new File(direccion));
-            Image image = bufferedImage.getScaledInstance(140, 150, Image.SCALE_DEFAULT);
-            ImageIcon icon = new ImageIcon(image);
-            lbl_Apariencia4.setText("");
-            lbl_Apariencia4.setIcon (icon);
-        }catch(Exception e){}        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_VerPersonaje4ActionPerformed
 
     private void txf_Arma2Personaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Arma2Personaje1ActionPerformed
         // TODO add your handling code here:
@@ -1444,13 +1194,143 @@ public class CrearPersonaje extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txf_Arma1Personaje1ActionPerformed
 
-    private void txf_Nombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Nombre3ActionPerformed
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        if(lst_personajes.getSelectedIndex() != -1){
+            Personajes[lst_personajes.getSelectedIndex()] = null;
+            Contador--;
+            Personajes = f.OrdenarArrayPersonajes(Personajes);
+            lst_personajes.setModel(new javax.swing.DefaultComboBoxModel<>(f.PersonajeArraytoStringArray(Personajes)));        
+        }
         // TODO add your handling code here:
-    }//GEN-LAST:event_txf_Nombre3ActionPerformed
+    }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void txf_Arma5Personaje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_Arma5Personaje3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_Arma5Personaje3ActionPerformed
+    private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
+        if (Contador == 4){
+            JOptionPane.showMessageDialog(this, "Ya no se pueden agregar mas personajes",
+               "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            String str = "%";
+            String errors = "";
+            boolean errores = false;
+            if (txf_Nombre1.getText().length() != 0){
+                str += txf_Nombre1.getText()+"/";
+            }else{errores = true;    errors += "Falta el nombre de personaje\n";}
+            if (cmb_TipoPersonaje1.getSelectedIndex() != -1){
+                str += cmb_TipoPersonaje1.getSelectedIndex()+"/";
+            }else {errores = true;
+                errors += "Falta especificacion de tipo de personaje\n";}
+            if (txf_Apariencia1.getText().length() != 0){
+                str+= txf_Apariencia1.getText()+"/";
+            }else {errores = true; 
+                errors += "Falta direccion de la apariencia\n";}
+            if (txf_Arma1Personaje1.getText().length() != 0){
+                str += txf_Arma1Personaje1.getText()+"$";
+            }else{errores = true;
+                errors += "Falta generar arma 1\n";}        
+            if (txf_Arma2Personaje1.getText().length() != 0){
+                str += txf_Arma2Personaje1.getText()+"$";
+            }else{errores = true;    
+                errors += "Falta generar arma 2\n";}
+            if (txf_Arma3Personaje1.getText().length() != 0){
+                str += txf_Arma3Personaje1.getText()+"$";
+            }else{errores = true;    
+                errors += "Falta generar arma 3\n";}
+            if (txf_Arma4Personaje1.getText().length() != 0){
+                str += txf_Arma4Personaje1.getText()+"$";
+            }else{errores = true;
+                errors += "Falta generar arma 4\n";}
+            if (txf_Arma5Personaje1.getText().length() != 0){
+                str += txf_Arma5Personaje1.getText();
+            }else {errores = true;
+                errors += "Falta generar arma 5\n";}
+            if (!errores){
+                System.out.println(str);
+                FileWriter escritor;
+                try {
+                    escritor = new FileWriter("Personajes.txt",true); 
+                    escritor.write(str);
+                    escritor.close();
+
+                    //Cambiar 
+                    Arma[] a = new Arma[5];
+                    try{
+                        String direccion = txf_Apariencia1.getText();
+                        BufferedImage bufferedImage= ImageIO.read(new File(direccion));
+                        Image image = bufferedImage.getScaledInstance(140, 150, Image.SCALE_DEFAULT);
+                        ImageIcon icon = new ImageIcon(image);
+                        Personajes[Contador] = new Personaje(txf_Nombre1.getText(),ConfirmaTipo(cmb_TipoPersonaje1.getSelectedIndex()),a,icon,direccion,cmb_TipoPersonaje1.getSelectedIndex());                
+                        Contador++;
+                    }catch(Exception e){}
+                    //
+
+                    lst_personajes.setModel(new javax.swing.DefaultComboBoxModel<>(f.PersonajeArraytoStringArray(Personajes)));        
+                } catch (IOException ex) {
+                    Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                lbl_ErrorArma1.setText("");
+                ArmasPersonaje[0] =  true;
+            }
+            else{
+                JOptionPane.showMessageDialog(this, errors,
+                   "Errores", JOptionPane.ERROR_MESSAGE);
+            }     
+        }
+    }//GEN-LAST:event_btn_agregarActionPerformed
+
+
+    private void cmb_NombresPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_NombresPersonajesActionPerformed
+        txf_Nombre1.setText((String)cmb_NombresPersonajes.getSelectedItem());
+        txf_Arma1Personaje1.setText(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getArmas()[0].getNombre());
+        txf_Arma2Personaje1.setText(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getArmas()[1].getNombre());        
+        txf_Arma3Personaje1.setText(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getArmas()[2].getNombre());
+        txf_Arma4Personaje1.setText(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getArmas()[3].getNombre());
+        txf_Arma5Personaje1.setText(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getArmas()[4].getNombre());
+     
+        lbl_Apariencia1.setIcon(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getApariencia());
+        lbl_Apariencia1.setText("");
+        txf_Apariencia1.setText(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getDireccion());
+       cmb_TipoPersonaje1.setSelectedIndex(PersonajesArchivo[cmb_NombresPersonajes.getSelectedIndex()].getPosTipo());
+        
+    }//GEN-LAST:event_cmb_NombresPersonajesActionPerformed
+
+
+    public void read_personajes(){
+        
+        try{
+            File file = new File("Personajes.txt");
+            BufferedReader Lector = new BufferedReader(new FileReader(file));
+            String archivo;
+            archivo = Lector.readLine();
+            if (archivo != null){
+                String[] personajes_archivo= archivo.split("%");
+                int cont = 0;
+                this.PersonajesArchivo = new Personaje[personajes_archivo.length];
+                for (String personaje : personajes_archivo){
+                    String[] parametro = personaje.split("/");
+                    if (parametro.length == 4){
+                        Arma[] armas_temp = new Arma[5];
+                        System.out.println(parametro[3]);
+                        String[] ArmasArchivo = parametro[3].split("\\$");
+                        
+                        System.out.println(ArmasArchivo.length);
+                        if (ArmasArchivo.length == 5){
+                            armas_temp[0] = new Arma(ArmasArchivo[0]);
+                            armas_temp[1] = new Arma(ArmasArchivo[1]);
+                            armas_temp[2] = new Arma(ArmasArchivo[2]);
+                            armas_temp[3] = new Arma(ArmasArchivo[3]);
+                            armas_temp[4] = new Arma(ArmasArchivo[4]);
+
+                            BufferedImage bufferedImage= ImageIO.read(new File(parametro[2]));
+                            Image image = bufferedImage.getScaledInstance(100, 120, Image.SCALE_DEFAULT);
+                            Tipo temp = ConfirmaTipo(Integer.parseInt(parametro[1]));
+                            this.PersonajesArchivo[cont] = (new Personaje(parametro[0],temp, armas_temp, new ImageIcon(image),parametro[2],Integer.parseInt(parametro[1])));
+                            cont++;
+                        }
+                    }
+                }
+            }
+        }catch(IOException | NumberFormatException e){}
+    }
     public Tipo ConfirmaTipo(int posicion){
         return switch (posicion) {
             case 0 -> Tipo.FUEGO;
@@ -1466,6 +1346,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
             default -> null;
         };
     }
+
     /**
      * @param args the command line arguments
      */
@@ -1504,113 +1385,38 @@ public class CrearPersonaje extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_Empezar;
     public javax.swing.JButton btn_VerEstadisticasPersonaje1;
-    public javax.swing.JButton btn_VerEstadisticasPersonaje2;
-    public javax.swing.JButton btn_VerEstadisticasPersonaje3;
-    public javax.swing.JButton btn_VerEstadisticasPersonaje4;
     public javax.swing.JButton btn_VerPersonaje1;
-    public javax.swing.JButton btn_VerPersonaje2;
-    public javax.swing.JButton btn_VerPersonaje3;
-    public javax.swing.JButton btn_VerPersonaje4;
+    public javax.swing.JButton btn_agregar;
+    public javax.swing.JButton btn_eliminar;
+    public javax.swing.JComboBox<String> cmb_NombresPersonajes;
     public javax.swing.JComboBox<String> cmb_TipoPersonaje1;
-    public javax.swing.JComboBox<String> cmb_TipoPersonaje2;
-    public javax.swing.JComboBox<String> cmb_TipoPersonaje3;
-    public javax.swing.JComboBox<String> cmb_TipoPersonaje4;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JScrollPane jScrollPane10;
-    public javax.swing.JScrollPane jScrollPane11;
-    public javax.swing.JScrollPane jScrollPane12;
-    public javax.swing.JScrollPane jScrollPane13;
-    public javax.swing.JScrollPane jScrollPane14;
-    public javax.swing.JScrollPane jScrollPane15;
-    public javax.swing.JScrollPane jScrollPane16;
-    public javax.swing.JScrollPane jScrollPane17;
-    public javax.swing.JScrollPane jScrollPane18;
-    public javax.swing.JScrollPane jScrollPane19;
     public javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JScrollPane jScrollPane20;
     public javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JScrollPane jScrollPane5;
     public javax.swing.JScrollPane jScrollPane6;
-    public javax.swing.JScrollPane jScrollPane7;
-    public javax.swing.JScrollPane jScrollPane8;
-    public javax.swing.JScrollPane jScrollPane9;
     public javax.swing.JLabel lbl_Apariencia1;
-    public javax.swing.JLabel lbl_Apariencia2;
-    public javax.swing.JLabel lbl_Apariencia3;
-    public javax.swing.JLabel lbl_Apariencia4;
     public javax.swing.JLabel lbl_Armas;
-    public javax.swing.JLabel lbl_Armas1;
-    public javax.swing.JLabel lbl_Armas2;
-    public javax.swing.JLabel lbl_Armas3;
     public javax.swing.JLabel lbl_DireccionApariencia1;
-    public javax.swing.JLabel lbl_DireccionApariencia2;
-    public javax.swing.JLabel lbl_DireccionApariencia3;
-    public javax.swing.JLabel lbl_DireccionApariencia4;
     public javax.swing.JLabel lbl_ErrorArma1;
-    public javax.swing.JLabel lbl_ErrorArma2;
-    public javax.swing.JLabel lbl_ErrorArma3;
-    public javax.swing.JLabel lbl_ErrorArma4;
-    public javax.swing.JLabel lbl_ErrorArma6;
     public javax.swing.JLabel lbl_TipoPersonaje1;
-    public javax.swing.JLabel lbl_TipoPersonaje2;
-    public javax.swing.JLabel lbl_TipoPersonaje3;
-    public javax.swing.JLabel lbl_TipoPersonaje4;
     public javax.swing.JLabel lbl_nombre1;
-    public javax.swing.JLabel lbl_nombre2;
-    public javax.swing.JLabel lbl_nombre3;
-    public javax.swing.JLabel lbl_nombre4;
     public javax.swing.JList<String> lst_StatsArma1Personaje1;
-    public javax.swing.JList<String> lst_StatsArma1Personaje2;
-    public javax.swing.JList<String> lst_StatsArma1Personaje3;
-    public javax.swing.JList<String> lst_StatsArma1Personaje4;
     public javax.swing.JList<String> lst_StatsArma2Personaje1;
-    public javax.swing.JList<String> lst_StatsArma2Personaje2;
-    public javax.swing.JList<String> lst_StatsArma2Personaje3;
-    public javax.swing.JList<String> lst_StatsArma2Personaje4;
     public javax.swing.JList<String> lst_StatsArma3Personaje1;
-    public javax.swing.JList<String> lst_StatsArma3Personaje2;
-    public javax.swing.JList<String> lst_StatsArma3Personaje3;
-    public javax.swing.JList<String> lst_StatsArma3Personaje4;
     public javax.swing.JList<String> lst_StatsArma4Personaje1;
-    public javax.swing.JList<String> lst_StatsArma4Personaje2;
-    public javax.swing.JList<String> lst_StatsArma4Personaje3;
-    public javax.swing.JList<String> lst_StatsArma4Personaje4;
     public javax.swing.JList<String> lst_StatsArma5Personaje1;
-    public javax.swing.JList<String> lst_StatsArma5Personaje2;
-    public javax.swing.JList<String> lst_StatsArma5Personaje3;
-    public javax.swing.JList<String> lst_StatsArma5Personaje4;
+    public javax.swing.JList<String> lst_personajes;
     public javax.swing.JPanel pnl_Personaje1;
-    public javax.swing.JPanel pnl_Personaje2;
-    public javax.swing.JPanel pnl_Personaje3;
-    public javax.swing.JPanel pnl_Personaje4;
+    public javax.swing.JTextField txf_Apariencia1;
     public javax.swing.JTextField txf_Arma1Personaje1;
-    public javax.swing.JTextField txf_Arma1Personaje2;
-    public javax.swing.JTextField txf_Arma1Personaje3;
-    public javax.swing.JTextField txf_Arma1Personaje4;
     public javax.swing.JTextField txf_Arma2Personaje1;
-    public javax.swing.JTextField txf_Arma2Personaje2;
-    public javax.swing.JTextField txf_Arma2Personaje3;
-    public javax.swing.JTextField txf_Arma2Personaje4;
     public javax.swing.JTextField txf_Arma3Personaje1;
-    public javax.swing.JTextField txf_Arma3Personaje2;
-    public javax.swing.JTextField txf_Arma3Personaje3;
-    public javax.swing.JTextField txf_Arma3Personaje4;
     public javax.swing.JTextField txf_Arma4Personaje1;
-    public javax.swing.JTextField txf_Arma4Personaje2;
-    public javax.swing.JTextField txf_Arma4Personaje3;
-    public javax.swing.JTextField txf_Arma4Personaje4;
     public javax.swing.JTextField txf_Arma5Personaje1;
-    public javax.swing.JTextField txf_Arma5Personaje2;
-    public javax.swing.JTextField txf_Arma5Personaje3;
-    public javax.swing.JTextField txf_Arma5Personaje4;
-    public javax.swing.JTextField txf_DireccionApariencia1;
-    public javax.swing.JTextField txf_DireccionApariencia2;
-    public javax.swing.JTextField txf_DireccionApariencia3;
-    public javax.swing.JTextField txf_DireccionApariencia4;
     public javax.swing.JTextField txf_Nombre1;
-    public javax.swing.JTextField txf_Nombre2;
-    public javax.swing.JTextField txf_Nombre3;
-    public javax.swing.JTextField txf_Nombre4;
     // End of variables declaration//GEN-END:variables
 }

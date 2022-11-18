@@ -13,9 +13,11 @@ import java.util.ArrayList;
  */
 public class Arma implements Serializable{
    private String Nombre;
+
    private int[] Daño;
+
    public boolean Disponible;
-    public Arma(String Nombre) {
+   public Arma(String Nombre) {
         this.Disponible = true;
         this.Nombre = Nombre;
         this.Daño = new int[10];

@@ -34,4 +34,5 @@ public enum Tipo implements Serializable{
     public int getDaño() {
         return Daño;
     }
+    
 }

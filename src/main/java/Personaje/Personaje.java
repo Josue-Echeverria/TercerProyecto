@@ -17,13 +17,32 @@ public class Personaje implements Serializable {
     private Tipo Tipo;
     private int Vida = 100;
     private Arma[] Armas;
+    private int PosTipo;
     private Icon Apariencia;
+    private String Direccion;
     public Personaje() {
     
     }
 
+    public Personaje(String Nombre, Tipo Tipo, Arma[] Armas, Icon Apariencia, String Direccion, int pos) {
+        this.Nombre = Nombre;
+        this.PosTipo = pos;
+        this.Tipo = Tipo;
+        this.Direccion = Direccion;
+        this.Armas = Armas;
+        this.Apariencia = Apariencia;
+    }
+
     public String getNombre() {
         return Nombre;
+    }
+
+    public int getPosTipo() {
+        return PosTipo;
+    }
+
+    public String getDireccion() {
+        return Direccion;
     }
 
     public Icon getApariencia() {
