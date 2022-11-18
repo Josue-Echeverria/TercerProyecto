@@ -4,6 +4,7 @@
  */
 package Cliente;
 
+import Modelos.EnvioInformacion;
 import Modelos.Mensaje;
 import Servidor.Servidor;
 import java.io.DataInputStream;
@@ -33,23 +34,51 @@ public class ThreadCliente extends Thread{
             //Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /*System.out.println(mensaje.getMensaje());
+                if("Informacion general".equals(mensaje.getMensaje().split("-")[0])){
+                    cliente.pantalla.writeDatosEnemigos(mensaje.getMensaje().split("-")[1]); 
+                }else if("Informacion Usuario".equals(mensaje.getMensaje().split("-")[0])){
+                    System.out.println("holaaaaaaaaaaaaaaaaaaaa");
+                    cliente.pantalla.writeMisDatos(mensaje.getMensaje().split("-")[1]); 
+                }else{*/
     public void run(){
-        Mensaje mensaje;
+        
+        EnvioInformacion hola;
         while(isrunnig){
             
+            
+            
+          
+                
+            
+                
+                //System.out.println("tomeee");
+           
+                
+           
             try {
+                Mensaje mensaje;
                 mensaje = (Mensaje) entrada.readObject();
+                System.out.println("----");
+                System.out.println(mensaje.getEnvioInformacion().UsuarioRegistrados.size());
+                System.out.println("----");
+                cliente.envioInformacion = mensaje.getEnvioInformacion();
                 cliente.pantalla.write(mensaje.toString());
-                
-                
-                
-                
+                cliente.pantalla.ActualizaPantalla();
             } catch (IOException ex) {
-                //Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+                
+                        
             } catch (ClassNotFoundException ex) {
-                //Logger.getLogger(ThreadCliente.class.getName()).log(Level.SEVERE, null, ex);
+                
+                        
             }
+            
+                
+            
+                    
+                
+                    
+                 
             
             
             

@@ -15,6 +15,7 @@ public class Mensaje implements Serializable{
     private String mensaje;
     private TipoMensaje tipo;
     private String receptor;
+    private EnvioInformacion envioInformacion;
 
     public Mensaje(String enviador, String mensaje, String receptor) {
         this.enviador = enviador;
@@ -31,6 +32,7 @@ public class Mensaje implements Serializable{
 
     @Override
     public String toString() {
+        //return "Mensaje "+ tipo + " de " + enviador + ": \"" + mensaje + "="+ Integer.toString(envioInformacion.UsuarioRegistrados.size());
         return "Mensaje "+ tipo + " de " + enviador + ": \"" + mensaje;
     }
 
@@ -64,6 +66,14 @@ public class Mensaje implements Serializable{
 
     public void setReceptor(String receptor) {
         this.receptor = receptor;
+    }
+
+    public EnvioInformacion getEnvioInformacion() {
+        return envioInformacion;
+    }
+
+    public void setEnvioInformacion(EnvioInformacion envioInformacion) {
+        this.envioInformacion = envioInformacion;
     }
     
     

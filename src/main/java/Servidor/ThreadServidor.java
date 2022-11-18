@@ -6,6 +6,7 @@ package Servidor;
 
 import Modelos.Mensaje;
 import Modelos.TipoMensaje;
+import Modelos.Usuario;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -55,13 +56,20 @@ public class ThreadServidor extends Thread{
             
             
             try {
-                mensaje = (Mensaje) entrada.readObject();
-                server.pantalla.write("Recibido: " + mensaje.toString());
-                
-                if(mensaje.getTipo() == TipoMensaje.PUBLICO)
-                    server.broadcoast(mensaje);
-                else
-                    server.privateMessage(mensaje);
+                try {
+                    Usuario nuevo = (Usuario) entrada.readObject();
+                    //server.pantalla.write("nuevo usuario "+ nuevo.nombre + "con los personajes"+ nuevo.Personajes[0].getNombre() + "-"+ nuevo.Personajes[1].getNombre() + "-"+ nuevo.Personajes[2].getNombre() + "-"+ nuevo.Personajes[3].getNombre() + "-");
+                    server.UsuarioRegistrados.add(nuevo);
+                } catch (Exception e) {
+                    mensaje = (Mensaje) entrada.readObject();
+                    server.pantalla.write("Recibido: " + mensaje.toString());
+
+                    if(mensaje.getTipo() == TipoMensaje.PUBLICO)
+                        server.broadcoast(mensaje);
+                    else
+                        server.privateMessage(mensaje);
+
+                }
                 
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error: " + ex.getMessage());

@@ -4,7 +4,9 @@
  */
 package Servidor;
 
+import Modelos.EnvioInformacion;
 import Modelos.Mensaje;
+import Modelos.Usuario;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -17,13 +19,19 @@ public class Servidor {
     ServerSocket server;
     public PantallaServidor pantalla;
     
-     ArrayList<ThreadServidor> clientesAceptados;
+    public  ArrayList<ThreadServidor> clientesAceptados;
     ServerConnectionsThread conexionsThread;
+    public static ArrayList<Usuario> UsuarioRegistrados;
+    public ProcesadorMensaje lector ;
+    public LogicaServidor logica;
     
     public Servidor(PantallaServidor pantalla){
         this.pantalla = pantalla;
         connect();
+        lector = new ProcesadorMensaje(this);
+        logica = new LogicaServidor(this);
         clientesAceptados = new ArrayList<ThreadServidor>();
+        UsuarioRegistrados  = new ArrayList<Usuario>();
         conexionsThread = new ServerConnectionsThread(this);
         conexionsThread.start();
         
@@ -39,14 +47,27 @@ public class Servidor {
     
     public void broadcoast(Mensaje mensaje){
         
+        String procesado = lector.leeMensaje(mensaje.getMensaje());
+        
+        mensaje.setMensaje(procesado);
+        mensaje.setEnvioInformacion(new EnvioInformacion(UsuarioRegistrados));
+       
         for (ThreadServidor cliente : clientesAceptados) {
             try {
-                cliente.salida.writeObject(mensaje);
+                    System.out.println("----");
+                    System.out.println(cliente.nombre);
+                    System.out.println(mensaje.getEnvioInformacion().UsuarioRegistrados.size());
+                    System.out.println("----");
+                
+                    cliente.salida.writeObject(mensaje);
+                
+                
             } catch (IOException ex) {
             
             }
         }
-        this.pantalla.write("Enviado " + clientesAceptados.size() +" veces: " + mensaje);
+        //this.pantalla.write("Enviado " + clientesAceptados.size() +" veces: " + mensaje);
+         this.pantalla.write(procesado);
         
     }
     

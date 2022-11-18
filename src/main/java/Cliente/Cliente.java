@@ -4,6 +4,8 @@
  */
 package Cliente;
 
+import Modelos.EnvioInformacion;
+import Modelos.Usuario;
 import Personaje.CrearPersonaje;
 import Personaje.Personaje;
 import java.io.DataOutputStream;
@@ -25,11 +27,13 @@ public class Cliente {
     private Socket socket;
     ObjectOutputStream salida;
     private DataOutputStream salidaDatos;
-    Pantalla pantalla;
+    public Pantalla pantalla;
     String nombre ;
+    EnvioInformacion envioInformacion;
+
     Personaje[] Personajes;
      
-     ThreadCliente threadCliente;
+    ThreadCliente threadCliente;
 
     public Cliente() {
         this.Personajes = new Personaje[4];

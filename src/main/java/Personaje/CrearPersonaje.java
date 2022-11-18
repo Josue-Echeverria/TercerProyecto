@@ -231,7 +231,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         lbl_Apariencia1.setText("<Imagen apariencia>");
 
         txf_DireccionApariencia1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txf_DireccionApariencia1.setText("C:\\Users\\jecheverria\\Apariencias\\BobEsponja.png");
+        txf_DireccionApariencia1.setText("C:\\Users\\PC\\Pictures\\Apariencias\\Bob Esponja.png");
         txf_DireccionApariencia1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_DireccionApariencia1ActionPerformed(evt);
@@ -424,7 +424,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         jScrollPane10.setViewportView(lst_StatsArma5Personaje2);
 
         txf_DireccionApariencia2.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txf_DireccionApariencia2.setText("C:\\Users\\jecheverria\\Apariencias\\Calamardo.png");
+        txf_DireccionApariencia2.setText("C:\\Users\\PC\\Pictures\\Apariencias\\Calamardo.png");
         txf_DireccionApariencia2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_DireccionApariencia2ActionPerformed(evt);
@@ -619,7 +619,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         jScrollPane13.setViewportView(lst_StatsArma3Personaje3);
 
         txf_DireccionApariencia3.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txf_DireccionApariencia3.setText("C:\\Users\\jecheverria\\Apariencias\\patricio.png");
+        txf_DireccionApariencia3.setText("C:\\Users\\PC\\Pictures\\Apariencias\\patricio.png");
         txf_DireccionApariencia3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_DireccionApariencia3ActionPerformed(evt);
@@ -831,7 +831,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
         });
 
         txf_DireccionApariencia4.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
-        txf_DireccionApariencia4.setText("C:\\Users\\jecheverria\\Apariencias\\DonCangrejo.png");
+        txf_DireccionApariencia4.setText("C:\\Users\\PC\\Pictures\\Apariencias\\Don Cangrejo.png");
         txf_DireccionApariencia4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_DireccionApariencia4ActionPerformed(evt);
@@ -1080,6 +1080,9 @@ public class CrearPersonaje extends javax.swing.JFrame {
             errors += "Falta apariencia de personajes\n";
         }
         if (ArmasPersonaje[0] & ArmasPersonaje[1] & ArmasPersonaje[2] & ArmasPersonaje[3]){
+            System.out.println("****");
+            System.out.println(Armas[0][0].getDaño()[0]);
+            System.out.println("****");
             Personajes[0].setArmas(Armas[0]);
             Personajes[1].setArmas(Armas[1]);
             Personajes[2].setArmas(Armas[2]);
@@ -1091,7 +1094,14 @@ public class CrearPersonaje extends javax.swing.JFrame {
         }
         
         if(!errores){
-            new Pantalla(cliente).setVisible(true);}
+            try {
+                Pantalla p = new Pantalla(cliente);
+                cliente.pantalla = p;
+                p.setVisible(true);
+            } catch (IOException ex) {
+                Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
         else{
             JOptionPane.showMessageDialog(this, errors,
                "Errores", JOptionPane.ERROR_MESSAGE);
@@ -1122,51 +1132,51 @@ public class CrearPersonaje extends javax.swing.JFrame {
         if (txf_Arma1Personaje1.getText().length() != 0){
             Arma arma1 = new Arma(txf_Arma1Personaje1.getText());
             lst_StatsArma1Personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma1.getDaño()[0].getDaño(), "Aire - "+arma1.getDaño()[1].getDaño(),
-                                                "Agua - "+arma1.getDaño()[2].getDaño(), "Magia Blanca - "+arma1.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma1.getDaño()[4].getDaño(), "Electricidad - "+arma1.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma1.getDaño()[6].getDaño(), "Acido - "+arma1.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma1.getDaño()[8].getDaño(), "Hierro - "+arma1.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma1.getDaño()[0], "Aire - "+arma1.getDaño()[1],
+                                                "Agua - "+arma1.getDaño()[2], "Magia Blanca - "+arma1.getDaño()[3],
+                                                "Magia Negra - "+arma1.getDaño()[4], "Electricidad - "+arma1.getDaño()[5],
+                                                "Hielo - "+arma1.getDaño()[6], "Acido - "+arma1.getDaño()[7],
+                                                "Espiritual - "+arma1.getDaño()[8], "Hierro - "+arma1.getDaño()[9] }));
             armas[0] = arma1;
         }else{errores = true;}
         if (txf_Arma2Personaje1.getText().length() != 0){
             Arma arma2 = new Arma(txf_Arma2Personaje1.getText());
             lst_StatsArma2Personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma2.getDaño()[0].getDaño(), "Aire - "+arma2.getDaño()[1].getDaño(),
-                                                "Agua - "+arma2.getDaño()[2].getDaño(), "Magia Blanca - "+arma2.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma2.getDaño()[4].getDaño(), "Electricidad - "+arma2.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma2.getDaño()[6].getDaño(), "Acido - "+arma2.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma2.getDaño()[8].getDaño(), "Hierro - "+arma2.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma2.getDaño()[0], "Aire - "+arma2.getDaño()[1],
+                                                "Agua - "+arma2.getDaño()[2], "Magia Blanca - "+arma2.getDaño()[3],
+                                                "Magia Negra - "+arma2.getDaño()[4], "Electricidad - "+arma2.getDaño()[5],
+                                                "Hielo - "+arma2.getDaño()[6], "Acido - "+arma2.getDaño()[7],
+                                                "Espiritual - "+arma2.getDaño()[8], "Hierro - "+arma2.getDaño()[9] }));
             armas[1] = arma2;
         }else{errores = true;}
         if (txf_Arma3Personaje1.getText().length() != 0){
             Arma arma3 = new Arma(txf_Arma3Personaje1.getText());
             lst_StatsArma3Personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma3.getDaño()[0].getDaño(), "Aire - "+arma3.getDaño()[1].getDaño(),
-                                                "Agua - "+arma3.getDaño()[2].getDaño(), "Magia Blanca - "+arma3.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma3.getDaño()[4].getDaño(), "Electricidad - "+arma3.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma3.getDaño()[6].getDaño(), "Acido - "+arma3.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma3.getDaño()[8].getDaño(), "Hierro - "+arma3.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma3.getDaño()[0], "Aire - "+arma3.getDaño()[1],
+                                                "Agua - "+arma3.getDaño()[2], "Magia Blanca - "+arma3.getDaño()[3],
+                                                "Magia Negra - "+arma3.getDaño()[4], "Electricidad - "+arma3.getDaño()[5],
+                                                "Hielo - "+arma3.getDaño()[6], "Acido - "+arma3.getDaño()[7],
+                                                "Espiritual - "+arma3.getDaño()[8], "Hierro - "+arma3.getDaño()[9] }));
             armas[2] = arma3;
         }else{errores = true;}
         if (txf_Arma4Personaje1.getText().length() != 0){
             Arma arma4 = new Arma(txf_Arma4Personaje1.getText());
             lst_StatsArma4Personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma4.getDaño()[0].getDaño(), "Aire - "+arma4.getDaño()[1].getDaño(),
-                                                "Agua - "+arma4.getDaño()[2].getDaño(), "Magia Blanca - "+arma4.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma4.getDaño()[4].getDaño(), "Electricidad - "+arma4.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma4.getDaño()[6].getDaño(), "Acido - "+arma4.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma4.getDaño()[8].getDaño(), "Hierro - "+arma4.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma4.getDaño()[0], "Aire - "+arma4.getDaño()[1],
+                                                "Agua - "+arma4.getDaño()[2], "Magia Blanca - "+arma4.getDaño()[3],
+                                                "Magia Negra - "+arma4.getDaño()[4], "Electricidad - "+arma4.getDaño()[5],
+                                                "Hielo - "+arma4.getDaño()[6], "Acido - "+arma4.getDaño()[7],
+                                                "Espiritual - "+arma4.getDaño()[8], "Hierro - "+arma4.getDaño()[9] }));
             armas[3] = arma4;
         }else{errores = true;}
         if (txf_Arma5Personaje1.getText().length() != 0){
             Arma arma5 = new Arma(txf_Arma5Personaje1.getText());
             lst_StatsArma5Personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma5.getDaño()[0].getDaño(), "Aire - "+arma5.getDaño()[1].getDaño(),
-                                                "Agua - "+arma5.getDaño()[2].getDaño(), "Magia Blanca - "+arma5.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma5.getDaño()[4].getDaño(), "Electricidad - "+arma5.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma5.getDaño()[6].getDaño(), "Acido - "+arma5.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma5.getDaño()[8].getDaño(), "Hierro - "+arma5.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma5.getDaño()[0], "Aire - "+arma5.getDaño()[1],
+                                                "Agua - "+arma5.getDaño()[2], "Magia Blanca - "+arma5.getDaño()[3],
+                                                "Magia Negra - "+arma5.getDaño()[4], "Electricidad - "+arma5.getDaño()[5],
+                                                "Hielo - "+arma5.getDaño()[6], "Acido - "+arma5.getDaño()[7],
+                                                "Espiritual - "+arma5.getDaño()[8], "Hierro - "+arma5.getDaño()[9] }));
             armas[4] = arma5;
         }else{errores = true;}
         if (!errores){
@@ -1187,53 +1197,53 @@ public class CrearPersonaje extends javax.swing.JFrame {
         if (txf_Arma1Personaje2.getText().length() != 0){
             Arma arma1 = new Arma(txf_Arma1Personaje2.getText());
             lst_StatsArma1Personaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma1.getDaño()[0].getDaño(), "Aire - "+arma1.getDaño()[1].getDaño(),
-                                                "Agua - "+arma1.getDaño()[2].getDaño(), "Magia Blanca - "+arma1.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma1.getDaño()[4].getDaño(), "Electricidad - "+arma1.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma1.getDaño()[6].getDaño(), "Acido - "+arma1.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma1.getDaño()[8].getDaño(), "Hierro - "+arma1.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma1.getDaño()[0], "Aire - "+arma1.getDaño()[1],
+                                                "Agua - "+arma1.getDaño()[2], "Magia Blanca - "+arma1.getDaño()[3],
+                                                "Magia Negra - "+arma1.getDaño()[4], "Electricidad - "+arma1.getDaño()[5],
+                                                "Hielo - "+arma1.getDaño()[6], "Acido - "+arma1.getDaño()[7],
+                                                "Espiritual - "+arma1.getDaño()[8], "Hierro - "+arma1.getDaño()[9] }));
             armas[0] = arma1;
         }else{errores = true;}
         if (txf_Arma2Personaje2.getText().length() != 0){
             Arma arma2 = new Arma(txf_Arma2Personaje2.getText());
             lst_StatsArma2Personaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma2.getDaño()[0].getDaño(), "Aire - "+arma2.getDaño()[1].getDaño(),
-                                                "Agua - "+arma2.getDaño()[2].getDaño(), "Magia Blanca - "+arma2.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma2.getDaño()[4].getDaño(), "Electricidad - "+arma2.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma2.getDaño()[6].getDaño(), "Acido - "+arma2.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma2.getDaño()[8].getDaño(), "Hierro - "+arma2.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma2.getDaño()[0], "Aire - "+arma2.getDaño()[1],
+                                                "Agua - "+arma2.getDaño()[2], "Magia Blanca - "+arma2.getDaño()[3],
+                                                "Magia Negra - "+arma2.getDaño()[4], "Electricidad - "+arma2.getDaño()[5],
+                                                "Hielo - "+arma2.getDaño()[6], "Acido - "+arma2.getDaño()[7],
+                                                "Espiritual - "+arma2.getDaño()[8], "Hierro - "+arma2.getDaño()[9] }));
             armas[1] = arma2;
         }else{errores = true;}
         if (txf_Arma3Personaje2.getText().length() != 0){
             Arma arma3 = new Arma(txf_Arma3Personaje2.getText());
             lst_StatsArma3Personaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma3.getDaño()[0].getDaño(), "Aire - "+arma3.getDaño()[1].getDaño(),
-                                                "Agua - "+arma3.getDaño()[2].getDaño(), "Magia Blanca - "+arma3.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma3.getDaño()[4].getDaño(), "Electricidad - "+arma3.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma3.getDaño()[6].getDaño(), "Acido - "+arma3.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma3.getDaño()[8].getDaño(), "Hierro - "+arma3.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma3.getDaño()[0], "Aire - "+arma3.getDaño()[1],
+                                                "Agua - "+arma3.getDaño()[2], "Magia Blanca - "+arma3.getDaño()[3],
+                                                "Magia Negra - "+arma3.getDaño()[4], "Electricidad - "+arma3.getDaño()[5],
+                                                "Hielo - "+arma3.getDaño()[6], "Acido - "+arma3.getDaño()[7],
+                                                "Espiritual - "+arma3.getDaño()[8], "Hierro - "+arma3.getDaño()[9] }));
             armas[2] = arma3;
         }else{errores = true;}
 
         if (txf_Arma4Personaje2.getText().length() != 0){
             Arma arma4 = new Arma(txf_Arma4Personaje2.getText());
             lst_StatsArma4Personaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma4.getDaño()[0].getDaño(), "Aire - "+arma4.getDaño()[1].getDaño(),
-                                                "Agua - "+arma4.getDaño()[2].getDaño(), "Magia Blanca - "+arma4.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma4.getDaño()[4].getDaño(), "Electricidad - "+arma4.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma4.getDaño()[6].getDaño(), "Acido - "+arma4.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma4.getDaño()[8].getDaño(), "Hierro - "+arma4.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma4.getDaño()[0], "Aire - "+arma4.getDaño()[1],
+                                                "Agua - "+arma4.getDaño()[2], "Magia Blanca - "+arma4.getDaño()[3],
+                                                "Magia Negra - "+arma4.getDaño()[4], "Electricidad - "+arma4.getDaño()[5],
+                                                "Hielo - "+arma4.getDaño()[6], "Acido - "+arma4.getDaño()[7],
+                                                "Espiritual - "+arma4.getDaño()[8], "Hierro - "+arma4.getDaño()[9]}));
             armas[3] = arma4;
         }else{errores = true;}
 
         if (txf_Arma5Personaje2.getText().length() != 0){
             Arma arma5 = new Arma(txf_Arma5Personaje2.getText());
             lst_StatsArma5Personaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma5.getDaño()[0].getDaño(), "Aire - "+arma5.getDaño()[1].getDaño(),
-                                                "Agua - "+arma5.getDaño()[2].getDaño(), "Magia Blanca - "+arma5.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma5.getDaño()[4].getDaño(), "Electricidad - "+arma5.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma5.getDaño()[6].getDaño(), "Acido - "+arma5.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma5.getDaño()[8].getDaño(), "Hierro - "+arma5.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma5.getDaño()[0], "Aire - "+arma5.getDaño()[1],
+                                                "Agua - "+arma5.getDaño()[2], "Magia Blanca - "+arma5.getDaño()[3],
+                                                "Magia Negra - "+arma5.getDaño()[4], "Electricidad - "+arma5.getDaño()[5],
+                                                "Hielo - "+arma5.getDaño()[6], "Acido - "+arma5.getDaño()[7],
+                                                "Espiritual - "+arma5.getDaño()[8], "Hierro - "+arma5.getDaño()[9] }));
             armas[4] = arma5;
         }else{errores = true;}
         if (!errores){
@@ -1254,51 +1264,51 @@ public class CrearPersonaje extends javax.swing.JFrame {
         if (txf_Arma1Personaje3.getText().length() != 0){
             Arma arma1 = new Arma(txf_Arma1Personaje3.getText());
             lst_StatsArma1Personaje3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma1.getDaño()[0].getDaño(), "Aire - "+arma1.getDaño()[1].getDaño(),
-                                                "Agua - "+arma1.getDaño()[2].getDaño(), "Magia Blanca - "+arma1.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma1.getDaño()[4].getDaño(), "Electricidad - "+arma1.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma1.getDaño()[6].getDaño(), "Acido - "+arma1.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma1.getDaño()[8].getDaño(), "Hierro - "+arma1.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma1.getDaño()[0], "Aire - "+arma1.getDaño()[1],
+                                                "Agua - "+arma1.getDaño()[2], "Magia Blanca - "+arma1.getDaño()[3],
+                                                "Magia Negra - "+arma1.getDaño()[4], "Electricidad - "+arma1.getDaño()[5],
+                                                "Hielo - "+arma1.getDaño()[6], "Acido - "+arma1.getDaño()[7],
+                                                "Espiritual - "+arma1.getDaño()[8], "Hierro - "+arma1.getDaño()[9]}));
             armas[0] = arma1;
         }else{errores = true;}
         if (txf_Arma2Personaje3.getText().length() != 0){
             Arma arma2 = new Arma(txf_Arma2Personaje3.getText());
             lst_StatsArma2Personaje3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma2.getDaño()[0].getDaño(), "Aire - "+arma2.getDaño()[1].getDaño(),
-                                                "Agua - "+arma2.getDaño()[2].getDaño(), "Magia Blanca - "+arma2.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma2.getDaño()[4].getDaño(), "Electricidad - "+arma2.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma2.getDaño()[6].getDaño(), "Acido - "+arma2.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma2.getDaño()[8].getDaño(), "Hierro - "+arma2.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma2.getDaño()[0], "Aire - "+arma2.getDaño()[1],
+                                                "Agua - "+arma2.getDaño()[2], "Magia Blanca - "+arma2.getDaño()[3],
+                                                "Magia Negra - "+arma2.getDaño()[4], "Electricidad - "+arma2.getDaño()[5],
+                                                "Hielo - "+arma2.getDaño()[6], "Acido - "+arma2.getDaño()[7],
+                                                "Espiritual - "+arma2.getDaño()[8], "Hierro - "+arma2.getDaño()[9] }));
             armas[1] = arma2;
         }else{errores = true;}
         if (txf_Arma3Personaje3.getText().length() != 0){
             Arma arma3 = new Arma(txf_Arma3Personaje3.getText());
             lst_StatsArma3Personaje3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma3.getDaño()[0].getDaño(), "Aire - "+arma3.getDaño()[1].getDaño(),
-                                                "Agua - "+arma3.getDaño()[2].getDaño(), "Magia Blanca - "+arma3.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma3.getDaño()[4].getDaño(), "Electricidad - "+arma3.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma3.getDaño()[6].getDaño(), "Acido - "+arma3.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma3.getDaño()[8].getDaño(), "Hierro - "+arma3.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma3.getDaño()[0], "Aire - "+arma3.getDaño()[1],
+                                                "Agua - "+arma3.getDaño()[2], "Magia Blanca - "+arma3.getDaño()[3],
+                                                "Magia Negra - "+arma3.getDaño()[4], "Electricidad - "+arma3.getDaño()[5],
+                                                "Hielo - "+arma3.getDaño()[6], "Acido - "+arma3.getDaño()[7],
+                                                "Espiritual - "+arma3.getDaño()[8], "Hierro - "+arma3.getDaño()[9] }));
             armas[2] = arma3;
         }else{errores = true;}
         if (txf_Arma4Personaje3.getText().length() != 0){
             Arma arma4 = new Arma(txf_Arma4Personaje3.getText());
             lst_StatsArma4Personaje3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma4.getDaño()[0].getDaño(), "Aire - "+arma4.getDaño()[1].getDaño(),
-                                                "Agua - "+arma4.getDaño()[2].getDaño(), "Magia Blanca - "+arma4.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma4.getDaño()[4].getDaño(), "Electricidad - "+arma4.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma4.getDaño()[6].getDaño(), "Acido - "+arma4.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma4.getDaño()[8].getDaño(), "Hierro - "+arma4.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma4.getDaño()[0], "Aire - "+arma4.getDaño()[1],
+                                                "Agua - "+arma4.getDaño()[2], "Magia Blanca - "+arma4.getDaño()[3],
+                                                "Magia Negra - "+arma4.getDaño()[4], "Electricidad - "+arma4.getDaño()[5],
+                                                "Hielo - "+arma4.getDaño()[6], "Acido - "+arma4.getDaño()[7],
+                                                "Espiritual - "+arma4.getDaño()[8], "Hierro - "+arma4.getDaño()[9] }));
             armas[3] = arma4;
         }else{errores = true;}
         if (txf_Arma5Personaje3.getText().length() != 0){
             Arma arma5 = new Arma(txf_Arma5Personaje3.getText());
             lst_StatsArma5Personaje3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma5.getDaño()[0].getDaño(), "Aire - "+arma5.getDaño()[1].getDaño(),
-                                                "Agua - "+arma5.getDaño()[2].getDaño(), "Magia Blanca - "+arma5.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma5.getDaño()[4].getDaño(), "Electricidad - "+arma5.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma5.getDaño()[6].getDaño(), "Acido - "+arma5.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma5.getDaño()[8].getDaño(), "Hierro - "+arma5.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma5.getDaño()[0], "Aire - "+arma5.getDaño()[1],
+                                                "Agua - "+arma5.getDaño()[2], "Magia Blanca - "+arma5.getDaño()[3],
+                                                "Magia Negra - "+arma5.getDaño()[4], "Electricidad - "+arma5.getDaño()[5],
+                                                "Hielo - "+arma5.getDaño()[6], "Acido - "+arma5.getDaño()[7],
+                                                "Espiritual - "+arma5.getDaño()[8], "Hierro - "+arma5.getDaño()[9] }));
             armas[4] = arma5;
         }else{errores = true;}
         if (!errores){
@@ -1320,51 +1330,51 @@ public class CrearPersonaje extends javax.swing.JFrame {
         if (txf_Arma1Personaje4.getText().length() != 0){
             Arma arma1 = new Arma(txf_Arma1Personaje4.getText());
             lst_StatsArma1Personaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma1.getDaño()[0].getDaño(), "Aire - "+arma1.getDaño()[1].getDaño(),
-                                                "Agua - "+arma1.getDaño()[2].getDaño(), "Magia Blanca - "+arma1.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma1.getDaño()[4].getDaño(), "Electricidad - "+arma1.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma1.getDaño()[6].getDaño(), "Acido - "+arma1.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma1.getDaño()[8].getDaño(), "Hierro - "+arma1.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma1.getDaño()[0], "Aire - "+arma1.getDaño()[1],
+                                                "Agua - "+arma1.getDaño()[2], "Magia Blanca - "+arma1.getDaño()[3],
+                                                "Magia Negra - "+arma1.getDaño()[4], "Electricidad - "+arma1.getDaño()[5],
+                                                "Hielo - "+arma1.getDaño()[6], "Acido - "+arma1.getDaño()[7],
+                                                "Espiritual - "+arma1.getDaño()[8], "Hierro - "+arma1.getDaño()[9]}));
             armas[0] = arma1;
         }else{errores = true;}
         if (txf_Arma2Personaje4.getText().length() != 0){
             Arma arma2 = new Arma(txf_Arma2Personaje4.getText());
             lst_StatsArma2Personaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma2.getDaño()[0].getDaño(), "Aire - "+arma2.getDaño()[1].getDaño(),
-                                                "Agua - "+arma2.getDaño()[2].getDaño(), "Magia Blanca - "+arma2.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma2.getDaño()[4].getDaño(), "Electricidad - "+arma2.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma2.getDaño()[6].getDaño(), "Acido - "+arma2.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma2.getDaño()[8].getDaño(), "Hierro - "+arma2.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma2.getDaño()[0], "Aire - "+arma2.getDaño()[1],
+                                                "Agua - "+arma2.getDaño()[2], "Magia Blanca - "+arma2.getDaño()[3],
+                                                "Magia Negra - "+arma2.getDaño()[4], "Electricidad - "+arma2.getDaño()[5],
+                                                "Hielo - "+arma2.getDaño()[6], "Acido - "+arma2.getDaño()[7],
+                                                "Espiritual - "+arma2.getDaño()[8], "Hierro - "+arma2.getDaño()[9] }));
             armas[1] = arma2;
         }else{errores = true;}
         if (txf_Arma3Personaje4.getText().length() != 0){
             Arma arma3 = new Arma(txf_Arma3Personaje4.getText());
             lst_StatsArma3Personaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma3.getDaño()[0].getDaño(), "Aire - "+arma3.getDaño()[1].getDaño(),
-                                                "Agua - "+arma3.getDaño()[2].getDaño(), "Magia Blanca - "+arma3.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma3.getDaño()[4].getDaño(), "Electricidad - "+arma3.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma3.getDaño()[6].getDaño(), "Acido - "+arma3.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma3.getDaño()[8].getDaño(), "Hierro - "+arma3.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma3.getDaño()[0], "Aire - "+arma3.getDaño()[1],
+                                                "Agua - "+arma3.getDaño()[2], "Magia Blanca - "+arma3.getDaño()[3],
+                                                "Magia Negra - "+arma3.getDaño()[4], "Electricidad - "+arma3.getDaño()[5],
+                                                "Hielo - "+arma3.getDaño()[6], "Acido - "+arma3.getDaño()[7],
+                                                "Espiritual - "+arma3.getDaño()[8], "Hierro - "+arma3.getDaño()[9] }));
             armas[2] = arma3;
         }else{errores = true;}
         if (txf_Arma4Personaje4.getText().length() != 0){
             Arma arma4 = new Arma(txf_Arma4Personaje4.getText());
             lst_StatsArma4Personaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma4.getDaño()[0].getDaño(), "Aire - "+arma4.getDaño()[1].getDaño(),
-                                                "Agua - "+arma4.getDaño()[2].getDaño(), "Magia Blanca - "+arma4.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma4.getDaño()[4].getDaño(), "Electricidad - "+arma4.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma4.getDaño()[6].getDaño(), "Acido - "+arma4.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma4.getDaño()[8].getDaño(), "Hierro - "+arma4.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma4.getDaño()[0], "Aire - "+arma4.getDaño()[1],
+                                                "Agua - "+arma4.getDaño()[2], "Magia Blanca - "+arma4.getDaño()[3],
+                                                "Magia Negra - "+arma4.getDaño()[4], "Electricidad - "+arma4.getDaño()[5],
+                                                "Hielo - "+arma4.getDaño()[6], "Acido - "+arma4.getDaño()[7],
+                                                "Espiritual - "+arma4.getDaño()[8], "Hierro - "+arma4.getDaño()[9] }));
             armas[3] = arma4;
         }else{errores = true;}
         if (txf_Arma5Personaje4.getText().length() != 0){
             Arma arma5 = new Arma(txf_Arma5Personaje4.getText());
             lst_StatsArma5Personaje4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma5.getDaño()[0].getDaño(), "Aire - "+arma5.getDaño()[1].getDaño(),
-                                                "Agua - "+arma5.getDaño()[2].getDaño(), "Magia Blanca - "+arma5.getDaño()[3].getDaño(),
-                                                "Magia Negra - "+arma5.getDaño()[4].getDaño(), "Electricidad - "+arma5.getDaño()[5].getDaño(),
-                                                "Hielo - "+arma5.getDaño()[6].getDaño(), "Acido - "+arma5.getDaño()[7].getDaño(),
-                                                "Espiritual - "+arma5.getDaño()[8].getDaño(), "Hierro - "+arma5.getDaño()[9].getDaño() }));
+                                                "Fuego - "+arma5.getDaño()[0], "Aire - "+arma5.getDaño()[1],
+                                                "Agua - "+arma5.getDaño()[2], "Magia Blanca - "+arma5.getDaño()[3],
+                                                "Magia Negra - "+arma5.getDaño()[4], "Electricidad - "+arma5.getDaño()[5],
+                                                "Hielo - "+arma5.getDaño()[6], "Acido - "+arma5.getDaño()[7],
+                                                "Espiritual - "+arma5.getDaño()[8], "Hierro - "+arma5.getDaño()[9]}));
             armas[4] = arma5;
         }else{errores = true;}
         if (!errores){

@@ -4,35 +4,42 @@
  */
 package Personaje;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author jecheverria
  */
-public class Arma {
+public class Arma implements Serializable{
    private String Nombre;
-   private Tipo[] Daño;
+   private int[] Daño;
    public boolean Disponible;
     public Arma(String Nombre) {
         this.Disponible = true;
         this.Nombre = Nombre;
+        this.Daño = new int[10];
         Tipo[] Tipos = Tipo.values();
-        for (Tipo tipo : Tipos){
-            tipo.generar_daño();
+        for (int i = 0; i < 10; i++) {
+            this.Daño[i] = generar_daño();
         }
-        this.Daño = Tipos;
+        
+        
     }
 
     public String getNombre() {
         return Nombre;
+    }
+    public int generar_daño(){
+        return (20 + (int)(Math.random() * ((100 - 20) + 1)));
+        
     }
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
 
-    public Tipo[] getDaño() {
+    public int[] getDaño() {
         return Daño;
     }
     

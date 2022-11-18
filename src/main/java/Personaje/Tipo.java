@@ -4,11 +4,13 @@
  */
 package Personaje;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jecheverria
  */
-public enum Tipo {
+public enum Tipo implements Serializable{
     FUEGO,
     AIRE,
     AGUA,
@@ -24,10 +26,10 @@ public enum Tipo {
     public void setDaño(int Daño) {
         this.Daño = Daño;
     }
-    public void generar_daño(){
+    /*public void generar_daño(){
         setDaño(20 + (int)(Math.random() * ((100 - 20) + 1)));
         
-    }
+    }*/
 
     public int getDaño() {
         return Daño;

@@ -4,6 +4,7 @@
  */
 package Personaje;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.Icon;
 
@@ -11,7 +12,7 @@ import javax.swing.Icon;
  *
  * @author jecheverria
  */
-public class Personaje {
+public class Personaje implements Serializable {
     private String Nombre;
     private Tipo Tipo;
     private int Vida = 100;
