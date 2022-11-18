@@ -7,7 +7,6 @@ package Personaje;
 import Cliente.Cliente;
 import java.util.Arrays; 
 import Cliente.Pantalla;
-import Servidor.PantallaServidor;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -167,11 +166,9 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         lbl_Apariencia1.setText("<Imagen apariencia>");
 
-
         txf_Apariencia1.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         txf_Apariencia1.setText("C:\\Users\\jecheverria\\Apariencias\\BobEsponja.png");
         txf_Apariencia1.addActionListener(new java.awt.event.ActionListener() {
-
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txf_Apariencia1ActionPerformed(evt);
             }
@@ -306,10 +303,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-
         btn_Empezar.setText("Empezar");
         btn_Empezar.addActionListener(new java.awt.event.ActionListener() {
-
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_EmpezarActionPerformed(evt);
             }
@@ -326,7 +321,6 @@ public class CrearPersonaje extends javax.swing.JFrame {
 
         btn_agregar.setText("Agregar");
         btn_agregar.addActionListener(new java.awt.event.ActionListener() {
-
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_agregarActionPerformed(evt);
             }
@@ -406,7 +400,6 @@ public class CrearPersonaje extends javax.swing.JFrame {
     }//GEN-LAST:event_txf_Arma1Personaje4ActionPerformed
 
     private void btn_EmpezarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpezarActionPerformed
-
         if(Contador == 4){
             try {
                 new Pantalla(cliente).setVisible(true);
@@ -414,7 +407,6 @@ public class CrearPersonaje extends javax.swing.JFrame {
                 Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
             }
 }
-
         else{
             JOptionPane.showMessageDialog(this, "Solo se permiten 4 personajes",
                "Errores", JOptionPane.ERROR_MESSAGE);
@@ -437,7 +429,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
                                                 "Agua - "+arma1.getDaño()[2], "Magia Blanca - "+arma1.getDaño()[3],
                                                 "Magia Negra - "+arma1.getDaño()[4], "Electricidad - "+arma1.getDaño()[5],
                                                 "Hielo - "+arma1.getDaño()[6], "Acido - "+arma1.getDaño()[7],
-                                                "Espiritual - "+arma1.getDaño()[8], "Hierro - "+arma1.getDaño()[9] }));
+                                                "Espiritual - "+arma1.getDaño()[8], "Hierro - "+arma1.getDaño()[9]}));
             armas[0] = arma1;
         }else{errores = true;}
         if (txf_Arma2Personaje1.getText().length() != 0){
@@ -447,8 +439,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
                                                 "Agua - "+arma2.getDaño()[2], "Magia Blanca - "+arma2.getDaño()[3],
                                                 "Magia Negra - "+arma2.getDaño()[4], "Electricidad - "+arma2.getDaño()[5],
                                                 "Hielo - "+arma2.getDaño()[6], "Acido - "+arma2.getDaño()[7],
-                                                "Espiritual - "+arma2.getDaño()[8], "Hierro - "+arma2.getDaño()[9] }));
-            armas[1] = arma2;
+                                                "Espiritual - "+arma2.getDaño()[8], "Hierro - "+arma2.getDaño()[9]}));
+            armas[0] = arma2;
         }else{errores = true;}
         if (txf_Arma3Personaje1.getText().length() != 0){
             Arma arma3 = new Arma(txf_Arma3Personaje1.getText());
@@ -457,18 +449,18 @@ public class CrearPersonaje extends javax.swing.JFrame {
                                                 "Agua - "+arma3.getDaño()[2], "Magia Blanca - "+arma3.getDaño()[3],
                                                 "Magia Negra - "+arma3.getDaño()[4], "Electricidad - "+arma3.getDaño()[5],
                                                 "Hielo - "+arma3.getDaño()[6], "Acido - "+arma3.getDaño()[7],
-                                                "Espiritual - "+arma3.getDaño()[8], "Hierro - "+arma3.getDaño()[9] }));
-            armas[2] = arma3;
+                                                "Espiritual - "+arma3.getDaño()[8], "Hierro - "+arma3.getDaño()[9]}));
+            armas[0] = arma3;
         }else{errores = true;}
         if (txf_Arma4Personaje1.getText().length() != 0){
             Arma arma4 = new Arma(txf_Arma4Personaje1.getText());
             lst_StatsArma4Personaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { 
-                                                "Fuego - "+arma4.getDaño()[0], "Aire - "+arma4.getDaño()[1],
+                                               "Fuego - "+arma4.getDaño()[0], "Aire - "+arma4.getDaño()[1],
                                                 "Agua - "+arma4.getDaño()[2], "Magia Blanca - "+arma4.getDaño()[3],
                                                 "Magia Negra - "+arma4.getDaño()[4], "Electricidad - "+arma4.getDaño()[5],
                                                 "Hielo - "+arma4.getDaño()[6], "Acido - "+arma4.getDaño()[7],
-                                                "Espiritual - "+arma4.getDaño()[8], "Hierro - "+arma4.getDaño()[9] }));
-            armas[3] = arma4;
+                                                "Espiritual - "+arma4.getDaño()[8], "Hierro - "+arma4.getDaño()[9]}));
+            armas[0] = arma4;
         }else{errores = true;}
         if (txf_Arma5Personaje1.getText().length() != 0){
             Arma arma5 = new Arma(txf_Arma5Personaje1.getText());
@@ -477,8 +469,8 @@ public class CrearPersonaje extends javax.swing.JFrame {
                                                 "Agua - "+arma5.getDaño()[2], "Magia Blanca - "+arma5.getDaño()[3],
                                                 "Magia Negra - "+arma5.getDaño()[4], "Electricidad - "+arma5.getDaño()[5],
                                                 "Hielo - "+arma5.getDaño()[6], "Acido - "+arma5.getDaño()[7],
-                                                "Espiritual - "+arma5.getDaño()[8], "Hierro - "+arma5.getDaño()[9] }));
-            armas[4] = arma5;
+                                                "Espiritual - "+arma5.getDaño()[8], "Hierro - "+arma5.getDaño()[9]}));
+            armas[0] = arma5;
         }else{errores = true;}
         if (!errores){
             this.Armas = armas;
@@ -491,8 +483,6 @@ public class CrearPersonaje extends javax.swing.JFrame {
             lbl_ErrorArma1.setText("Faltan Armas");
         }        
     }//GEN-LAST:event_btn_VerEstadisticasPersonaje1ActionPerformed
-
-
 
     private void btn_VerPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VerPersonaje1ActionPerformed
         try{
@@ -572,8 +562,12 @@ public class CrearPersonaje extends javax.swing.JFrame {
                     escritor.write(str);
                     escritor.close();
 
-                    //Cambiar 
                     Arma[] a = new Arma[5];
+                    a[0] = new Arma(txf_Arma1Personaje1.getText());
+                    a[1] = new Arma(txf_Arma2Personaje1.getText());
+                    a[2] = new Arma(txf_Arma3Personaje1.getText());
+                    a[3] = new Arma(txf_Arma4Personaje1.getText());
+                    a[4] = new Arma(txf_Arma5Personaje1.getText());
                     try{
                         String direccion = txf_Apariencia1.getText();
                         BufferedImage bufferedImage= ImageIO.read(new File(direccion));
@@ -582,8 +576,7 @@ public class CrearPersonaje extends javax.swing.JFrame {
                         Personajes[Contador] = new Personaje(txf_Nombre1.getText(),ConfirmaTipo(cmb_TipoPersonaje1.getSelectedIndex()),a,icon,direccion,cmb_TipoPersonaje1.getSelectedIndex());                
                         Contador++;
                     }catch(Exception e){}
-                    //
-
+                    
                     lst_personajes.setModel(new javax.swing.DefaultComboBoxModel<>(f.PersonajeArraytoStringArray(Personajes)));        
                 } catch (IOException ex) {
                     Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
@@ -699,7 +692,6 @@ public class CrearPersonaje extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Cliente client = new Cliente();
-                
             }
         });
     }
