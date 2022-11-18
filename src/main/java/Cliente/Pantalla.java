@@ -28,6 +28,7 @@ public class Pantalla extends javax.swing.JFrame {
     /** Creates new form Pantalla */
     public Pantalla( Cliente cliente) throws IOException {
         this.cliente = cliente;
+        cliente.pantalla = this;
 
         initComponents();    
         usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0, 0);
