@@ -43,7 +43,7 @@ public class ProcesadorMensaje {
                 return  "Recarga de Armas";
  
             case "USAR COMODIN":
-                return  "Usar comodin";
+                return  Comodin(arregloMensaje);
   
             case "SELECCIONAR JUGADOR":
                 return  "Seleccionar jugador";
@@ -56,6 +56,7 @@ public class ProcesadorMensaje {
                 
             
             default:
+                server.cambiaturno = false;
                 return "Error";
         } 
     }
@@ -79,7 +80,7 @@ public class ProcesadorMensaje {
         System.out.println("+++++++");
         if(pos != -1){ 
             //server.envioInformacion.UsuarioRegistrados.get(pos).perdidas +=1;
-            server.envioInformacion.UsuarioRegistrados.get(posEnviador).victorias +=1;
+            server.envioInformacion.UsuarioRegistrados.get(posEnviador).ataques +=1;
             Personaje atacante = null;
             for (int i = 0; i < 4; i++) {
                 if(arregloMensaje[2].equals(server.envioInformacion.UsuarioRegistrados.get(posEnviador).Personajes[i].getNombre())){
@@ -87,17 +88,23 @@ public class ProcesadorMensaje {
                     break;
                 }
             }
-            if(atacante == null)
+            if(atacante == null){
+                server.cambiaturno = false;
                 return "El personaje no existe";
+            }
+                
             Arma armaSeleccionada = null;
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 5; i++) {
                 if(arregloMensaje[3].equals(atacante.getArmas()[i].getNombre())){
                     armaSeleccionada= atacante.getArmas()[i];
                     break;
                 }
             }
-            if(armaSeleccionada == null)
+            if(armaSeleccionada == null){
+                server.cambiaturno = false;
                 return "El arma no existe";
+            }
+                
             Personaje nuevoarreglo[] = new Personaje[4];
             for (int i = 0; i < 4; i++) {
                 Personaje viejo = server.envioInformacion.UsuarioRegistrados.get(pos).Personajes[i];
@@ -111,10 +118,28 @@ public class ProcesadorMensaje {
             server.envioInformacion.UsuarioRegistrados.get(pos).Personajes = nuevoarreglo;
             return "Se ataco a "+ arregloMensaje[1];
         }else{
+            server.cambiaturno = false;
             return "No se ataco porque ese jugador no esta conectado";
         }
         
     }
     
-
+    private String Comodin(String[] arregloMensaje){
+        String ataqueuno = atacando(new String[]{arregloMensaje[0],arregloMensaje[1],arregloMensaje[2],arregloMensaje[3]});
+        String ataquedos = atacando(new String[]{arregloMensaje[0],arregloMensaje[1],arregloMensaje[4],arregloMensaje[5]});
+        System.out.println("ataquedos");
+        System.out.println(ataquedos);
+        if(ataqueuno.equals("El personaje no existe") || ataqueuno.equals("El arma no existe") || ataqueuno.equals("No se ataco porque ese jugador no esta conectado")){
+            server.cambiaturno = false;
+            return "Error en el comodin no ataco el primer ataque";
+        }else{
+            if(ataquedos.equals("El personaje no existe") || ataquedos.equals("El arma no existe") || ataquedos.equals("No se ataco porque ese jugador no esta conectado")){
+                server.cambiaturno = false;
+                return "Error en el comodin no ataco el segundo ataque";
+            }else{
+                server.cambiaturno = false;
+                return "Comodin exitoso";
+        }
+        }
+    }
 }

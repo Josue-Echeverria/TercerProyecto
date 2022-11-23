@@ -25,11 +25,15 @@ import javax.swing.ImageIcon;
 public class Pantalla extends javax.swing.JFrame {
     Usuario usuario;
     Cliente cliente;
+    ThreadCronometro cronometro;
 
     /** Creates new form Pantalla */
     public Pantalla( Cliente cliente) throws IOException {
+        
         this.cliente = cliente;
          this.cliente.pantalla = this;
+         cronometro = new ThreadCronometro(this);
+         cronometro.start();
         initComponents();    
         usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0, 0);
         EnvioInformacion envio = new EnvioInformacion(usuario);
@@ -150,6 +154,7 @@ public class Pantalla extends javax.swing.JFrame {
         pnlMisDatos = new javax.swing.JPanel();
         lbTituloMisDatos1 = new javax.swing.JLabel();
         taMisDatos = new javax.swing.JTextArea();
+        lbCronometro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,11 +241,11 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGroup(jpPersonajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpPersonajesLayout.createSequentialGroup()
                         .addComponent(lbl_NombrePersonaje2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(lbl_NombrePersonaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)
+                        .addGap(75, 75, 75)
                         .addComponent(lbl_NombrePersonaje3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))
+                        .addGap(76, 76, 76)
+                        .addComponent(lbl_NombrePersonaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
                     .addGroup(jpPersonajesLayout.createSequentialGroup()
                         .addComponent(jbtImagenPersonaje2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -263,11 +268,12 @@ public class Pantalla extends javax.swing.JFrame {
                                 .addComponent(jbtImagenPersonaje2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jbtImagenPersonaje4, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpPersonajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_NombrePersonaje1)
-                    .addComponent(lbl_NombrePersonaje2)
-                    .addComponent(lbl_NombrePersonaje4)
-                    .addComponent(lbl_NombrePersonaje3))
+                .addGroup(jpPersonajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpPersonajesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_NombrePersonaje1)
+                        .addComponent(lbl_NombrePersonaje2)
+                        .addComponent(lbl_NombrePersonaje3))
+                    .addComponent(lbl_NombrePersonaje4))
                 .addContainerGap())
         );
 
@@ -548,6 +554,8 @@ public class Pantalla extends javax.swing.JFrame {
                     .addComponent(taMisDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        lbCronometro.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -581,12 +589,16 @@ public class Pantalla extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(pnlMisDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(379, 379, 379)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(pnlArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jpPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lbCronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,7 +607,9 @@ public class Pantalla extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jpPersonajes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbCronometro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pnlArmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,8 +660,17 @@ public class Pantalla extends javax.swing.JFrame {
         
         
         try {
-            EnvioInformacion envio = new EnvioInformacion(usuario);
-            cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText(),envio));
+            if(!lbCronometro.getText().equals("Comodin disponible") && "USAR COMODIN".equals(txfMensaje.getText().split("-")[0].toUpperCase())){
+                write("No tienes el comodin disponible");
+            }else{
+                EnvioInformacion envio = new EnvioInformacion(usuario);
+                cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText(),envio));
+                if("USAR COMODIN".equals(txfMensaje.getText().split("-")[0].toUpperCase())){
+                    cronometro.Restar();
+                    cronometro.pausa();
+                }
+            }
+            
             
             
             //String hola = "INFORMACION USUARIO-"+ cliente.nombre;
@@ -843,6 +866,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JPanel jpPersonajes;
     private javax.swing.JPanel jpUltimoataquerealizado;
     private javax.swing.JPanel jpUltimoataquerecibido;
+    public javax.swing.JLabel lbCronometro;
     private javax.swing.JLabel lbTituloDatosEnemigos;
     private javax.swing.JLabel lbTituloMisDatos1;
     private javax.swing.JLabel lbTituloRanking;

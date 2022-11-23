@@ -18,7 +18,8 @@ public class Servidor {
     private final int PORT = 8084;
     ServerSocket server;
     public PantallaServidor pantalla;
-    
+    public int contadorTurno = 0;
+    public boolean cambiaturno = true;
     public  ArrayList<ThreadServidor> clientesAceptados;
     ServerConnectionsThread conexionsThread;
     public ArrayList<Usuario> UsuarioRegistrados;
@@ -51,36 +52,71 @@ public class Servidor {
     }
     
     public void broadcoast(Mensaje mensaje){
-        
-        String procesado = lector.leeMensaje(mensaje.getMensaje(),mensaje.getEnviador());
-        
-        procesado += "/"+Integer.toString(envioInformacion.UsuarioRegistrados.size());
-        
-        mensaje.setMensaje(procesado);
-        
+        String procesado = "holaaa";
+        cambiaturno = true;
+        if (!envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre.equals(mensaje.getEnviador())){
+                mensaje.setMensaje("Juega "+ envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre);
+        }else{
+            procesado = lector.leeMensaje(mensaje.getMensaje(),mensaje.getEnviador());
+            if(cambiaturno){
+               contadorTurno += 1;
+                if(contadorTurno == envioInformacion.UsuarioRegistrados.size()){
+                    contadorTurno = 0;
+                }
+             
+            }
+            mensaje.setMensaje(procesado);
+        }
+
+        //procesado += "/"+Integer.toString(envioInformacion.UsuarioRegistrados.size());
+
         //mensaje.setEnvioInformacion(envioInformacion);
        
-        for (ThreadServidor cliente : clientesAceptados) {
-            try {
-                    System.out.println("******");
-                    mensaje.clearUsuariosEnviados();
-                    for (Usuario UsuarioRegistrado : this.envioInformacion.UsuarioRegistrados) {
-                        System.out.println("----");
-                        System.out.println(UsuarioRegistrado.nombre);
-                        System.out.println(UsuarioRegistrado.ataques);
-                        Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, UsuarioRegistrado.Personajes, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
+                for (ThreadServidor cliente : clientesAceptados) {
+                    try {
+                            //System.out.println("******");
+                            mensaje.clearUsuariosEnviados();
+                            for (Usuario UsuarioRegistrado : this.envioInformacion.UsuarioRegistrados) {
+                                //System.out.println("----");
+                                //System.out.println(UsuarioRegistrado.nombre);
+                                //System.out.println(UsuarioRegistrado.ataques);
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, UsuarioRegistrado.Personajes, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
 
-                        System.out.println("----");
-                        mensaje.addUsuariosEnviados(usuario3);
-                    
-                    }
-                    System.out.println("******");
-                
-                    cliente.salida.writeObject(mensaje);
-                
-                
-            } catch (IOException ex) {
+                                System.out.println("----");
+                                mensaje.addUsuariosEnviados(usuario3);
+
+                            }
+                            
             
+                            //System.out.println("******");
+                            if(mensaje.getEnviador().equals(cliente.nombre)){
+                                cliente.salida.writeObject(mensaje);
+                                
+                                
+                            }else{
+                                mensaje.setMensaje("Juega "+ envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre);
+                                cliente.salida.writeObject(mensaje);
+                            }
+                            
+
+
+
+                    } catch (IOException ex) {
+
+                    /*}
+                }
+            }else{
+                for (ThreadServidor cliente : clientesAceptados) {
+                    try {
+                        if(mensaje.getEnviador().equals(cliente.nombre)){
+                            cliente.salida.writeObject(new Mensaje(cliente.nombre, "No es tu turno"));
+                            this.pantalla.write("No es tu turno");
+                            break;
+                        }
+                    } catch (IOException ex) {
+
+                    }
+                }*/
             }
         }
         //this.pantalla.write("Enviado " + clientesAceptados.size() +" veces: " + mensaje);
