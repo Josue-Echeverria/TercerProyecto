@@ -56,20 +56,32 @@ public class ThreadServidor extends Thread{
             
             
             try {
-                try {
-                    Usuario nuevo = (Usuario) entrada.readObject();
-                    //server.pantalla.write("nuevo usuario "+ nuevo.nombre + "con los personajes"+ nuevo.Personajes[0].getNombre() + "-"+ nuevo.Personajes[1].getNombre() + "-"+ nuevo.Personajes[2].getNombre() + "-"+ nuevo.Personajes[3].getNombre() + "-");
-                    server.UsuarioRegistrados.add(nuevo);
-                } catch (Exception e) {
+                
                     mensaje = (Mensaje) entrada.readObject();
+                    boolean esta = false;
+                    if (server.envioInformacion.UsuarioRegistrados != null){
+                        for (Usuario UsuarioRegistrado : server.envioInformacion.UsuarioRegistrados) {
+                        if(UsuarioRegistrado.nombre.equals(mensaje.getEnvioInformacion().usuario.nombre)){
+                            esta = true;
+                            break;
+                        }
+                    
+                        }
+                        if(!esta){
+                            server.envioInformacion.UsuarioRegistrados.add(mensaje.getEnvioInformacion().usuario);
+                        }
+                    }
+                    
+                    mensaje.setEnvioInformacion(server.envioInformacion);
                     server.pantalla.write("Recibido: " + mensaje.toString());
-
+                    
+                    
                     if(mensaje.getTipo() == TipoMensaje.PUBLICO)
                         server.broadcoast(mensaje);
                     else
                         server.privateMessage(mensaje);
 
-                }
+                
                 
             } catch (ClassNotFoundException ex) {
                 System.out.println("Error: " + ex.getMessage());

@@ -6,6 +6,7 @@ package Cliente;
 
 import Modelos.EnvioInformacion;
 import Modelos.Mensaje;
+import Modelos.Usuario;
 import Servidor.Servidor;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -59,12 +60,26 @@ public class ThreadCliente extends Thread{
             try {
                 Mensaje mensaje;
                 mensaje = (Mensaje) entrada.readObject();
-                System.out.println("----");
-                System.out.println(mensaje.getEnvioInformacion().UsuarioRegistrados.size());
-                System.out.println("----");
+                
+                for (Usuario UsuarioRegistrado : mensaje.getUsuariosEnviados()) {
+                        System.out.println("----");
+                        System.out.println(UsuarioRegistrado.nombre);
+                        for (int i = 0; i < 4; i++) {
+                            System.out.println("***");
+                            System.out.println(UsuarioRegistrado.Personajes[i].getVida());
+                            System.out.println("***");
+                        }
+
+                        System.out.println("----");
+                        
+                    
+                    }
                 cliente.envioInformacion = mensaje.getEnvioInformacion();
+                cliente.envioInformacion.UsuarioRegistrados = mensaje.getUsuariosEnviados();
                 cliente.pantalla.write(mensaje.toString());
                 cliente.pantalla.ActualizaPantalla();
+                
+                
             } catch (IOException ex) {
                 
                         
@@ -72,17 +87,7 @@ public class ThreadCliente extends Thread{
                 
                         
             }
-            
-                
-            
-                    
-                
-                    
-                 
-            
-            
-            
-            
+
         }
         
     }

@@ -6,6 +6,7 @@
 package Cliente;
 
 import Modelos.Datos;
+import Modelos.EnvioInformacion;
 import Modelos.Mensaje;
 import Modelos.Usuario;
 import java.awt.Image;
@@ -28,9 +29,12 @@ public class Pantalla extends javax.swing.JFrame {
     /** Creates new form Pantalla */
     public Pantalla( Cliente cliente) throws IOException {
         this.cliente = cliente;
+         this.cliente.pantalla = this;
         initComponents();    
         usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0, 0);
-        cliente.salida.writeObject(usuario);
+        EnvioInformacion envio = new EnvioInformacion(usuario);
+        cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText(),envio));
+        //cliente.salida.writeObject(usuario);
         lbl_NombrePersonaje1.setText(cliente.Personajes[0].getNombre());
         lbl_NombrePersonaje2.setText(cliente.Personajes[1].getNombre());
         lbl_NombrePersonaje3.setText(cliente.Personajes[2].getNombre());
@@ -71,11 +75,11 @@ public class Pantalla extends javax.swing.JFrame {
         ImageIcon icon4 = new ImageIcon(image4);
         jbtImagenPersonaje4.setText("");
         jbtImagenPersonaje4.setIcon (icon4);
-        try {
+        /*try {
             cliente.salida.writeObject(new Mensaje(cliente.nombre, "INFORMACION GENERAL"));
         } catch (IOException ex) {
             Logger.getLogger(Pantalla.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         
         
@@ -642,8 +646,8 @@ public class Pantalla extends javax.swing.JFrame {
         
         
         try {
-            
-            cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText()));
+            EnvioInformacion envio = new EnvioInformacion(usuario);
+            cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText(),envio));
             
             
             //String hola = "INFORMACION USUARIO-"+ cliente.nombre;
@@ -755,6 +759,9 @@ public class Pantalla extends javax.swing.JFrame {
                 informacionUsuario += "Rendiciones:";
                 informacionUsuario += Integer.toString(UsuarioRegistrado.rendiciones);
                 informacionUsuario += "\n";
+                for (int i = 0; i < 4; i++) {
+                    cliente.Personajes[i] = UsuarioRegistrado.Personajes[i];
+                }
             }else{
                 informacion += "Contricante #:";
                 informacion += UsuarioRegistrado.nombre;

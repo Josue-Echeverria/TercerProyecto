@@ -5,6 +5,7 @@
 package Modelos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,25 +16,43 @@ public class Mensaje implements Serializable{
     private String mensaje;
     private TipoMensaje tipo;
     private String receptor;
+    public ArrayList<Usuario> UsuarioRegistrados;
     private EnvioInformacion envioInformacion;
+    private ArrayList<Usuario> UsuariosEnviados;
 
     public Mensaje(String enviador, String mensaje, String receptor) {
         this.enviador = enviador;
         this.mensaje = mensaje;
         this.receptor = receptor;
         this.tipo = TipoMensaje.PRIVADO;
+        if (UsuariosEnviados == null)
+            this.UsuariosEnviados =  new ArrayList<Usuario>();
+        this.envioInformacion = new EnvioInformacion(new ArrayList<Usuario>());
     }
     
     public Mensaje(String enviador, String mensaje) {
         this.enviador = enviador;
         this.mensaje = mensaje;
-        this.tipo = TipoMensaje.PUBLICO;        
+        this.tipo = TipoMensaje.PUBLICO;
+        if (UsuariosEnviados == null)
+            this.UsuariosEnviados =  new ArrayList<Usuario>();
+        this.envioInformacion = new EnvioInformacion(new ArrayList<Usuario>());
     }
 
+    public Mensaje(String enviador, String mensaje, EnvioInformacion envioInformacion) {
+        this.enviador = enviador;
+        this.mensaje = mensaje;
+        this.tipo = TipoMensaje.PUBLICO;
+        if (UsuariosEnviados == null)
+            this.UsuariosEnviados =  new ArrayList<Usuario>();
+        this.envioInformacion = envioInformacion;
+    }
+
+    
     @Override
     public String toString() {
-        //return "Mensaje "+ tipo + " de " + enviador + ": \"" + mensaje + "="+ Integer.toString(envioInformacion.UsuarioRegistrados.size());
-        return "Mensaje "+ tipo + " de " + enviador + ": \"" + mensaje;
+        return "Mensaje "+ tipo + " de " + enviador + ": \"" + mensaje + "=";
+        //return "Mensaje "+ tipo + " de " + enviador + ": \"" + mensaje;
     }
 
     public String getEnviador() {
@@ -75,6 +94,32 @@ public class Mensaje implements Serializable{
     public void setEnvioInformacion(EnvioInformacion envioInformacion) {
         this.envioInformacion = envioInformacion;
     }
+
+    public ArrayList<Usuario> getUsuarioRegistrados() {
+        return UsuarioRegistrados;
+    }
+
+    public void setUsuarioRegistrados(ArrayList<Usuario> UsuarioRegistrados) {
+        this.UsuarioRegistrados = UsuarioRegistrados;
+    }
+
+    public ArrayList<Usuario> getUsuariosEnviados() {
+        return UsuariosEnviados;
+    }
+
+    public void setUsuariosEnviados(ArrayList<Usuario> UsuariosEnviados) {
+        this.UsuariosEnviados = UsuariosEnviados;
+    }
+    public void addUsuariosEnviados(Usuario Usuarionuevo) {
+        this.UsuariosEnviados.add(Usuarionuevo);
+    }
+    
+
+    public void clearUsuariosEnviados() {
+        this.UsuariosEnviados.clear();
+    }
+    
+    
     
     
     

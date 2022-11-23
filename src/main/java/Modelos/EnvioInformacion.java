@@ -13,9 +13,20 @@ import java.util.ArrayList;
  */
 public class EnvioInformacion implements Serializable{
     public ArrayList<Usuario> UsuarioRegistrados;
+    public Usuario usuario;
 
     public EnvioInformacion(ArrayList<Usuario> UsuarioRegistrados) {
         this.UsuarioRegistrados = UsuarioRegistrados;
     }
+
+    public EnvioInformacion(ArrayList<Usuario> UsuarioRegistrados, Usuario usuario) {
+        this.UsuarioRegistrados = UsuarioRegistrados;
+        this.usuario = usuario;
+    }
+
+    public EnvioInformacion(Usuario usuario) {
+        this.usuario = usuario;
+    }
+    
     
 }

@@ -21,17 +21,22 @@ public class Servidor {
     
     public  ArrayList<ThreadServidor> clientesAceptados;
     ServerConnectionsThread conexionsThread;
-    public static ArrayList<Usuario> UsuarioRegistrados;
+    public ArrayList<Usuario> UsuarioRegistrados;
     public ProcesadorMensaje lector ;
-    public LogicaServidor logica;
+    public EnvioInformacion envioInformacion;
+   
+    
+    
     
     public Servidor(PantallaServidor pantalla){
         this.pantalla = pantalla;
         connect();
-        lector = new ProcesadorMensaje(this);
-        logica = new LogicaServidor(this);
-        clientesAceptados = new ArrayList<ThreadServidor>();
         UsuarioRegistrados  = new ArrayList<Usuario>();
+        envioInformacion = new EnvioInformacion(UsuarioRegistrados);
+        lector = new ProcesadorMensaje(this);
+        
+        clientesAceptados = new ArrayList<ThreadServidor>();
+        
         conexionsThread = new ServerConnectionsThread(this);
         conexionsThread.start();
         
@@ -47,17 +52,29 @@ public class Servidor {
     
     public void broadcoast(Mensaje mensaje){
         
-        String procesado = lector.leeMensaje(mensaje.getMensaje());
+        String procesado = lector.leeMensaje(mensaje.getMensaje(),mensaje.getEnviador());
+        
+        procesado += "/"+Integer.toString(envioInformacion.UsuarioRegistrados.size());
         
         mensaje.setMensaje(procesado);
-        mensaje.setEnvioInformacion(new EnvioInformacion(UsuarioRegistrados));
+        
+        //mensaje.setEnvioInformacion(envioInformacion);
        
         for (ThreadServidor cliente : clientesAceptados) {
             try {
-                    System.out.println("----");
-                    System.out.println(cliente.nombre);
-                    System.out.println(mensaje.getEnvioInformacion().UsuarioRegistrados.size());
-                    System.out.println("----");
+                    System.out.println("******");
+                    mensaje.clearUsuariosEnviados();
+                    for (Usuario UsuarioRegistrado : this.envioInformacion.UsuarioRegistrados) {
+                        System.out.println("----");
+                        System.out.println(UsuarioRegistrado.nombre);
+                        System.out.println(UsuarioRegistrado.ataques);
+                        Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, UsuarioRegistrado.Personajes, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
+
+                        System.out.println("----");
+                        mensaje.addUsuariosEnviados(usuario3);
+                    
+                    }
+                    System.out.println("******");
                 
                     cliente.salida.writeObject(mensaje);
                 

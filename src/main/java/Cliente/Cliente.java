@@ -30,7 +30,7 @@ public class Cliente {
     private DataOutputStream salidaDatos;
     public Pantalla pantalla;
     String nombre ;
-    EnvioInformacion envioInformacion;
+    public EnvioInformacion envioInformacion;
 
     Personaje[] Personajes;
      
