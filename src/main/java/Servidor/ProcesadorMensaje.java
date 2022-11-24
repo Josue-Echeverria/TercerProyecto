@@ -40,19 +40,20 @@ public class ProcesadorMensaje {
                 return  "Salida Mutua";
 
             case "RECARGA DE ARMAS":
-                return  "Recarga de Armas";
+                return  RecargarArmas();
  
             case "USAR COMODIN":
                 return  Comodin(arregloMensaje);
   
-            case "SELECCIONAR JUGADOR":
-                return  "Seleccionar jugador";
+                case "PASAR TURNO":
+                server.cambiaturno = false;
+                return  "Paso";
 
             case "CHAT PRIVADO":
-                return  "Chat privado";
+                return  arregloMensaje[2];
                     
             case "CHAT":
-                return "Chat";
+                return arregloMensaje[1];
                 
             
             default:
@@ -71,7 +72,9 @@ public class ProcesadorMensaje {
         return -1;
     }
 
-    private String atacando(String[] arregloMensaje) {
+    private String atacando(String[] arregloMensaje) 
+    
+    {
         int pos = EljugadorExiste(arregloMensaje[1]);
         int posEnviador = EljugadorExiste(this.enviador);
         System.out.println("+++++++");
@@ -94,9 +97,11 @@ public class ProcesadorMensaje {
             }
                 
             Arma armaSeleccionada = null;
+            int posarma = 0;
             for (int i = 0; i < 5; i++) {
                 if(arregloMensaje[3].equals(atacante.getArmas()[i].getNombre())){
                     armaSeleccionada= atacante.getArmas()[i];
+                    posarma = i;
                     break;
                 }
             }
@@ -104,9 +109,24 @@ public class ProcesadorMensaje {
                 server.cambiaturno = false;
                 return "El arma no existe";
             }
+            if(armaSeleccionada.Disponible == false){
+                server.cambiaturno = false;
+                return "El arma no Disponible";
+                }
+            atacante.getArmas()[posarma] = new Arma(armaSeleccionada.getNombre());
+            atacante.getArmas()[posarma].setDaño(armaSeleccionada.getDaño()); 
+            atacante.getArmas()[posarma].Disponible = false;
+            Arma nuevasArmas[] = new Arma[5];
+            for (int j = 0; j < 5; j++) {
+                    nuevasArmas[j] = new Arma(atacante.getArmas()[j].getNombre());
+                    nuevasArmas[j].setDaño(atacante.getArmas()[j].getDaño());
+                    nuevasArmas[j].Disponible = atacante.getArmas()[j].Disponible;
+            }
+            atacante.setArmas(nuevasArmas);
                 
             Personaje nuevoarreglo[] = new Personaje[4];
             for (int i = 0; i < 4; i++) {
+                
                 Personaje viejo = server.envioInformacion.UsuarioRegistrados.get(pos).Personajes[i];
                 
                 Personaje nuevo;
@@ -115,6 +135,7 @@ public class ProcesadorMensaje {
                 nuevoarreglo[i] = nuevo;
                 
             }
+            
             server.envioInformacion.UsuarioRegistrados.get(pos).Personajes = nuevoarreglo;
             return "Se ataco a "+ arregloMensaje[1];
         }else{
@@ -141,5 +162,26 @@ public class ProcesadorMensaje {
                 return "Comodin exitoso";
         }
         }
+    }
+
+    private String RecargarArmas(){
+        int posEnviador = EljugadorExiste(this.enviador);
+        Boolean recargar = true;
+        for (Personaje personaje : server.envioInformacion.UsuarioRegistrados.get(posEnviador).Personajes) {
+            for (int i = 0; i < 5; i++) {
+                if(personaje.getArmas()[i].Disponible == true)
+                    recargar = false;
+            }
+        }
+        if(recargar){
+            for (Personaje personaje : server.envioInformacion.UsuarioRegistrados.get(posEnviador).Personajes) {
+                for (int i = 0; i < 5; i++) {
+                    personaje.getArmas()[i].Disponible = true;
+                       
+                }
+            }
+            return "Se recargaron las armas";
+        }
+        return "Tienes armas disponibles";
     }
 }

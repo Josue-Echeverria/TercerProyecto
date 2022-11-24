@@ -59,7 +59,7 @@ public class ThreadCronometro extends Thread{
                     refPantalla.lbCronometro.setText("Comodin disponible");
                     pausa();
                 }else{
-                    System.out.println(minutos+":"+segundos);
+                    //System.out.println(minutos+":"+segundos);
                     refPantalla.lbCronometro.setText(minutos+":"+segundos);
                     
                 }

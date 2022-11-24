@@ -7,6 +7,8 @@ package Servidor;
 import Modelos.EnvioInformacion;
 import Modelos.Mensaje;
 import Modelos.Usuario;
+import Personaje.Arma;
+import Personaje.Personaje;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -50,12 +52,82 @@ public class Servidor {
             System.out.println(ex.getMessage());
         }
     }
+    public ArrayList<Usuario> actualiza(){
+        ArrayList<Usuario> hola = new ArrayList<Usuario>();
+        for (Usuario UsuarioRegistrado : this.envioInformacion.UsuarioRegistrados) {
+                                //System.out.println("----");
+                                //System.out.println(UsuarioRegistrado.nombre);
+                                //System.out.println(UsuarioRegistrado.ataques);
+                                Personaje nuevoarreglo[] = new Personaje[4];
+                                for (int i = 0; i < 4; i++) {
+
+                                    Personaje viejo = UsuarioRegistrado.Personajes[i];
+                                    Arma nuevasArmas[] = new Arma[5];
+                                    for (int j = 0; j < 5; j++) {
+                                            nuevasArmas[j] = new Arma(viejo.getArmas()[j].getNombre());
+                                            nuevasArmas[j].setDaño(viejo.getArmas()[j].getDaño());
+                                            nuevasArmas[j].Disponible = viejo.getArmas()[j].Disponible;
+                                    }
+                                    viejo.setArmas(nuevasArmas);
+                                    Personaje nuevo;
+                                    nuevo = new Personaje(viejo.getNombre(),viejo.getTipo(),viejo.getArmas(),viejo.getApariencia(),viejo.getDireccion(),viejo.getPosTipo());
+                                    nuevo.setVida(viejo.getVida());
+                                    
+                                    nuevoarreglo[i] = nuevo;
+
+                                }
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
+
+                                System.out.println("----");
+                                hola.add(usuario3);
+
+                            }
+        return hola;
+    }
     
-    public void broadcoast(Mensaje mensaje){
+    public int broadcoast(Mensaje mensaje){
         String procesado = "holaaa";
         cambiaturno = true;
         if (!envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre.equals(mensaje.getEnviador())){
-                mensaje.setMensaje("Juega "+ envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre);
+                String[]  arregloMensaje = mensaje.getMensaje().split("-") ;
+                if("CHAT".equals(arregloMensaje[0].toUpperCase())){
+                    mensaje.setMensaje(arregloMensaje[1]);
+                    
+                    mensaje.clearUsuariosEnviados();
+                    for (Usuario usuario : actualiza()) {
+                        mensaje.addUsuariosEnviados(usuario);
+                    }
+                    
+                    
+                    cambiaturno = false;
+                    mensajeTodos(mensaje);
+                    return 0; 
+                    
+                }else
+                    
+                if("CHAT PRIVADO".equals(arregloMensaje[0].toUpperCase())){
+                    mensaje.clearUsuariosEnviados();
+                    for (Usuario usuario : actualiza()) {
+                        mensaje.addUsuariosEnviados(usuario);
+                    }
+                    mensaje.setReceptor(arregloMensaje[1]);
+                    mensaje.setMensaje(arregloMensaje[2]);
+                    privateMessage(mensaje);
+                    
+                    cambiaturno = false;
+                    
+                    return 0; 
+                }else{
+                    mensaje.setMensaje("Juega "+ envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre);
+                    mensaje.clearUsuariosEnviados();
+                    for (Usuario usuario : actualiza()) {
+                        mensaje.addUsuariosEnviados(usuario);
+                    }
+                    privateMessage(new Mensaje(mensaje.getEnviador(),"Juega "+ envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre,mensaje.getEnviador()));
+                    mensajeTodos(mensaje);
+                    return 0; 
+                }
+                    
         }else{
             procesado = lector.leeMensaje(mensaje.getMensaje(),mensaje.getEnviador());
             if(cambiaturno){
@@ -80,23 +152,57 @@ public class Servidor {
                                 //System.out.println("----");
                                 //System.out.println(UsuarioRegistrado.nombre);
                                 //System.out.println(UsuarioRegistrado.ataques);
-                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, UsuarioRegistrado.Personajes, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
+                                Personaje nuevoarreglo[] = new Personaje[4];
+                                for (int i = 0; i < 4; i++) {
+
+                                    Personaje viejo = UsuarioRegistrado.Personajes[i];
+                                    Arma nuevasArmas[] = new Arma[5];
+                                    for (int j = 0; j < 5; j++) {
+                                            nuevasArmas[j] = new Arma(viejo.getArmas()[j].getNombre());
+                                            nuevasArmas[j].setDaño(viejo.getArmas()[j].getDaño());
+                                            nuevasArmas[j].Disponible = viejo.getArmas()[j].Disponible;
+                                    }
+                                    viejo.setArmas(nuevasArmas);
+                                    Personaje nuevo;
+                                    nuevo = new Personaje(viejo.getNombre(),viejo.getTipo(),viejo.getArmas(),viejo.getApariencia(),viejo.getDireccion(),viejo.getPosTipo());
+                                    nuevo.setVida(viejo.getVida());
+                                    
+                                    nuevoarreglo[i] = nuevo;
+
+                                }
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
 
                                 System.out.println("----");
                                 mensaje.addUsuariosEnviados(usuario3);
 
                             }
+                            for (Usuario UsuarioRegistrado : mensaje.getUsuariosEnviados()) {
+                                System.out.println("----");
+                                System.out.println(UsuarioRegistrado.nombre);
+                                for (int i = 0; i < 4; i++) {
+                                    System.out.println("***");
+                                    System.out.println(UsuarioRegistrado.Personajes[i].getNombre());
+                                    for (int j = 0; j < 5; j++) {
+                                        System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].getNombre());
+                                        System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].Disponible);
+
+                                    }
+                                    System.out.println("***");
+                                }
+
+                                System.out.println("----");
+
+
+                            }
                             
-            
-                            //System.out.println("******");
-                            if(mensaje.getEnviador().equals(cliente.nombre)){
-                                cliente.salida.writeObject(mensaje);
+                            cliente.salida.writeObject(mensaje);
+                        
                                 
                                 
-                            }else{
+                            /*else{
                                 mensaje.setMensaje("Juega "+ envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre);
                                 cliente.salida.writeObject(mensaje);
-                            }
+                            }*/
                             
 
 
@@ -121,7 +227,22 @@ public class Servidor {
         }
         //this.pantalla.write("Enviado " + clientesAceptados.size() +" veces: " + mensaje);
          this.pantalla.write(procesado);
+         return 0; 
         
+    }
+    public void mensajeTodos(Mensaje mensaje){
+        for (ThreadServidor cliente : clientesAceptados) {
+
+                
+            try {
+                cliente.salida.writeObject(mensaje);
+            } catch (IOException ex) {
+                
+            }
+                    
+                
+        }
+        this.pantalla.write("Enviado " + clientesAceptados.size() +" veces: " + mensaje);
     }
     
     
@@ -129,6 +250,10 @@ public class Servidor {
         
         for (ThreadServidor cliente : clientesAceptados) {
             try {
+                System.out.println("+++");
+                System.out.println(mensaje.getReceptor());
+                System.out.println(cliente.nombre);
+                System.out.println("+++");
                 if(mensaje.getReceptor().equals(cliente.nombre)){
                     cliente.salida.writeObject(mensaje);
                     break;

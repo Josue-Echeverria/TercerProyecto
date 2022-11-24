@@ -21,7 +21,7 @@ public class Arma implements Serializable{
         this.Disponible = true;
         this.Nombre = Nombre;
         this.Daño = new int[10];
-        Tipo[] Tipos = Tipo.values();
+        //Tipo[] Tipos = Tipo.values();
         for (int i = 0; i < 10; i++) {
             this.Daño[i] = generar_daño();
         }
@@ -44,6 +44,11 @@ public class Arma implements Serializable{
     public int[] getDaño() {
         return Daño;
     }
+
+    public void setDaño(int[] Daño) {
+        this.Daño = Daño;
+    }
+    
     
     
 

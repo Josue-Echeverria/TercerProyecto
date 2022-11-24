@@ -66,7 +66,12 @@ public class ThreadCliente extends Thread{
                         System.out.println(UsuarioRegistrado.nombre);
                         for (int i = 0; i < 4; i++) {
                             System.out.println("***");
-                            System.out.println(UsuarioRegistrado.Personajes[i].getVida());
+                            System.out.println(UsuarioRegistrado.Personajes[i].getNombre());
+                            for (int j = 0; j < 5; j++) {
+                                System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].getNombre());
+                                System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].Disponible);
+                                
+                            }
                             System.out.println("***");
                         }
 
@@ -76,6 +81,7 @@ public class ThreadCliente extends Thread{
                     }
                 cliente.envioInformacion = mensaje.getEnvioInformacion();
                 cliente.envioInformacion.UsuarioRegistrados = mensaje.getUsuariosEnviados();
+               
                 cliente.pantalla.write(mensaje.toString());
                 cliente.pantalla.ActualizaPantalla();
                 

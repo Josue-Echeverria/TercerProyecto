@@ -698,12 +698,16 @@ public class Pantalla extends javax.swing.JFrame {
     private void jbtImagenPersonaje1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtImagenPersonaje1ActionPerformed
         jLabel1.setText(cliente.Personajes[0].getNombre()+ "   "+ Integer.toString(cliente.Personajes[0].getVida()));
         for (int i = 0; i < 5; i++) {
-            tbDanos.setValueAt(cliente.Personajes[0].getArmas()[i].getNombre(), i, 0);
-            System.out.println(cliente.Personajes[0].getArmas()[i].getNombre());
+            if(cliente.Personajes[0].getArmas()[i].Disponible)
+                tbDanos.setValueAt(cliente.Personajes[0].getArmas()[i].getNombre(), i, 0);
+            else
+                 tbDanos.setValueAt("X", i, 0);
+            //System.out.println(cliente.Personajes[2].getArmas()[i].getNombre());
             for (int j = 0; j < 10; j++) {
-               
-                
-                tbDanos.setValueAt(cliente.Personajes[0].getArmas()[i].getDaño()[j], i, j+1);
+                if(cliente.Personajes[0].getArmas()[i].Disponible)
+                    tbDanos.setValueAt(cliente.Personajes[0].getArmas()[i].getDaño()[j], i, j+1);
+                else
+                    tbDanos.setValueAt("X", i, j+1);
             }
         }
         
@@ -714,10 +718,16 @@ public class Pantalla extends javax.swing.JFrame {
         jLabel1.setText(cliente.Personajes[1].getNombre()+ "   "+ Integer.toString(cliente.Personajes[1].getVida()));
         for (int i = 0; i < 5; i++) {
             
-            tbDanos.setValueAt(cliente.Personajes[1].getArmas()[i].getNombre(), i, 0);
-            System.out.println(cliente.Personajes[1].getArmas()[i].getNombre());
+            if(cliente.Personajes[1].getArmas()[i].Disponible)
+                tbDanos.setValueAt(cliente.Personajes[1].getArmas()[i].getNombre(), i, 0);
+            else
+                 tbDanos.setValueAt("X", i, 0);
+            //System.out.println(cliente.Personajes[2].getArmas()[i].getNombre());
             for (int j = 0; j < 10; j++) {
-                tbDanos.setValueAt(cliente.Personajes[1].getArmas()[i].getDaño()[j], i, j+1);
+                if(cliente.Personajes[1].getArmas()[i].Disponible)
+                    tbDanos.setValueAt(cliente.Personajes[1].getArmas()[i].getDaño()[j], i, j+1);
+                else
+                    tbDanos.setValueAt("X", i, j+1);
             }
         }
     }//GEN-LAST:event_jbtImagenPersonaje2ActionPerformed
@@ -725,10 +735,16 @@ public class Pantalla extends javax.swing.JFrame {
     private void jbtImagenPersonaje3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtImagenPersonaje3ActionPerformed
         jLabel1.setText(cliente.Personajes[2].getNombre()+ "   "+ Integer.toString(cliente.Personajes[2].getVida()));
         for (int i = 0; i < 5; i++) {
-            tbDanos.setValueAt(cliente.Personajes[2].getArmas()[i].getNombre(), i, 0);
-            System.out.println(cliente.Personajes[2].getArmas()[i].getNombre());
+            if(cliente.Personajes[2].getArmas()[i].Disponible)
+                tbDanos.setValueAt(cliente.Personajes[2].getArmas()[i].getNombre(), i, 0);
+            else
+                 tbDanos.setValueAt("X", i, 0);
+            //System.out.println(cliente.Personajes[2].getArmas()[i].getNombre());
             for (int j = 0; j < 10; j++) {
-                tbDanos.setValueAt(cliente.Personajes[2].getArmas()[i].getDaño()[j], i, j+1);
+                if(cliente.Personajes[2].getArmas()[i].Disponible)
+                    tbDanos.setValueAt(cliente.Personajes[2].getArmas()[i].getDaño()[j], i, j+1);
+                else
+                    tbDanos.setValueAt("X", i, j+1);
             }
         }
     }//GEN-LAST:event_jbtImagenPersonaje3ActionPerformed
@@ -736,10 +752,16 @@ public class Pantalla extends javax.swing.JFrame {
     private void jbtImagenPersonaje4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtImagenPersonaje4ActionPerformed
         jLabel1.setText(cliente.Personajes[3].getNombre()+ "   "+ Integer.toString(cliente.Personajes[3].getVida()));
         for (int i = 0; i < 5; i++) {
-            tbDanos.setValueAt(cliente.Personajes[3].getArmas()[i].getNombre(), i, 0);
-            System.out.println(cliente.Personajes[3].getArmas()[i].getNombre());
+            if(cliente.Personajes[3].getArmas()[i].Disponible)
+                tbDanos.setValueAt(cliente.Personajes[3].getArmas()[i].getNombre(), i, 0);
+            else
+                 tbDanos.setValueAt("X", i, 0);
+            //System.out.println(cliente.Personajes[2].getArmas()[i].getNombre());
             for (int j = 0; j < 10; j++) {
-                tbDanos.setValueAt(cliente.Personajes[3].getArmas()[i].getDaño()[j], i, j+1);
+                if(cliente.Personajes[3].getArmas()[i].Disponible)
+                    tbDanos.setValueAt(cliente.Personajes[3].getArmas()[i].getDaño()[j], i, j+1);
+                else
+                    tbDanos.setValueAt("X", i, j+1);
             }
         }
     }//GEN-LAST:event_jbtImagenPersonaje4ActionPerformed
