@@ -46,9 +46,7 @@ public class ProcesadorMensaje {
             case "USAR COMODIN":
                 return  Comodin(arregloMensaje);
   
-                case "PASAR TURNO":
-                server.cambiaturno = false;
-                return  "Paso";
+                
 
             case "CHAT PRIVADO":
                 return  arregloMensaje[2];
@@ -170,6 +168,7 @@ public class ProcesadorMensaje {
     private String RecargarArmas(){
         int posEnviador = EljugadorExiste(this.enviador);
         Boolean recargar = true;
+        server.cambiaturno = false;
         for (Personaje personaje : server.envioInformacion.UsuarioRegistrados.get(posEnviador).Personajes) {
             for (int i = 0; i < 5; i++) {
                 if(personaje.getArmas()[i].Disponible == true)

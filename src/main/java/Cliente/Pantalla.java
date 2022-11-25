@@ -828,7 +828,7 @@ public class Pantalla extends javax.swing.JFrame {
                     cliente.Personajes[i] = UsuarioRegistrado.Personajes[i];
                 }
                 lbUltimoRecibido.setText(UsuarioRegistrado.UltimoAtaqueRecibido);
-                lbUltimoRecibido.setText(UsuarioRegistrado.UltimoAtaqueRecibido);
+                lbultimoRealizado.setText(UsuarioRegistrado.UltimoAtaqueRealizado);
             }else{
                 informacion += "Contricante #:";
                 informacion += UsuarioRegistrado.nombre;
