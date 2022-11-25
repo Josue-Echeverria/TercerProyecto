@@ -154,6 +154,11 @@ public class Servidor {
         if(rendisionMutua){
             
             mensaje.setMensaje(revisandoRendisiones(mensaje.getMensaje()));
+            if(cambiaturno){
+                cambioTurno();
+               
+             
+            }
         }else{
             
         

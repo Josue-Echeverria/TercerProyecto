@@ -152,14 +152,14 @@ public class ProcesadorMensaje {
         System.out.println("ataquedos");
         System.out.println(ataquedos);
         if(ataqueuno.equals("El personaje no existe") || ataqueuno.equals("El arma no existe") || ataqueuno.equals("No se ataco porque ese jugador no esta conectado")){
-            server.cambiaturno = false;
+            //server.cambiaturno = false;
             return "Error en el comodin no ataco el primer ataque";
         }else{
             if(ataquedos.equals("El personaje no existe") || ataquedos.equals("El arma no existe") || ataquedos.equals("No se ataco porque ese jugador no esta conectado")){
-                server.cambiaturno = false;
+                //server.cambiaturno = false;
                 return "Error en el comodin no ataco el segundo ataque";
             }else{
-                server.cambiaturno = false;
+                //server.cambiaturno = false;
                 return "Comodin exitoso";
         }
         }
