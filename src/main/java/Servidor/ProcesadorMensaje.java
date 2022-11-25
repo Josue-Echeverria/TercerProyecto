@@ -33,10 +33,11 @@ public class ProcesadorMensaje {
             case "ATACAR":
                 return atacando(arregloMensaje);
             case "RENDIRSE":
-                return "Rendirse";
+                return Rendirse();
             case "PASAR":
-                return "Pasar";
+                return "Paso";
             case "SALIDA MUTUA":
+                server.rendisionMutua = true;
                 return  "Salida Mutua";
 
             case "RECARGA DE ARMAS":
@@ -72,11 +73,10 @@ public class ProcesadorMensaje {
         return -1;
     }
 
-    private String atacando(String[] arregloMensaje) 
-    
-    {
+    private String atacando(String[] arregloMensaje){
         int pos = EljugadorExiste(arregloMensaje[1]);
         int posEnviador = EljugadorExiste(this.enviador);
+        int Sumatoria = 0;
         System.out.println("+++++++");
         System.out.println(arregloMensaje[1]);
         System.out.println(pos);
@@ -132,10 +132,13 @@ public class ProcesadorMensaje {
                 Personaje nuevo;
                 nuevo = new Personaje(viejo.getNombre(),viejo.getTipo(),viejo.getArmas(),viejo.getApariencia(),viejo.getDireccion(),viejo.getPosTipo());
                 nuevo.setVida(viejo.getVida() - armaSeleccionada.getDaño()[viejo.getPosTipo()]);
+                Sumatoria += armaSeleccionada.getDaño()[viejo.getPosTipo()];
+                
                 nuevoarreglo[i] = nuevo;
                 
             }
-            
+            server.envioInformacion.UsuarioRegistrados.get(posEnviador).UltimoAtaqueRealizado = "Se Ataco a "+ server.envioInformacion.UsuarioRegistrados.get(pos).nombre+ "Con un ataque de "+Integer.toString(Sumatoria);
+            server.envioInformacion.UsuarioRegistrados.get(pos).UltimoAtaqueRecibido = "Se recibio un ataque de "+ server.envioInformacion.UsuarioRegistrados.get(posEnviador).nombre+ "Con un ataque de "+Integer.toString(Sumatoria);
             server.envioInformacion.UsuarioRegistrados.get(pos).Personajes = nuevoarreglo;
             return "Se ataco a "+ arregloMensaje[1];
         }else{
@@ -183,5 +186,12 @@ public class ProcesadorMensaje {
             return "Se recargaron las armas";
         }
         return "Tienes armas disponibles";
+    }
+    
+    private String Rendirse(){
+        int posEnviador = EljugadorExiste(this.enviador);
+        server.envioInformacion.UsuarioRegistrados.get(posEnviador).Jugando = false;
+        server.envioInformacion.UsuarioRegistrados.get(posEnviador).rendiciones += 1;
+        return "Me rindo";
     }
 }

@@ -21,8 +21,11 @@ public class Usuario implements Serializable{
     public int exitosos;
     public int fallidos;
     public int rendiciones;
+    public boolean Jugando;
+    public String UltimoAtaqueRealizado;
+    public String UltimoAtaqueRecibido;
 
-    public Usuario(String nombre, Personaje[] Personajes, int victorias, int perdidas, int ataques, int exitosos, int fallidos, int rendiciones) {
+    public Usuario(String nombre, Personaje[] Personajes, int victorias, int perdidas, int ataques, int exitosos, int fallidos, int rendiciones,boolean jugando,String realizado,String recibido) {
         this.nombre = nombre;
         this.Personajes = Personajes;
         this.victorias = victorias;
@@ -31,6 +34,9 @@ public class Usuario implements Serializable{
         this.exitosos = exitosos;
         this.fallidos = fallidos;
         this.rendiciones = rendiciones;
+        this.Jugando = jugando;
+        this.UltimoAtaqueRealizado = realizado;
+        this.UltimoAtaqueRecibido = recibido;
     }
     
     

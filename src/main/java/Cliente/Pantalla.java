@@ -35,7 +35,7 @@ public class Pantalla extends javax.swing.JFrame {
          cronometro = new ThreadCronometro(this);
          cronometro.start();
         initComponents();    
-        usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0, 0);
+        usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0, 0,true,"","");
         EnvioInformacion envio = new EnvioInformacion(usuario);
         cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText(),envio));
         //cliente.salida.writeObject(usuario);
@@ -124,7 +124,9 @@ public class Pantalla extends javax.swing.JFrame {
         tbDanos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jpUltimoataquerecibido = new javax.swing.JPanel();
+        lbultimoRealizado = new javax.swing.JLabel();
         jpUltimoataquerealizado = new javax.swing.JPanel();
+        lbUltimoRecibido = new javax.swing.JLabel();
         pnlRanking = new javax.swing.JPanel();
         lbTituloRanking = new javax.swing.JLabel();
         lbtitulo1 = new javax.swing.JLabel();
@@ -334,28 +336,46 @@ public class Pantalla extends javax.swing.JFrame {
 
         jpUltimoataquerecibido.setBackground(new java.awt.Color(0, 0, 0));
 
+        lbultimoRealizado.setForeground(new java.awt.Color(255, 255, 255));
+        lbultimoRealizado.setText("jLabel2");
+
         javax.swing.GroupLayout jpUltimoataquerecibidoLayout = new javax.swing.GroupLayout(jpUltimoataquerecibido);
         jpUltimoataquerecibido.setLayout(jpUltimoataquerecibidoLayout);
         jpUltimoataquerecibidoLayout.setHorizontalGroup(
             jpUltimoataquerecibidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 373, Short.MAX_VALUE)
+            .addGroup(jpUltimoataquerecibidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbultimoRealizado)
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         jpUltimoataquerecibidoLayout.setVerticalGroup(
             jpUltimoataquerecibidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGroup(jpUltimoataquerecibidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbultimoRealizado)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         jpUltimoataquerealizado.setBackground(new java.awt.Color(0, 0, 0));
+
+        lbUltimoRecibido.setForeground(new java.awt.Color(255, 255, 255));
+        lbUltimoRecibido.setText("jLabel2");
 
         javax.swing.GroupLayout jpUltimoataquerealizadoLayout = new javax.swing.GroupLayout(jpUltimoataquerealizado);
         jpUltimoataquerealizado.setLayout(jpUltimoataquerealizadoLayout);
         jpUltimoataquerealizadoLayout.setHorizontalGroup(
             jpUltimoataquerealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 373, Short.MAX_VALUE)
+            .addGroup(jpUltimoataquerealizadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbUltimoRecibido)
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         jpUltimoataquerealizadoLayout.setVerticalGroup(
             jpUltimoataquerealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGroup(jpUltimoataquerealizadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbUltimoRecibido)
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         lbTituloRanking.setText("Ranking");
@@ -807,6 +827,8 @@ public class Pantalla extends javax.swing.JFrame {
                 for (int i = 0; i < 4; i++) {
                     cliente.Personajes[i] = UsuarioRegistrado.Personajes[i];
                 }
+                lbUltimoRecibido.setText(UsuarioRegistrado.UltimoAtaqueRecibido);
+                lbUltimoRecibido.setText(UsuarioRegistrado.UltimoAtaqueRecibido);
             }else{
                 informacion += "Contricante #:";
                 informacion += UsuarioRegistrado.nombre;
@@ -892,6 +914,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JLabel lbTituloDatosEnemigos;
     private javax.swing.JLabel lbTituloMisDatos1;
     private javax.swing.JLabel lbTituloRanking;
+    private javax.swing.JLabel lbUltimoRecibido;
     private javax.swing.JLabel lbUsuario1;
     private javax.swing.JLabel lbUsuario10;
     private javax.swing.JLabel lbUsuario2;
@@ -916,6 +939,7 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JLabel lbtitulo7;
     private javax.swing.JLabel lbtitulo8;
     private javax.swing.JLabel lbtitulo9;
+    private javax.swing.JLabel lbultimoRealizado;
     private javax.swing.JPanel pnlArmas;
     private javax.swing.JPanel pnlDatosEnemigos;
     private javax.swing.JPanel pnlMisDatos;

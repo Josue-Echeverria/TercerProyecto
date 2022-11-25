@@ -27,6 +27,8 @@ public class Servidor {
     public ArrayList<Usuario> UsuarioRegistrados;
     public ProcesadorMensaje lector ;
     public EnvioInformacion envioInformacion;
+    public int contadorgiro = 0;
+    public boolean rendisionMutua = false;
    
     
     
@@ -76,7 +78,7 @@ public class Servidor {
                                     nuevoarreglo[i] = nuevo;
 
                                 }
-                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones,UsuarioRegistrado.Jugando,UsuarioRegistrado.UltimoAtaqueRealizado,UsuarioRegistrado.UltimoAtaqueRecibido);
 
                                 System.out.println("----");
                                 hola.add(usuario3);
@@ -84,10 +86,77 @@ public class Servidor {
                             }
         return hola;
     }
+    public int cambioTurno(){
+        contadorTurno += 1;
+        if(contadorgiro == envioInformacion.UsuarioRegistrados.size()){
+            pantalla.write("No quedan jugadores");
+            return 0;
+        }
+        if(contadorTurno == envioInformacion.UsuarioRegistrados.size()){
+            contadorTurno = 0;
+        }
+        if(envioInformacion.UsuarioRegistrados.get(contadorTurno).Jugando == false){
+            contadorgiro += 1;
+            cambioTurno();
+            
+        }else{
+            contadorgiro = 0;
+           return 0;
+        }
+        return 0;
+        
+    }
+    private int EljugadorExiste(String nombre){
+        
+        int i = 0;
+        for (Usuario UsuarioRegistrado : envioInformacion.UsuarioRegistrados) {
+            if(UsuarioRegistrado.nombre.equals(nombre))
+                return i;
+            i += 1;
+        }
+        return -1;
+    }
     
+    private String revisandoRendisiones(String mensaje){
+        String result = "";
+        System.out.println("************");
+        System.out.println(mensaje);
+        System.out.println("************");
+        if(mensaje.toUpperCase().endsWith( "SI")){
+            
+            contadorgiro += 1;
+            result = "Si";
+            
+            
+        }else{
+            contadorgiro = 0;
+            pantalla.write("Fallo la rendision");
+            rendisionMutua = false;
+            result = "Fallo la rendision";
+        }
+        if(contadorgiro == envioInformacion.UsuarioRegistrados.size()-1){
+            pantalla.write("Todos se rindieron");
+            for (Usuario UsuarioRegistrado : envioInformacion.UsuarioRegistrados) {
+                UsuarioRegistrado.Jugando = false;
+            }
+            result = "Todos se rindieron";
+        }
+        return result;
+    }
     public int broadcoast(Mensaje mensaje){
         String procesado = "holaaa";
         cambiaturno = true;
+        if(envioInformacion.UsuarioRegistrados.get(EljugadorExiste(mensaje.getEnviador())).Jugando == false){
+            privateMessage(new Mensaje(mensaje.getEnviador(),"Ya no estas jugando",mensaje.getEnviador()));
+            return 0;
+                    
+        }
+        if(rendisionMutua){
+            
+            mensaje.setMensaje(revisandoRendisiones(mensaje.getMensaje()));
+        }else{
+            
+        
         if (!envioInformacion.UsuarioRegistrados.get(contadorTurno).nombre.equals(mensaje.getEnviador())){
                 String[]  arregloMensaje = mensaje.getMensaje().split("-") ;
                 if("CHAT".equals(arregloMensaje[0].toUpperCase())){
@@ -131,13 +200,12 @@ public class Servidor {
         }else{
             procesado = lector.leeMensaje(mensaje.getMensaje(),mensaje.getEnviador());
             if(cambiaturno){
-               contadorTurno += 1;
-                if(contadorTurno == envioInformacion.UsuarioRegistrados.size()){
-                    contadorTurno = 0;
-                }
+                cambioTurno();
+               
              
             }
             mensaje.setMensaje(procesado);
+        }
         }
 
         //procesado += "/"+Integer.toString(envioInformacion.UsuarioRegistrados.size());
@@ -170,7 +238,7 @@ public class Servidor {
                                     nuevoarreglo[i] = nuevo;
 
                                 }
-                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones);
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones,UsuarioRegistrado.Jugando,UsuarioRegistrado.UltimoAtaqueRealizado,UsuarioRegistrado.UltimoAtaqueRecibido);
 
                                 System.out.println("----");
                                 mensaje.addUsuariosEnviados(usuario3);
@@ -247,7 +315,7 @@ public class Servidor {
     
     
     public void privateMessage(Mensaje mensaje){
-        
+        mensaje.UsuarioRegistrados = envioInformacion.UsuarioRegistrados;
         for (ThreadServidor cliente : clientesAceptados) {
             try {
                 System.out.println("+++");
