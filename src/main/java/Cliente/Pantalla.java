@@ -35,7 +35,7 @@ public class Pantalla extends javax.swing.JFrame {
          cronometro = new ThreadCronometro(this);
          cronometro.start();
         initComponents();    
-        usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0, 0,true,"","");
+        usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0,0, 0,true,"","");
         EnvioInformacion envio = new EnvioInformacion(usuario);
         cliente.salida.writeObject(new Mensaje(cliente.nombre, txfMensaje.getText(),envio));
         //cliente.salida.writeObject(usuario);
@@ -122,9 +122,13 @@ public class Pantalla extends javax.swing.JFrame {
         tbDanos = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jpUltimoataquerecibido = new javax.swing.JPanel();
-        lbultimoRealizado = new javax.swing.JLabel();
-        jpUltimoataquerealizado = new javax.swing.JPanel();
         lbUltimoRecibido = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txaUltimoAtaqueRecibido = new javax.swing.JTextArea();
+        jpUltimoataquerealizado = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txaUltimoAtaqueRealizado = new javax.swing.JTextArea();
+        lbultimoRealizado = new javax.swing.JLabel();
         pnlRanking = new javax.swing.JPanel();
         lbTituloRanking = new javax.swing.JLabel();
         lbtitulo1 = new javax.swing.JLabel();
@@ -153,6 +157,7 @@ public class Pantalla extends javax.swing.JFrame {
         taDatosEnemigos = new javax.swing.JTextArea();
         pnlMisDatos = new javax.swing.JPanel();
         lbTituloMisDatos1 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
         taMisDatos = new javax.swing.JTextArea();
         lbCronometro = new javax.swing.JLabel();
 
@@ -321,8 +326,12 @@ public class Pantalla extends javax.swing.JFrame {
 
         jpUltimoataquerecibido.setBackground(new java.awt.Color(0, 0, 0));
 
-        lbultimoRealizado.setForeground(new java.awt.Color(255, 255, 255));
-        lbultimoRealizado.setText("jLabel2");
+        lbUltimoRecibido.setForeground(new java.awt.Color(255, 255, 255));
+        lbUltimoRecibido.setText("jLabel2");
+
+        txaUltimoAtaqueRecibido.setColumns(20);
+        txaUltimoAtaqueRecibido.setRows(5);
+        jScrollPane5.setViewportView(txaUltimoAtaqueRecibido);
 
         javax.swing.GroupLayout jpUltimoataquerecibidoLayout = new javax.swing.GroupLayout(jpUltimoataquerecibido);
         jpUltimoataquerecibido.setLayout(jpUltimoataquerecibidoLayout);
@@ -330,21 +339,31 @@ public class Pantalla extends javax.swing.JFrame {
             jpUltimoataquerecibidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUltimoataquerecibidoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbultimoRealizado)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addGroup(jpUltimoataquerecibidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                    .addGroup(jpUltimoataquerecibidoLayout.createSequentialGroup()
+                        .addComponent(lbUltimoRecibido)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jpUltimoataquerecibidoLayout.setVerticalGroup(
             jpUltimoataquerecibidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUltimoataquerecibidoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbultimoRealizado)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addComponent(lbUltimoRecibido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jpUltimoataquerealizado.setBackground(new java.awt.Color(0, 0, 0));
 
-        lbUltimoRecibido.setForeground(new java.awt.Color(255, 255, 255));
-        lbUltimoRecibido.setText("jLabel2");
+        txaUltimoAtaqueRealizado.setColumns(20);
+        txaUltimoAtaqueRealizado.setRows(5);
+        jScrollPane4.setViewportView(txaUltimoAtaqueRealizado);
+
+        lbultimoRealizado.setForeground(new java.awt.Color(255, 255, 255));
+        lbultimoRealizado.setText("jLabel2");
 
         javax.swing.GroupLayout jpUltimoataquerealizadoLayout = new javax.swing.GroupLayout(jpUltimoataquerealizado);
         jpUltimoataquerealizado.setLayout(jpUltimoataquerealizadoLayout);
@@ -352,15 +371,21 @@ public class Pantalla extends javax.swing.JFrame {
             jpUltimoataquerealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUltimoataquerealizadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbUltimoRecibido)
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addGroup(jpUltimoataquerealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                    .addGroup(jpUltimoataquerealizadoLayout.createSequentialGroup()
+                        .addComponent(lbultimoRealizado)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jpUltimoataquerealizadoLayout.setVerticalGroup(
             jpUltimoataquerealizadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpUltimoataquerealizadoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbUltimoRecibido)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addComponent(lbultimoRealizado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         lbTituloRanking.setText("Ranking");
@@ -534,6 +559,7 @@ public class Pantalla extends javax.swing.JFrame {
 
         taMisDatos.setColumns(20);
         taMisDatos.setRows(5);
+        jScrollPane6.setViewportView(taMisDatos);
 
         javax.swing.GroupLayout pnlMisDatosLayout = new javax.swing.GroupLayout(pnlMisDatos);
         pnlMisDatos.setLayout(pnlMisDatosLayout);
@@ -542,21 +568,18 @@ public class Pantalla extends javax.swing.JFrame {
             .addGroup(pnlMisDatosLayout.createSequentialGroup()
                 .addComponent(lbTituloMisDatos1)
                 .addGap(0, 192, Short.MAX_VALUE))
-            .addGroup(pnlMisDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMisDatosLayout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(taMisDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(pnlMisDatosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlMisDatosLayout.setVerticalGroup(
             pnlMisDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMisDatosLayout.createSequentialGroup()
                 .addComponent(lbTituloMisDatos1)
-                .addContainerGap(97, Short.MAX_VALUE))
-            .addGroup(pnlMisDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMisDatosLayout.createSequentialGroup()
-                    .addGap(0, 14, Short.MAX_VALUE)
-                    .addComponent(taMisDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         lbCronometro.setText("jLabel2");
@@ -787,14 +810,17 @@ public class Pantalla extends javax.swing.JFrame {
                 informacionUsuario += "Fallidos:";
                 informacionUsuario += Integer.toString(UsuarioRegistrado.fallidos);
                 informacionUsuario += "\n";
+                informacionUsuario += "Muertes:";
+                informacionUsuario += Integer.toString(UsuarioRegistrado.muertes);
+                informacionUsuario += "\n";
                 informacionUsuario += "Rendiciones:";
                 informacionUsuario += Integer.toString(UsuarioRegistrado.rendiciones);
                 informacionUsuario += "\n";
                 for (int i = 0; i < 4; i++) {
                     cliente.Personajes[i] = UsuarioRegistrado.Personajes[i];
                 }
-                lbUltimoRecibido.setText(UsuarioRegistrado.UltimoAtaqueRecibido);
-                lbultimoRealizado.setText(UsuarioRegistrado.UltimoAtaqueRealizado);
+                txaUltimoAtaqueRecibido.setText(UsuarioRegistrado.UltimoAtaqueRecibido);
+                txaUltimoAtaqueRealizado.setText(UsuarioRegistrado.UltimoAtaqueRealizado);
             }else{
                 informacion += "Contricante #:";
                 informacion += UsuarioRegistrado.nombre;
@@ -813,6 +839,9 @@ public class Pantalla extends javax.swing.JFrame {
                 informacion += "\n";
                 informacion += "Fallidos:";
                 informacion += Integer.toString(UsuarioRegistrado.fallidos);
+                informacion += "\n";
+                informacion += "Muertes:";
+                informacion += Integer.toString(UsuarioRegistrado.muertes);
                 informacion += "\n";
                 informacion += "Rendiciones:";
                 informacion += Integer.toString(UsuarioRegistrado.rendiciones);
@@ -868,6 +897,9 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JButton jbtImagenPersonaje1;
     private javax.swing.JButton jbtImagenPersonaje2;
     private javax.swing.JButton jbtImagenPersonaje3;
@@ -913,6 +945,8 @@ public class Pantalla extends javax.swing.JFrame {
     private javax.swing.JTextArea taMisDatos;
     private javax.swing.JTable tbDanos;
     private javax.swing.JTextArea txaMensajes;
+    private javax.swing.JTextArea txaUltimoAtaqueRealizado;
+    private javax.swing.JTextArea txaUltimoAtaqueRecibido;
     private javax.swing.JTextField txfMensaje;
     // End of variables declaration//GEN-END:variables
 

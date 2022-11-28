@@ -8,6 +8,7 @@ import Modelos.Usuario;
 import Personaje.Arma;
 import Personaje.Personaje;
 import Personaje.Tipo;
+import java.util.Date;
 
 /**
  *
@@ -17,7 +18,7 @@ public class ProcesadorMensaje {
     public Servidor server;
     public String[] arregloMensaje;
     public String enviador;
-
+    public String[] tipos = new String[]{"FUEGO","AIRE","AGUA","MAGIABLANCA","MAGIANEGRA","ELECTRICIDAD","HIELO","ACIDO","ESPIRITUAL","HIERRO"};
     public ProcesadorMensaje(Servidor server) {
         this.server = server;
     }
@@ -26,6 +27,8 @@ public class ProcesadorMensaje {
     
     public String leeMensaje(String mensaje,String enviador){
         this.enviador = enviador;
+        server.agregaAlLog(new Date().toString());
+        server.agregaAlLog(mensaje);
         
         System.out.println(mensaje);
         arregloMensaje = mensaje.split("-");
@@ -33,10 +36,13 @@ public class ProcesadorMensaje {
             case "ATACAR":
                 return atacando(arregloMensaje);
             case "RENDIRSE":
+                
                 return Rendirse();
             case "PASAR":
+                
                 return "Paso";
             case "SALIDA MUTUA":
+                
                 server.rendisionMutua = true;
                 return  "Salida Mutua";
 
@@ -123,6 +129,7 @@ public class ProcesadorMensaje {
             atacante.setArmas(nuevasArmas);
                 
             Personaje nuevoarreglo[] = new Personaje[4];
+            String ataqueporpersonaje = "";
             for (int i = 0; i < 4; i++) {
                 
                 Personaje viejo = server.envioInformacion.UsuarioRegistrados.get(pos).Personajes[i];
@@ -131,12 +138,23 @@ public class ProcesadorMensaje {
                 nuevo = new Personaje(viejo.getNombre(),viejo.getTipo(),viejo.getArmas(),viejo.getApariencia(),viejo.getDireccion(),viejo.getPosTipo());
                 nuevo.setVida(viejo.getVida() - armaSeleccionada.getDaño()[viejo.getPosTipo()]);
                 Sumatoria += armaSeleccionada.getDaño()[viejo.getPosTipo()];
+                ataqueporpersonaje += nuevo.getNombre()+": -"+armaSeleccionada.getDaño()[viejo.getPosTipo()]+"%\n";
                 
                 nuevoarreglo[i] = nuevo;
                 
             }
-            server.envioInformacion.UsuarioRegistrados.get(posEnviador).UltimoAtaqueRealizado = "Se Ataco a "+ server.envioInformacion.UsuarioRegistrados.get(pos).nombre+ "Con un ataque de "+Integer.toString(Sumatoria);
-            server.envioInformacion.UsuarioRegistrados.get(pos).UltimoAtaqueRecibido = "Se recibio un ataque de "+ server.envioInformacion.UsuarioRegistrados.get(posEnviador).nombre+ "Con un ataque de "+Integer.toString(Sumatoria);
+            
+            
+            server.envioInformacion.UsuarioRegistrados.get(posEnviador).UltimoAtaqueRealizado = "Se Ataco a "+ server.envioInformacion.UsuarioRegistrados.get(pos).nombre+ " con " +atacante.getNombre()+"["+tipos[atacante.getPosTipo()]+"]"+"\nEl arma fue "+armaSeleccionada.getNombre()+  " con efecto de -"+Integer.toString(Sumatoria);
+            if(Sumatoria >= 100){
+                server.envioInformacion.UsuarioRegistrados.get(posEnviador).exitosos+=1;
+            }else{
+                server.envioInformacion.UsuarioRegistrados.get(posEnviador).fallidos+=1;
+            }
+            
+            server.envioInformacion.UsuarioRegistrados.get(pos).UltimoAtaqueRecibido = "Se recibio un ataque de "+ server.envioInformacion.UsuarioRegistrados.get(posEnviador).nombre+  " con " +atacante.getNombre()+"["+tipos[atacante.getPosTipo()]+"]"+"\nEl arma fue "+armaSeleccionada.getNombre()+"\n"+ataqueporpersonaje;//"Con un ataque de "+Integer.toString(Sumatoria);
+            server.agregaAlLog(server.envioInformacion.UsuarioRegistrados.get(posEnviador).UltimoAtaqueRealizado);
+            
             server.envioInformacion.UsuarioRegistrados.get(pos).Personajes = nuevoarreglo;
             return "Se ataco a "+ arregloMensaje[1];
         }else{
@@ -191,6 +209,8 @@ public class ProcesadorMensaje {
         int posEnviador = EljugadorExiste(this.enviador);
         server.envioInformacion.UsuarioRegistrados.get(posEnviador).Jugando = false;
         server.envioInformacion.UsuarioRegistrados.get(posEnviador).rendiciones += 1;
+        server.rendicionestotales += 1;
         return "Me rindo";
     }
+    
 }

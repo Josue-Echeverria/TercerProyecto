@@ -81,8 +81,16 @@ public class ThreadCliente extends Thread{
                     }
                 cliente.envioInformacion = mensaje.getEnvioInformacion();
                 cliente.envioInformacion.UsuarioRegistrados = mensaje.getUsuariosEnviados();
-               
-                cliente.pantalla.write(mensaje.toString());
+                System.out.println("*****");
+                System.out.println(mensaje.toString().split("\"")[1].split("&")[0]);
+                System.out.println("*****");
+                if("LOG".equals(mensaje.toString().split("\"")[1].split("&")[0])){
+                    new VentanaLog(mensaje.toString().split("&")[1].replace("?", "\n")).setVisible(true);
+                }
+                else{
+                    cliente.pantalla.write(mensaje.toString());
+                }
+                
                 cliente.pantalla.ActualizaPantalla();
                 
                 

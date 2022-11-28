@@ -8,13 +8,23 @@ import Modelos.EnvioInformacion;
 import Modelos.Mensaje;
 import Modelos.Usuario;
 import Personaje.Arma;
+import Personaje.CrearPersonaje;
 import Personaje.Personaje;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 public class Servidor {
     private final int PORT = 8084;
@@ -28,6 +38,9 @@ public class Servidor {
     public ProcesadorMensaje lector ;
     public EnvioInformacion envioInformacion;
     public int contadorgiro = 0;
+    public int contadorgirorendision = 0;
+    public int rendicionestotales = 0;
+    public String registradoActualiza= "";
     public boolean rendisionMutua = false;
    
     
@@ -55,6 +68,12 @@ public class Servidor {
         }
     }
     public ArrayList<Usuario> actualiza(){
+        String ArregloActualiza[] = new String[8];
+        boolean actualizarsi = false;
+        if(registradoActualiza != ""){
+            ArregloActualiza = registradoActualiza.split("-");
+            actualizarsi = true;
+        }
         ArrayList<Usuario> hola = new ArrayList<Usuario>();
         for (Usuario UsuarioRegistrado : this.envioInformacion.UsuarioRegistrados) {
                                 //System.out.println("----");
@@ -72,14 +91,31 @@ public class Servidor {
                                     }
                                     viejo.setArmas(nuevasArmas);
                                     Personaje nuevo;
+                                    
                                     nuevo = new Personaje(viejo.getNombre(),viejo.getTipo(),viejo.getArmas(),viejo.getApariencia(),viejo.getDireccion(),viejo.getPosTipo());
                                     nuevo.setVida(viejo.getVida());
                                     
                                     nuevoarreglo[i] = nuevo;
 
                                 }
-                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones,UsuarioRegistrado.Jugando,UsuarioRegistrado.UltimoAtaqueRealizado,UsuarioRegistrado.UltimoAtaqueRecibido);
-
+                                if(actualizarsi){
+                                    //System.out.println("+++++++++++++++++1");
+                                    //System.out.println(usuario3.nombre);
+                                    //System.out.println(ArregloActualiza[0]);
+                                    if(UsuarioRegistrado.nombre.equals(ArregloActualiza[0])){
+                                        //System.out.println("+++++++++++++++++4");
+                                        UsuarioRegistrado.victorias = Integer.parseInt( ArregloActualiza[1]);
+                                        UsuarioRegistrado.muertes = Integer.parseInt( ArregloActualiza[2]);
+                                        UsuarioRegistrado.perdidas =Integer.parseInt( ArregloActualiza[3]);
+                                        UsuarioRegistrado.rendiciones =Integer.parseInt( ArregloActualiza[4]);
+                                        UsuarioRegistrado.ataques = Integer.parseInt( ArregloActualiza[5]);
+                                        UsuarioRegistrado.exitosos = Integer.parseInt( ArregloActualiza[6]);
+                                        UsuarioRegistrado.fallidos =Integer.parseInt( ArregloActualiza[7]);
+                                        registradoActualiza = "";
+                                    }
+                                    }
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos,UsuarioRegistrado.muertes, UsuarioRegistrado.rendiciones,UsuarioRegistrado.Jugando,UsuarioRegistrado.UltimoAtaqueRealizado,UsuarioRegistrado.UltimoAtaqueRecibido);
+                                
                                 System.out.println("----");
                                 hola.add(usuario3);
 
@@ -124,17 +160,18 @@ public class Servidor {
         System.out.println("************");
         if(mensaje.toUpperCase().endsWith( "SI")){
             
-            contadorgiro += 1;
+            contadorgirorendision += 1;
             result = "Si";
             
             
         }else{
-            contadorgiro = 0;
+            contadorgirorendision = 0;
+            contadorgirorendision += rendicionestotales;
             pantalla.write("Fallo la rendision");
             rendisionMutua = false;
             result = "Fallo la rendision";
         }
-        if(contadorgiro == envioInformacion.UsuarioRegistrados.size()-1){
+        if(contadorgirorendision == envioInformacion.UsuarioRegistrados.size()-1){
             pantalla.write("Todos se rindieron");
             for (Usuario UsuarioRegistrado : envioInformacion.UsuarioRegistrados) {
                 UsuarioRegistrado.Jugando = false;
@@ -146,6 +183,10 @@ public class Servidor {
     public int broadcoast(Mensaje mensaje){
         String procesado = "holaaa";
         cambiaturno = true;
+        if("LOG".equals(mensaje.getMensaje().toUpperCase())){       
+            privateMessage(new Mensaje(mensaje.getEnviador(),"LOG&"+leeLog(),mensaje.getEnviador()));
+            return 0;
+        }
         if(envioInformacion.UsuarioRegistrados.get(EljugadorExiste(mensaje.getEnviador())).Jugando == false){
             privateMessage(new Mensaje(mensaje.getEnviador(),"Ya no estas jugando",mensaje.getEnviador()));
             return 0;
@@ -204,6 +245,7 @@ public class Servidor {
                     
         }else{
             procesado = lector.leeMensaje(mensaje.getMensaje(),mensaje.getEnviador());
+            ActualizaSacore();
             if(cambiaturno){
                 cambioTurno();
                
@@ -219,6 +261,14 @@ public class Servidor {
        
                 for (ThreadServidor cliente : clientesAceptados) {
                     try {
+                            String ArregloActualiza[] = new String[8];
+                            //System.out.println("+++++++++++++++++3");
+                            boolean actualizarsi = false;
+                            if(registradoActualiza != ""){
+                                //System.out.println("+++++++++++++++++2");
+                                ArregloActualiza = registradoActualiza.split("-");
+                                actualizarsi = true;
+                            }
                             //System.out.println("******");
                             mensaje.clearUsuariosEnviados();
                             for (Usuario UsuarioRegistrado : this.envioInformacion.UsuarioRegistrados) {
@@ -243,27 +293,43 @@ public class Servidor {
                                     nuevoarreglo[i] = nuevo;
 
                                 }
-                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos, UsuarioRegistrado.rendiciones,UsuarioRegistrado.Jugando,UsuarioRegistrado.UltimoAtaqueRealizado,UsuarioRegistrado.UltimoAtaqueRecibido);
-
-                                System.out.println("----");
+                                if(actualizarsi){
+                                    //System.out.println("+++++++++++++++++1");
+                                    //System.out.println(usuario3.nombre);
+                                    //System.out.println(ArregloActualiza[0]);
+                                    if(UsuarioRegistrado.nombre.equals(ArregloActualiza[0])){
+                                        //System.out.println("+++++++++++++++++4");
+                                        UsuarioRegistrado.victorias = Integer.parseInt( ArregloActualiza[1]);
+                                        UsuarioRegistrado.muertes = Integer.parseInt( ArregloActualiza[2]);
+                                        UsuarioRegistrado.perdidas =Integer.parseInt( ArregloActualiza[3]);
+                                        UsuarioRegistrado.rendiciones =Integer.parseInt( ArregloActualiza[4]);
+                                        UsuarioRegistrado.ataques = Integer.parseInt( ArregloActualiza[5]);
+                                        UsuarioRegistrado.exitosos = Integer.parseInt( ArregloActualiza[6]);
+                                        UsuarioRegistrado.fallidos =Integer.parseInt( ArregloActualiza[7]);
+                                        registradoActualiza = "";
+                                    }
+                                    }
+                                Usuario usuario3 = new Usuario(UsuarioRegistrado.nombre, nuevoarreglo, UsuarioRegistrado.victorias, UsuarioRegistrado.perdidas, UsuarioRegistrado.ataques, UsuarioRegistrado.exitosos, UsuarioRegistrado.fallidos,UsuarioRegistrado.muertes, UsuarioRegistrado.rendiciones,UsuarioRegistrado.Jugando,UsuarioRegistrado.UltimoAtaqueRealizado,UsuarioRegistrado.UltimoAtaqueRecibido);
+                                
+                                //System.out.println("----");
                                 mensaje.addUsuariosEnviados(usuario3);
 
                             }
                             for (Usuario UsuarioRegistrado : mensaje.getUsuariosEnviados()) {
-                                System.out.println("----");
-                                System.out.println(UsuarioRegistrado.nombre);
+                                //System.out.println("----");
+                                //System.out.println(UsuarioRegistrado.nombre);
                                 for (int i = 0; i < 4; i++) {
-                                    System.out.println("***");
-                                    System.out.println(UsuarioRegistrado.Personajes[i].getNombre());
+                                    //System.out.println("***");
+                                    //System.out.println(UsuarioRegistrado.Personajes[i].getNombre());
                                     for (int j = 0; j < 5; j++) {
-                                        System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].getNombre());
-                                        System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].Disponible);
+                                        //System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].getNombre());
+                                        //System.out.println(UsuarioRegistrado.Personajes[i].getArmas()[j].Disponible);
 
                                     }
-                                    System.out.println("***");
+                                    //System.out.println("***");
                                 }
 
-                                System.out.println("----");
+                                //System.out.println("----");
 
 
                             }
@@ -320,13 +386,17 @@ public class Servidor {
     
     
     public void privateMessage(Mensaje mensaje){
-        mensaje.UsuarioRegistrados = envioInformacion.UsuarioRegistrados;
+        mensaje.clearUsuariosEnviados();
+        for (Usuario usuario : actualiza()) {
+            mensaje.addUsuariosEnviados(usuario);
+        }
+        //mensaje.UsuarioRegistrados = envioInformacion.UsuarioRegistrados;
         for (ThreadServidor cliente : clientesAceptados) {
             try {
-                System.out.println("+++");
-                System.out.println(mensaje.getReceptor());
-                System.out.println(cliente.nombre);
-                System.out.println("+++");
+                //System.out.println("+++");
+                //System.out.println(mensaje.getReceptor());
+                //System.out.println(cliente.nombre);
+                //System.out.println("+++");
                 if(mensaje.getReceptor().equals(cliente.nombre)){
                     cliente.salida.writeObject(mensaje);
                     break;
@@ -339,5 +409,131 @@ public class Servidor {
         
     }
     
-    
+    public void agregaAlLog(String comando){
+                FileWriter escritor;
+                try {
+                    escritor = new FileWriter("Log.txt",true); 
+                    
+                    
+                    escritor.write(comando+"?");
+                    escritor.close();
+
+                    
+                          
+                } catch (IOException ex) {
+                    Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+                }}
+     
+    public String leeLog(){
+            String str = "";
+            File archivo = null;
+            FileReader fr = null;
+            BufferedReader br = null;
+            try {
+         // Apertura del fichero y creacion de BufferedReader para poder
+         // hacer una lectura comoda (disponer del metodo readLine()).
+                archivo = new File ("Log.txt");
+                fr = new FileReader (archivo);
+                br = new BufferedReader(fr);
+
+                // Lectura del fichero
+                String linea;
+                while((linea=br.readLine())!=null)
+                   str += linea;
+             }
+                
+             catch(Exception e){
+                e.printStackTrace();}finally{
+             // En el finally cerramos el fichero, para asegurarnos
+             // que se cierra tanto si todo va bien como si salta 
+             // una excepcion.
+             try{                    
+                if( null != fr ){   
+                   fr.close();     
+                }                  
+             }catch (Exception e2){ 
+                e2.printStackTrace();
+             }
+            }     
+        return str;
+        }
+    public void agregaAlScore(String comando){
+                FileWriter escritor;
+                try {
+                    escritor = new FileWriter("Score.txt",true); 
+                    
+                    
+                    escritor.write(comando+"&");
+                    escritor.close();
+
+                    
+                          
+                } catch (IOException ex) {
+                    Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+                }}
+ 
+     public String leeScore(){
+            String str = "";
+            File archivo = null;
+            FileReader fr = null;
+            BufferedReader br = null;
+            try {
+         // Apertura del fichero y creacion de BufferedReader para poder
+         // hacer una lectura comoda (disponer del metodo readLine()).
+                archivo = new File ("Score.txt");
+                fr = new FileReader (archivo);
+                br = new BufferedReader(fr);
+
+                // Lectura del fichero
+                String linea;
+                while((linea=br.readLine())!=null)
+                   str += linea;
+             }
+                
+             catch(Exception e){
+                e.printStackTrace();}finally{
+             // En el finally cerramos el fichero, para asegurarnos
+             // que se cierra tanto si todo va bien como si salta 
+             // una excepcion.
+             try{                    
+                if( null != fr ){   
+                   fr.close();     
+                }                  
+             }catch (Exception e2){ 
+                e2.printStackTrace();
+             }
+            }     
+        return str;
+        }
+    public void ActualizaSacore(){
+        String Scores[] = leeScore().split("&");
+            for (int i = 0; i < Scores.length; i++) {
+                for (Usuario UsuarioRegistrado : envioInformacion.UsuarioRegistrados) {
+                    if(Scores[i].split("-")[0].equals(UsuarioRegistrado.nombre)){
+                        Scores[i] = UsuarioRegistrado.nombre+"-"+UsuarioRegistrado.victorias+"-"+UsuarioRegistrado.muertes+"-"+UsuarioRegistrado.perdidas +"-"+UsuarioRegistrado.rendiciones +"-"+UsuarioRegistrado.ataques+"-"+UsuarioRegistrado.exitosos +"-"+UsuarioRegistrado.fallidos ;
+                    }
+                }
+                
+            }
+        String str = "";
+        for (int i = 0; i < Scores.length; i++) {
+                String[] arreglodatos = Scores[i].split("-");
+                str += arreglodatos[0] +"-"+ arreglodatos[1]+"-"+ arreglodatos[2]+"-"+ arreglodatos[3]+"-"+ arreglodatos[4]+"-"+ arreglodatos[5]+"-"+ arreglodatos[6]+"-"+ arreglodatos[7];
+                str += "&" ;
+                
+            }
+        FileWriter escritor;
+        try {
+                    escritor = new FileWriter("Score.txt"); 
+                    
+                    
+                    escritor.write(str);
+                    escritor.close();
+
+                    
+                          
+                } catch (IOException ex) {
+                    Logger.getLogger(CrearPersonaje.class.getName()).log(Level.SEVERE, null, ex);
+                }
+    }
 }
