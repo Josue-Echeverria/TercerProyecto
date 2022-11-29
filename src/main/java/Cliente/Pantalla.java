@@ -13,10 +13,14 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -26,14 +30,15 @@ public class Pantalla extends javax.swing.JFrame {
     Usuario usuario;
     Cliente cliente;
     ThreadCronometro cronometro;
+    JLabel labelsRanking[];
 
     /** Creates new form Pantalla */
     public Pantalla( Cliente cliente) throws IOException {
         
         this.cliente = cliente;
-         this.cliente.pantalla = this;
-         cronometro = new ThreadCronometro(this);
-         cronometro.start();
+        this.cliente.pantalla = this;
+        cronometro = new ThreadCronometro(this);
+        cronometro.start();
         initComponents();    
         usuario = new Usuario(cliente.nombre, cliente.Personajes, 0, 0, 0, 0, 0,0, 0,true,"","");
         EnvioInformacion envio = new EnvioInformacion(usuario);
@@ -789,7 +794,9 @@ public class Pantalla extends javax.swing.JFrame {
     public void ActualizaPantalla(){
         String informacion = "";
         String informacionUsuario = "";
+        Ranking();
         for (Usuario UsuarioRegistrado : cliente.envioInformacion.UsuarioRegistrados) {
+            
             System.out.println("holaaa");
             if(cliente.nombre.equals(UsuarioRegistrado.nombre)){
                 informacionUsuario += "Contricante #:";
@@ -856,6 +863,27 @@ public class Pantalla extends javax.swing.JFrame {
         taDatosEnemigos.setText(informacion);
         taMisDatos.setText(informacionUsuario);
     }
+    
+    public void Ranking(){
+        labelsRanking = new JLabel[]{lbUsuario1,lbUsuario2,lbUsuario3,lbUsuario4,lbUsuario5,lbUsuario6,lbUsuario7,lbUsuario8,lbUsuario9,lbUsuario10};
+        if(labelsRanking[0] != null){
+            Collections.sort(cliente.envioInformacion.UsuarioRegistrados, new Comparator<Usuario>() {
+            @Override
+            public int compare(Usuario p1, Usuario p2) {
+                    return new Integer(p2.victorias-p2.perdidas).compareTo(new Integer(p1.victorias-p1.perdidas));
+            }
+            });
+            int contador = 0;
+            for (Usuario UsuarioRegistrado : cliente.envioInformacion.UsuarioRegistrados) {
+                labelsRanking[contador].setText(UsuarioRegistrado.nombre +"   "+UsuarioRegistrado.victorias+"/"+UsuarioRegistrado.perdidas);
+                contador+= 1;
+                if(contador == 10)
+                    break;
+            }
+            }
+        
+    }
+   
     /**
      * @param args the command line arguments
      */
@@ -889,6 +917,7 @@ public class Pantalla extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;

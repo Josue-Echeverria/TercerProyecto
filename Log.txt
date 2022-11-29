@@ -4,4 +4,6 @@ El arma fue Espatula con efecto de -388?Mon Nov 28 11:02:25 CST 2022?Atacar-Deyl
 El arma fue Espatula con efecto de -348?Mon Nov 28 11:14:20 CST 2022??Mon Nov 28 11:14:51 CST 2022?Atacar-Deylan-Bob Esponja-Espatula?Se Ataco a Deylan con Bob Esponja[FUEGO]
 El arma fue Espatula con efecto de -344?Mon Nov 28 11:16:46 CST 2022??Mon Nov 28 11:17:19 CST 2022?Atacar-Deylan-Bob Esponja-Espatula?Se Ataco a Deylan con Bob Esponja[FUEGO]
 El arma fue Espatula con efecto de -256?Mon Nov 28 11:29:07 CST 2022??Mon Nov 28 11:29:31 CST 2022?Atacar-Deylan-Bob Esponja-Espatula?Se Ataco a Deylan con Bob Esponja[FUEGO]
-El arma fue Espatula con efecto de -152?Mon Nov 28 11:29:59 CST 2022??
+El arma fue Espatula con efecto de -152?Mon Nov 28 11:29:59 CST 2022??Tue Nov 29 08:12:51 CST 2022??Tue Nov 29 08:14:14 CST 2022?Atacar-Sebas-Bob Esponja-Espadas del caos?Se Ataco a Sebas con Bob Esponja[FUEGO]
+El arma fue Espadas del caos con efecto de -388?Tue Nov 29 08:14:21 CST 2022?PASAR?Tue Nov 29 08:14:42 CST 2022?Atacar-Sebas-Bob Esponja-Espadas del caos?Tue Nov 29 08:14:58 CST 2022?Atacar-Sebas-Bob Esponja-Espatula?Se Ataco a Sebas con Bob Esponja[FUEGO]
+El arma fue Espatula con efecto de -260?Tue Nov 29 08:54:32 CST 2022??Tue Nov 29 08:56:21 CST 2022??Tue Nov 29 08:57:35 CST 2022?pasar?Tue Nov 29 08:58:51 CST 2022??Tue Nov 29 09:01:57 CST 2022??Tue Nov 29 09:03:08 CST 2022??Tue Nov 29 09:05:26 CST 2022??Tue Nov 29 09:07:19 CST 2022??Tue Nov 29 09:08:36 CST 2022??Tue Nov 29 09:10:21 CST 2022??Tue Nov 29 09:11:24 CST 2022??Tue Nov 29 09:14:24 CST 2022??

@@ -143,6 +143,20 @@ public class ProcesadorMensaje {
                 nuevoarreglo[i] = nuevo;
                 
             }
+            int contador = 0;
+            for (int i = 0; i < 4; i++) {
+                
+                if(nuevoarreglo[i].getVida() <= 0){
+                    contador += 1;
+                    for (int j = 0; j < 5; j++) {
+                        nuevoarreglo[i].getArmas()[j].Disponible = false;
+                    }
+                }
+                
+            }
+            
+            
+            
             
             
             server.envioInformacion.UsuarioRegistrados.get(posEnviador).UltimoAtaqueRealizado = "Se Ataco a "+ server.envioInformacion.UsuarioRegistrados.get(pos).nombre+ " con " +atacante.getNombre()+"["+tipos[atacante.getPosTipo()]+"]"+"\nEl arma fue "+armaSeleccionada.getNombre()+  " con efecto de -"+Integer.toString(Sumatoria);
@@ -156,6 +170,11 @@ public class ProcesadorMensaje {
             server.agregaAlLog(server.envioInformacion.UsuarioRegistrados.get(posEnviador).UltimoAtaqueRealizado);
             
             server.envioInformacion.UsuarioRegistrados.get(pos).Personajes = nuevoarreglo;
+            if(contador == 4){
+                server.envioInformacion.UsuarioRegistrados.get(posEnviador).victorias += 1; 
+                server.envioInformacion.UsuarioRegistrados.get(pos).Jugando = false;
+                server.envioInformacion.UsuarioRegistrados.get(pos).perdidas += 1;
+            }
             return "Se ataco a "+ arregloMensaje[1];
         }else{
             server.cambiaturno = false;

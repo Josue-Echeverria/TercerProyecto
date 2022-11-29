@@ -48,19 +48,24 @@ public class ThreadServidor extends Thread{
         int estaregistrado= -1;
         try {
             estaregistrado= -1;
-            System.out.println("holaaaaaaaaaa1");
+            
             nombre = entradaDatos.readUTF(); // lee el nombre
+            
             String Scores[] = server.leeScore().split("&");
             for (int i = 0; i < Scores.length; i++) {
+                
                 if(Scores[i].split("-")[0].equals(nombre)){
                     estaregistrado = i;
+                    
                 }
             }
             if(estaregistrado == -1){
                 server.agregaAlScore(nombre+"-3-0-0-0-0-0-0");
             }else{
+                
                 String[] arreglodatos = Scores[estaregistrado].split("-");
                 server.registradoActualiza = nombre +"-"+ arreglodatos[1]+"-"+ arreglodatos[2]+"-"+ arreglodatos[3]+"-"+ arreglodatos[4]+"-"+ arreglodatos[5]+"-"+ arreglodatos[6]+"-"+ arreglodatos[7];
+                
             }
         } catch (IOException ex) {
             
